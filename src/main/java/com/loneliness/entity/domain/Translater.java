@@ -11,7 +11,7 @@ import javax.validation.constraints.Null;
 import java.util.Set;
 
 @Entity
-@Table( uniqueConstraints = {@UniqueConstraint(columnNames={"book_id", "translater_id"})})
+@Table
 @Data
 @EqualsAndHashCode(of = { "id" })
 public class Translater {

@@ -47,13 +47,14 @@ public class Book implements Domain {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Genre> genres;
 
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "translatedBooks")
     private Set<Translater> translaters;
 
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "books")
     private Set<User> usersThatBoughtIt;
     @ManyToMany
-    @JoinTable(name = "RelatedBook",
+    @JoinTable(name = "Related_Book",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "related_Books_id", referencedColumnName = "ID"))
     private  Set<Book> relatedBooks;
@@ -66,11 +67,10 @@ public class Book implements Domain {
 
     private Boolean availability;
 
-    private Integer quantity;
-    
-private BigDecimal price;
+    private BigDecimal price;
+
     @Override
     public Integer getId() {
-        return null;
+        return id;
     }
 }

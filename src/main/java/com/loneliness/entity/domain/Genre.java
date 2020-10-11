@@ -2,9 +2,7 @@ package com.loneliness.entity.domain;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -14,6 +12,7 @@ public enum  Genre  implements Domain{
     DEVELOPMENT, MOTIVATIONAL, HEALTH, HISTORY, TRAVEL, GUIDE_HOW_TO, FAMILIES_AND_RELATIONSHIPS,
     HUMOR, CHILDREN_S;
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Override
     public Integer getId() {
