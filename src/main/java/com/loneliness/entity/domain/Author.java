@@ -22,6 +22,8 @@ public class Author implements Domain {
     private Integer id;
     private String fio;
     private String description;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Picture avatarUrl;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,
             CascadeType.MERGE

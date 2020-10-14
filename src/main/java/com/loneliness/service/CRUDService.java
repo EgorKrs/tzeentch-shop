@@ -19,8 +19,7 @@ public abstract class CRUDService<T extends Domain> implements Service<T> {
     }
 
     public T save(T note){
-        T s = repository.save(note);
-        return s;
+        return repository.save(note);
     }
 
     public void delete(T note){
