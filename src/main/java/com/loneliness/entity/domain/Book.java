@@ -29,43 +29,38 @@ public class Book implements Domain {
     @NotBlank(groups = {Exist.class})
     @Null(groups = {New.class})
     private Integer id;
-    private String OriginalName;
-    private String TranslatedName ;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Picture> CoverUrl;
-//    private
+    private String name;
+    @ManyToOne(cascade = CascadeType.PERSIST )
+    private Picture picture;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "writtenBooks")
     private Set<Author> author;
-
+    @CollectionTable(name = "book_status", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
-
+    @CollectionTable(name = "translation_status", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
     private TranslationStatus translationStatus;
-
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Genre> genres;
-
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "translatedBooks")
-    private Set<Translater> translaters;
-
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "books")
     private Set<User> usersThatBoughtIt;
+    private String description;
     @ManyToMany
     @JoinTable(name = "Related_Book",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "ID"),
             inverseJoinColumns = @JoinColumn(name = "related_Books_id", referencedColumnName = "ID"))
     private  Set<Book> relatedBooks;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Chapter> chapters;
+//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+//    private Set<Chapter> chapters;
 
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "surveyedBook")
     private List<Review> reviews;
 
-    private Boolean availability;
+    private Integer availability;
+
+    private Integer popularity;
 
     private BigDecimal price;
 

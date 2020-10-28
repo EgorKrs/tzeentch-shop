@@ -1,57 +1,69 @@
 package com.loneliness.controller;
 
 import com.loneliness.dto.DTO;
-import com.loneliness.entity.domain.Domain;
+import com.loneliness.entity.domain.*;
+import com.loneliness.exception.BadArgumentException;
 import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.Service;
 
-import com.loneliness.validate_data.Exist;
-import com.loneliness.validate_data.New;
+import com.loneliness.util.json_parser.JsonParser;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 
 public class CommonController<T extends Domain,D extends DTO<T>>{
+    protected String page;
 
     protected Service<T> service;
-    @GetMapping
-    public List<T> getAll() {
-        return service.findAll();
+
+
+    @GetMapping()
+    public String getOneById(@RequestParam(name = "id" ) Integer id ,Map<String,Object> model) {
+       fillDomain(model, id);
+        return page;
+    }
+    @GetMapping("/change")
+    public String changePage(@RequestParam(name = "id" ) Integer id , Map<String,Object> model) {
+        fillDomain(model, id);
+        return page + "_edit";
+    }
+    @GetMapping("/create")
+    public String createPage(@RequestParam(name = "name" ) String name , Map<String,Object> model) {
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        switch (name) {
+            case "Book":
+                model.put(name,new Book());
+                break;
+            case "Picture":
+                model.put(name,new Picture());
+                break;
+            case "Author":
+                Author author = new Author();
+                author.setName("Enter ");
+                author.setDescription("Enter description");
+                author.setId(0);
+                Picture picture = new Picture();
+                picture.setUrl("../images/no-image.png");
+                picture.setName("Enter name");
+                picture.setId(-1);
+                author.setPicture(picture);
+                author.setWrittenBooks(new HashSet<>());
+                model.put(name,author);
+                break;
+            default: throw new BadArgumentException();
+        }
+        return page + "_edit";
     }
 
-    @GetMapping("{id}")
-    public T getOneById(@PathVariable Integer id) {
-        return find(id);
-    }
-
-
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
-    public T create(@Validated(New.class) @RequestBody D dto) throws IOException {
-        return service.save(dto.fromDTO());
-    }
-
-
-
-
-    @PutMapping(value = "{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
-    public T update(@Validated(Exist.class) @RequestBody D dto, @PathVariable Integer id)  {
-        find(id);
-        return service.save(dto.fromDTO());
-    }
-
-    @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id){
-        service.delete(id);
-
+    protected void fillDomain(Map<String,Object> model, Integer id) {
+        Object data = find(id);
+        model.put(data.getClass().getSimpleName(),data);
+//        return model;
     }
 
     protected T find(@PathVariable Integer id) {

@@ -9,6 +9,8 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -23,8 +25,4 @@ public class Picture implements Domain {
     private Integer id;
     private String name;
     private String url;
-    @Override
-    public Integer getId() {
-        return null;
-    }
 }

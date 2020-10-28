@@ -14,7 +14,7 @@ public class SearchCriteriaDTO {
     private String key;
     @NotBlank
     private String operation;
-    @NotNull
+//    @NotNull
     private Object value;
     public SearchCriteria fromDTO(){
         return SearchCriteria.builder().value(value).operation(operation).key(key).build();

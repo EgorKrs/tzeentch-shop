@@ -20,10 +20,10 @@ public class Author implements Domain {
     @NotBlank(groups = {Exist.class})
     @Null(groups = {New.class})
     private Integer id;
-    private String fio;
+    private String name;
     private String description;
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Picture avatarUrl;
+    @ManyToOne(cascade = CascadeType.PERSIST )
+    private Picture picture;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,
             CascadeType.MERGE

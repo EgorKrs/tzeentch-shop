@@ -1,0 +1,220 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang = "ru" data-mode="dark"></html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="-1"/>
+    <title> Edit: {{Author.name}} </title>
+    <meta name="referrer" content="strict-origin" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Tzeentch-shop">
+    <meta name="apple-mobile-web-app-title" content="Tzeentch-shop">
+    <meta name="msapplication-starturl" content="http://localhost:9080/">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="../images/mainIcon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:9080/icons/apple-icon-57x57.png?333">
+    <link rel="apple-touch-icon" sizes="60x60" href="http://localhost:9080/icons/apple-icon-60x60.png?333">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://localhost:9080/icons/apple-icon-72x72.png?333">
+    <link rel="apple-touch-icon" sizes="76x76" href="http://localhost:9080/icons/apple-icon-76x76.png?333">
+    <link rel="apple-touch-icon"  href="../images/mainIcon.ico">
+    <link rel="apple-touch-icon" sizes="120x120" href="http://localhost:9080/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="http://localhost:9080/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="http://localhost:9080/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:9080/icons/apple-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="http://localhost:9080/icons/favicon-144x144.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:9080/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="http://localhost:9080/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:9080/icons/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="../images/mainIcon.ico">
+    <link rel="shortcut icon" href="../images/mainIcon144x144.ico"/>
+    <link rel="icon" href="../images/mainIcon144x144.ico"/>
+    <meta name="msapplication-TileColor" content="#e48f13">
+    <meta name="msapplication-TileImage" content="http://localhost:9080/icons/mainIcon144x144.png">
+    <meta name="theme-color" content="#242424">
+    <meta name="rootURL" content="http://localhost:9080">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/manga.css@id=R3qepLQwwAAI.css">
+    <link rel="stylesheet" href="../css/main.css@id=Bkrch3Y6HfPM.css">
+    <link rel="stylesheet" href="../css/mobile.css@id=wCxJAq5l2YkH.css">
+<!--    <link media="all" type="text/css" rel="stylesheet" href="../css/font-awesome.min.css@v=4.5.55.css">-->
+<!--    <script src="https://kit.fontawesome.com/yourcode.js"></script>-->
+<!--    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">-->
+    <script type="text/javascript" src="../libs/fontawesome-free-5.15.1-web/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0710aed4ce.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- SVG ICONS -->
+<svg class="app-svg" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-edit" viewBox="0 0 16 16">
+        <path d="M0 12.666V16h3.334l9.837-9.837L9.837 2.83zm15.74-10.33L13.664.26a.89.89 0 0 0-1.258 0L10.78 1.887l3.334 3.334 1.627-1.627a.89.89 0 0 0 0-1.258z"
+        />
+    </symbol>
+
+</svg>
+<!--/ SVG ICONS -->
+<!-- SEARCH -->
+<div class="search hidden">
+    <div class="search__container">
+        <div class="search__inner autocomplete">
+            <div class="search__input-wrap">
+                <div class="search__icon search__icon_left">
+                    <i class="fa fa-search"></i>
+                </div>
+                <input type="text" id = "MainSearchInput" class="search__input form__input autocomplete__input">
+                <div class="search__icon search__icon_right search__icon_close" data-search-toggle>
+                    <svg><use xlink:href="#icon-close"></use></svg>
+                    <span>
+                    <i class="fas fa-plus" id = "addNewOne"></i>
+                        </span>
+                </div>
+                <div class="search__icon search__icon_right search__icon_loader">
+                    <div class="loader-circle loader-circle_small"></div>
+                </div>
+            </div>
+            <div class="search__types">
+                <div class="search__type" id = "BOOK" data-term="Книга" data-type="book" data-url="http://localhost:9080/search?type=manga">Книга</div>
+                <div class="search__type" id = "AUTHOR" data-term="Автор" data-type="author" data-url="http://localhost:9080/search?type=people">Автор</div>
+                <div class="search__type" id = "USER" data-term="Пользователя" data-type="user" data-url="http://localhost:9080/search?type=user">Пользователь</div>
+            </div>
+            <div class="search__suggestions-wrap">
+                <div class="search__suggestions autocomplete__suggestions">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ SEARCH -->
+<!-- Website Menu -->
+<div class="header">
+    <div class="header__inner">
+        <div class="header__item header__left">
+            <a href="index.html" class="header__logo">
+                <img src="../images/Tzeentch-Shop-removebg.png" alt="Tzeench-Shop">
+            </a>
+        </div>
+        <div class="header__item header__menu">
+            <div class="header-menu">
+                <div class="header-menu__item dropdown">
+                    <span data-dropdown>
+                        <i class="fa fa-bars"></i> Каталог <i class="fa fa-caret-down"></i>
+                    </span>
+                    <div class="menu-template">
+
+                    </div>
+                </div>
+                <div class="header-menu__item" data-search-toggle>
+                    <span id="search-link" title="Быстрый поиск" ><i class="fa fa-search"></i> Поиск</span>
+                </div>
+
+                <div class="header-menu__item">
+                    <a
+                            href="http://localhost:9080/forum"
+                            title="Форум"
+                    ><i class="fa fa-comments-o"></i> Форум</a>
+                </div>
+                <div class="header-menu__item">
+                    <a
+                            href="http://localhost:9080/faq"
+                            title="Ответы на часто задаваемые вопросы"
+                    ><i class="fa fa-question-circle"></i> FAQ</a>
+                </div>
+                <div class="header-menu__item dropdown header-button">
+                    <div class="header-button__icon" data-dropdown>
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
+                    <div class="menu-template">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__item header-right-menu">
+
+
+            <button
+                    class="button header__sign header__sign-in"
+                    tabindex="-1"
+                    id="show-login-button"
+            >Вход</button>
+            <a
+                    class="button header__sign header__sign-up"
+                    href="http://mangalib.me/register"
+            >Регистрация</a>
+
+            <div class="header-right-menu__item dropdown header-button">
+                <div
+                        id = "changeThemeIcon"
+                        class="header-button__icon tooltip"
+                        data-place="bottom-end"
+                        aria-label="Сменить тему"
+                        data-toggle-theme
+                >
+                    <i class="fa fa-moon-o"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--/ Website Menu -->
+
+<div class="page" id="main-page">
+    <div class="page__inner">
+        <div class="container container_offset container_center">
+            <div class="section paper person author">
+                <div class="section__body clearfix">
+                    <img id = "imageDraw" class="author__image" src="{{Author.picture.url}}" alt="{{Author.picture.name}}">
+                    <div class="author__body">
+                        <h3 class="author__title page__title page__title_sm">
+                            <a class="person__edit"
+                            data-tippy-content="Удалить">
+                            <span id = "deleteAuthorIcon">
+<!--                                <i class="far fa-times-circle"></i>-->
+                              <i class="far fa-window-close" ></i>
+                            </span>
+                            </a>
+                        </h3>
+                        <div class="info-list author-info">
+                            <label>
+                                <input class="info-desc__title" id="authorId" type="text" readonly
+                                       value="{{Author.id}}">
+                                <input class="info-desc__title" id="authorName" type="text" placeholder="ФИО" value="{{Author.name}}">
+                            </label>
+                        </div>
+                        <div class="info-desc">
+                            <p></p> <strong class="info-desc__title" id="authorDescription">Описание</strong>
+                            <div class="info-desc__content">
+                                <span>
+                                    <label for="authorDescriptionEdit"></label>
+                                    <textarea class="info-desc__title" id="authorDescriptionEdit">{{Author.description}}
+                                    </textarea>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <label>
+                    <input id="pictureId" type="text" placeholder="id картинки" value="{{Author.picture.id}}" onfocusout = "changePictureByID()">
+                </label>
+                <label>
+                    <input id="pictureUrl" type="text" placeholder="url картинки" value="{{Author.picture.url}}" onfocusout=" changeImg()">
+                </label>
+                <label>
+                    <input id="pictureName" type="text" placeholder="имя картинки" value="{{Author.picture.name}}">
+                </label>
+                <button class=" button button_md button_blue" onclick="saveChanges()">сохранить изменения?</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script  type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/author_edit.js"></script>
+<!--<script type="application/octet-stream" src="../js/vendor.js@id=5eIsiR0kOE2x"></script>-->
+<!--<script type="application/octet-stream" src="../js/main.js@id=VIL64XuxWN77"></script>-->
+
+</body>

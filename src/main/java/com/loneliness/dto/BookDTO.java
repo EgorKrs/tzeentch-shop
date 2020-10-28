@@ -9,14 +9,10 @@ import com.loneliness.validate_data.New;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
-import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
@@ -29,9 +25,8 @@ public class BookDTO implements DTO<Book> {
     @Null(groups = {New.class})
     @NotNull(groups = {Exist.class})
     private Integer id;
-    private String originalName;
-    private String translatedName;
-    private Set<Picture> coverUrl;
+    private String name;
+    private Picture picture;
     private Set<Author> author;
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
@@ -43,7 +38,7 @@ public class BookDTO implements DTO<Book> {
     private Set<Chapter> chapters;
     private List<Review> reviews;
     private BigDecimal price;
-    private Boolean availability;
+    private Integer availability;
 
     public void setPrice(String price){
         this.price = new BigDecimal(price);
@@ -52,17 +47,14 @@ public class BookDTO implements DTO<Book> {
     public Book fromDTO(){
         Book book = new Book();
         book.setId(id);
-        book.setOriginalName(originalName);
-        book.setTranslatedName(translatedName);
-        book.setCoverUrl(coverUrl);
+        book.setName(name);
+        book.setPicture(picture);
         book.setAuthor( author);
         book.setBookStatus(bookStatus );
         book.setTranslationStatus( translationStatus);
         book.setGenres(genres);
-        book.setTranslaters( translaters);
         book.setUsersThatBoughtIt(usersThatBoughtIt);
         book.setRelatedBooks( relatedBooks);
-        book.setChapters(chapters);
         book.setReviews(reviews);
         book.setAvailability(availability);
         book.setPrice(price);

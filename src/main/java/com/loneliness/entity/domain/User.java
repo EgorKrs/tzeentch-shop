@@ -53,6 +53,11 @@ public class User implements Domain {
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
     private Set<Book> books;
+    @NotEmpty(groups = {New.class,Exist.class})
+    @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
     @PastOrPresent(groups = {New.class,Exist.class})
     private Timestamp lastVisit;
 }
