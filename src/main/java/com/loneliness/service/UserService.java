@@ -20,5 +20,8 @@ public class UserService extends CRUDService<User> {
     public Optional<User> findUserByGoogleId(@Length(max = 255, groups = { Exist.class}) String googleId){
         return ((UserRepository)repository).findUserByGoogleId(googleId);
     }
+    public Optional<User> findUserByName(@Length(max = 255, groups = { Exist.class}) String name){
+        return ((UserRepository)repository).findUserByName(name);
+    }
 
 }

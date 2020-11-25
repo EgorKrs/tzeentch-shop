@@ -1,4 +1,5 @@
 let popularBooks = [];
+let news = [];
 let ajaxReq = function (path, method, requestBody, onreadystatechangeFunction) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, path, true);
@@ -31,7 +32,55 @@ let ajaxReq = function (path, method, requestBody, onreadystatechangeFunction) {
                         document.getElementsByClassName("hot-media-wrap")[0].appendChild(element);
                     }
                 }
-            }
+            };
+            break;
+        case "getAndSetNews":
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== 4) return;
+                if (xhr.status !== 200) {
+                    console.log(xhr.status + ': ' + xhr.statusText);
+                } else {
+                    Array.prototype.forEach.call(JSON.parse((xhr.responseText)), coolNews => news.push(coolNews));
+                    for (let i = 0; i < news.length; i++) {
+                        let element = document.createElement("div");
+                        element.className = "h-list-item";
+                        document.getElementById('latestNewsInd').appendChild(element);
+                        let div = document.createElement('div');
+                        div.className = 'h-list-item__title text-truncate';
+                        element.appendChild(div);
+                        let a = document.createElement("a");
+                        a.setAttribute("href", "http://localhost:9080/news?id=" + news[i].id);
+                        a.innerHTML = news[i].title ;
+                        a.className = "link-default";
+                        div.appendChild(a);
+                        let info = document.createElement("div");
+                        info.className = "h-list-item__info";
+                        element.appendChild(info);
+
+
+
+                        let user = document.createElement('span');
+
+                        info.appendChild(user);
+                        user.className = 'h-list-item__user';
+                        let icon = document.createElement('i');
+                        icon.className = "far fa-user";
+                        let p =document.createElement('span');
+                        p.style.margin = "6px";
+                        p.innerText = news[i].author.name;
+                        // user.innerText = news[i].author.name;
+                        // document.getElementById('userIcon').cloneNode(icon);
+                        user.appendChild(icon);
+                        user.appendChild(p);
+                        let date = document.createElement('span');
+                        date.className = 'h-list-item__date';
+                        date.innerHTML =  moment(news[i].printTime).startOf('day').fromNow()  ;
+                        info.appendChild(date);
+                    }
+                }
+            };
+            break;
+
     }
 };
 
@@ -51,6 +100,20 @@ let getPopularBook = function(){
 
 
 };
+function getNews() {
+    let path = "http://localhost:9080/edit/news/getNews";
+    let method =  "GET";
+    let requestBody = [
+        {
+
+        }
+    ];
+    let func = "getAndSetNews";
+    ajaxReq(path,method,requestBody,func);
+
+}
+
 window.onload = function() {
     getPopularBook();
+    getNews();
 };

@@ -22,7 +22,7 @@ import java.util.Set;
 @Table
 @Data
 @EqualsAndHashCode(of = { "id" })
-public class User implements Domain {
+public class User implements Domain, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Null(groups = New.class)
@@ -35,7 +35,7 @@ public class User implements Domain {
     @Length(max = 255,groups = {New.class,Exist.class} )
     @NotBlank(groups = {New.class,Exist.class})
     @Column( nullable = false,unique = true)
-    private String username;
+    private String name;
     private boolean active;
     @NotBlank(groups = {New.class,Exist.class})
     @Email(groups = {New.class,Exist.class})
@@ -44,6 +44,8 @@ public class User implements Domain {
     private String activationCode;
     @Length(max = 255,groups = {New.class,Exist.class} )
     private String locale;
+    @ManyToOne(cascade = CascadeType.PERSIST )
+    private Picture picture;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,
             CascadeType.MERGE
@@ -60,4 +62,42 @@ public class User implements Domain {
     private Set<Role> roles;
     @PastOrPresent(groups = {New.class,Exist.class})
     private Timestamp lastVisit;
+    private Boolean expired;
+    private Boolean locked;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return name;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+       // return expired;
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+       // return locked;
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

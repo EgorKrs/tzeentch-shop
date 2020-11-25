@@ -29,8 +29,7 @@ public class SearchController {
         Arrays.stream(searchCriteriaDTO).forEach(searchCriteriaDTO1 -> searchCriteriaList.add(searchCriteriaDTO1.fromDTO()));
         switch (tClass) {
             case "book":
-                String str = JsonParser.mapToJson(searchService.search(searchCriteriaList, Book.class));
-                return str;
+                return JsonParser.mapToJson(searchService.search(searchCriteriaList, Book.class));
             case "picture":
                 return JsonParser.mapToJson(searchService.search(searchCriteriaList, Picture.class));
             case "author":
@@ -41,6 +40,8 @@ public class SearchController {
                 return JsonParser.mapToJson(searchService.search(searchCriteriaList, Review.class));
             case "user":
                 return JsonParser.mapToJson(searchService.search(searchCriteriaList, User.class));
+            case "news":
+                return JsonParser.mapToJson(searchService.search(searchCriteriaList, News.class));
             default: throw new BadArgumentException();
         }
 

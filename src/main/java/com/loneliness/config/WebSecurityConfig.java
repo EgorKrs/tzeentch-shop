@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 newUser.setGoogleId(id);
                 newUser.setRoles(Collections.singleton(Role.USER));
-                newUser.setUsername((String) map.get("name"));
+                newUser.setName((String) map.get("name"));
                 newUser.setEmail((String) map.get("email"));
                 newUser.setLocale((String) map.get("locale"));
 

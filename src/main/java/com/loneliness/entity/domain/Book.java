@@ -55,7 +55,8 @@ public class Book implements Domain {
 //    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 //    private Set<Chapter> chapters;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "surveyedBook")
+//    @OneToMany(fetch = FetchType.EAGER,mappedBy = "surveyedBook")
+    @ManyToMany()
     private List<Review> reviews;
 
     private Integer availability;

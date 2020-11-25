@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
      Optional<User> findUserByGoogleId(@Length(max = 255, groups = { Exist.class}) String googleId);
+     Optional<User> findUserByName(@Length(max = 255, groups = { Exist.class}) String name);
 }

@@ -16,10 +16,11 @@ import javax.validation.constraints.Null;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.PositiveOrZero;
 import java.sql.Timestamp;
+import java.util.Set;
 
 
 @Entity
-@Table( uniqueConstraints = {@UniqueConstraint(columnNames={"book_id", "author_id"})})
+@Table( ) //uniqueConstraints = {@UniqueConstraint(columnNames={"book_id", "author_id","news_id"})}
 @Data
 @EqualsAndHashCode(of = { "id" })
 @ToString(of = {"id","comment","mark","author","data"})
@@ -39,13 +40,27 @@ public class Review implements Domain {
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User author;
-
-
-    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "book_id" )
+    //@ManyToOne( cascade = CascadeType.REFRESH)
+    //@JoinColumn(name = "book_id" )
+    @ManyToMany
+//    @JoinTable(name = "Book_rewiew",
+//            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "ID"),
+//            inverseJoinColumns = @JoinColumn(name = "review_id", referencedColumnName = "ID"))
     @JsonIgnore
-    private Book surveyedBook;
-
+    private Set<Book> surveyedBook;
+//    @ManyToOne( cascade = CascadeType.REFRESH)
+@ManyToMany
+//    @JoinColumn(name = "news_id" )
+    @JoinTable(name = "news_review",
+            joinColumns = @JoinColumn(name = "review_id"),
+            inverseJoinColumns = @JoinColumn(name = "news_id"))
+    @JsonIgnore
+    private Set<News> newsReview;
+    @ManyToMany
+//    @JoinTable(name = "Related_answers",
+//            joinColumns = @JoinColumn(name = "review_id", referencedColumnName = "ID"),
+//            inverseJoinColumns = @JoinColumn(name = "related_Review_id", referencedColumnName = "ID"))
+    private Set<Review> answers;
 
 
     @NotNull(groups = {Exist.class,New.class})

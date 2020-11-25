@@ -1,5 +1,5 @@
 package com.loneliness.entity;
 
 public enum BookStatus {
-    FINISHED, CONTINUES, REVIVE, FREEZE, ANNOUNCE, CANCELED
+    FINISHED, CONTINUES, REVIVE, FREEZE, ANNOUNCE, CANCELED, NOT_SET
 }
