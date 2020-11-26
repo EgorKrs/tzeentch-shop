@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 public class CommonController<T extends Domain,D extends DTO<T>>{
@@ -31,6 +32,12 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
     public String changePage(@RequestParam(name = "id" ) Integer id , Map<String,Object> model) {
         fillDomain(model, id);
         return page + "_edit";
+    }
+    @GetMapping("/all")
+    public String getAllPage( Map<String,Object> model) {
+        List<T> nodes = service.findAll();
+        model.put("allNodes",nodes);
+        return "All" + page ;
     }
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name" ) String name , Map<String,Object> model) {

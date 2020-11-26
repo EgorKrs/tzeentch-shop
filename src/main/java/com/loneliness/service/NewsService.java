@@ -4,6 +4,10 @@ import com.loneliness.entity.domain.Author;
 import com.loneliness.entity.domain.News;
 import com.loneliness.repository.AuthorRepository;
 import com.loneliness.repository.NewsRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,8 +23,12 @@ public class NewsService extends CRUDService<News>{
         this.searchService = searchService;
     }
     public Optional<List<News>>  getAllByIdIsNotNullOrderByPrintTimeDesc(){
-        Optional<List<News>> list = ((NewsRepository)repository).getTop4ByIdIsNotNullOrderByPrintTimeDesc();
-        return list;
+        return ((NewsRepository)repository).getTop4ByIdIsNotNullOrderByPrintTimeDesc();
+    }
+    public Optional<List<News>> getNodes(int page, int size){
+        Sort sort = Sort.by(Sort.Direction.DESC,"title");
+       return ((NewsRepository)repository).findAllByIdIsNotNullOrderByTitle(
+                PageRequest.of(page, size, sort ));
     }
 
 }

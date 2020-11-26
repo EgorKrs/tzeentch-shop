@@ -216,7 +216,9 @@
                             <h2 class="page__title" >Последние новости</h2>
                             <div class="h-list-items " id = 'latestNewsInd'>
                             </div>
-                            <a href="https://mangalib.me/news" class="link-default">Все новости <i class="fa fa-angle-right fa-fw"></i></a>
+                            <a href="http://localhost:9080/news/all" class="link-default">Все новости
+                                <i class="fa fa-angle-right fa-fw"></i>
+                            </a>
                         </div>
                     </section>
                     <section class="h-lists__section section paper">
@@ -6314,45 +6316,7 @@
 
     </div>
 
-    <footer class="footer container">
-        <div class="footer__inner paper">
-            <div class="footer__theme-toggler">
-                <h3>Тема сайта</h3>
-                <span class="footer-t-previews">
-        <div class="footer-t-preview tooltip" data-toggle-theme="light" data-place="top" aria-label="Светлая">A</div>
-        <div class="footer-t-preview tooltip" data-toggle-theme="dark" data-place="top" aria-label="Темная">A</div>
-      </span>
-            </div>
-            В случаях нарушения авторских прав - обращайтесь на почту <a href="https://mangalib.me/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="bcd5d2dad3fcd1ddd2dbddd0d5de92d1d9">[email&#160;protected]</a>
-            <div class="footer__menu clearfix">
-                <div class="footer__copyright">
-                    <span>©&nbsp;2020</span>
-                    <a rel="nofollow" href="index.mustache">MangaLib</a>
-                </div>
-                <ul class="footer__nav clearfix">
-                    <li>
-                        <a class="footer__nav-link" rel="nofollow" target="_blank" href="https://mangalib.me/contact-us" title="Обратная связь">Обратная связь</a>
-                    </li>
 
-                    <li>
-                        <a class="footer__nav-link" href="https://mangalib.me/news/copyright" target="_blank" title="Для правообладателей">Для правообладателей</a>
-                    </li>
-
-                    <li>
-                        <a class="footer__nav-link" href="https://mangalib.me/news/DMCA" target="_blank" title="DMCA">DMCA</a>
-                    </li>
-
-                    <li>
-                        <a class="footer__nav-link" href="https://mangalib.me/manga-list" target="_blank" title="Список манги">Каталог манги</a>
-                    </li>
-
-                    <li>
-                        <a class="footer__nav-link" href="https://mangalib.me/news" target="_blank" title="Новости">Новости</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 </div>
 
 <div class="page-modals" tabindex="-1">
@@ -6363,69 +6327,7 @@
 
 
 
-<div class="modal" id="sign-in-modal" data-size="small">
-    <div class="modal__inner">
-        <div class="modal__content" data-size="small">
-            <div class="modal__header">
-                <h4 class="modal__title text-center">Авторизация</h4>
-                <div class="modal__close" data-close-modal>
-                    <svg class="modal__close-icon">
-                        <use xlink:href="#icon-close"></use>
-                    </svg>
-                </div>
-            </div>
-            <div class="modal__body">
-                <div class="form__subtitle">Вход через социальные сети</div>
-                <div class="social-sign">
-                    <div class="buttons-stretch">
-                        <a href="https://mangalib.me/auth/vk" class="button" data-social="vk">
-                            <i class="fa fa-vk"></i>
-                        </a>
-                        <a href="https://mangalib.me/auth/twitter" class="button" data-social="twitter">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="https://mangalib.me/auth/facebook" class="button" data-social="facebook">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="https://mangalib.me/auth/google" class="button" data-social="google">
-                            <i class="fa fa-google"></i>
-                        </a>
-                    </div>
-                </div>
-                <form action="https://mangalib.me/login" method="POST" id="sign-in-form">
-                    <div class="form__subtitle">Вход через логин или email</div>
-                    <div class="form__field">
-                        <div class="form__input-wrap">
-                            <input type="hidden" name="_token" value="qFkJrnDlNeiDvASZWvyi5nyDbTnD34xA114ak8s6">
-                            <input type="text" name="email" class="form__input form__input_icon" placeholder="Логин или email"
-                                   required>
-                            <span class="form__field-icon"><i class="fa fa-user"></i></span>
-                        </div>
-                    </div>
-                    <div class="form__field">
-                        <div class="form__description text-right">
-                            <a href="https://mangalib.me/password/reset" tabindex="-1" class="link-default">Забыли пароль?</a></div>
-                        <div class="form__input-wrap">
-                            <input type="password" name="password" class="form__input form__input_icon" placeholder="Пароль" required>
-                            <span class="form__field-icon"><i class="fa fa-lock"></i></span>
-                        </div>
-                    </div>
-                    <div class="form__field">
-                        <label class="control control_checkbox">
-                            <input class="control__input" checked="checked" type="checkbox" name="remember" id="remember">
-                            <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
-                            <span class="control__text">Запомнить меня</span>
-                        </label>
-                    </div>
-                    <div class="form__footer">
-                        <button type="submit" class="button button_primary button_md">Войти</button>
-                        <a href="https://mangalib.me/register" class="link-default">Регистрация</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <div class="flash-messages">
 

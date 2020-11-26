@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -29,5 +30,20 @@ public class NewsRestController extends CommonRestController<News, NewsDTO> {
         return ((NewsService)service).getAllByIdIsNotNullOrderByPrintTimeDesc().orElseThrow(NotFoundException::new);
         //return service.save(dto.fromDTO());
     }
+    @GetMapping(value = "/getPage",consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
+    public List<News> getPage(@RequestParam(name = "page" ,required = false)Integer page ,
+                              @RequestParam(name = "size" ,required = false) Integer size) throws IOException {
+        if (page!=null) {
+            if (size == null) {
+                size = 25;
+            }
+            return ((NewsService) service).getNodes(page, size).orElse(new LinkedList<>());
+        }
+        else
+            return service.findAll();
+
+        //return service.save(dto.fromDTO());
+    }
+
 
 }
