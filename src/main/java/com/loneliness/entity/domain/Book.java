@@ -30,7 +30,7 @@ public class Book implements Domain {
     @Null(groups = {New.class})
     private Integer id;
     private String name;
-    @ManyToOne(cascade = CascadeType.PERSIST )
+    @ManyToOne(cascade = CascadeType.REFRESH )
     private Picture picture;
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "writtenBooks")

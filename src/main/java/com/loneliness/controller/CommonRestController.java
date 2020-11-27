@@ -19,13 +19,13 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CommonRestController <T extends Domain,D extends DTO<T>>{
+public class CommonRestController<T extends Domain, D extends DTO<T>> {
     protected String page;
 
     protected Service<T> service;
 
 
-    @GetMapping()
+        @GetMapping()
     public String getOneById(@RequestParam(name = "id" , required = false ) Integer id , Map<String,Object> model) {
         Object data = find(id);
         model.put(data.getClass().getSimpleName(),data);
@@ -39,15 +39,15 @@ public class CommonRestController <T extends Domain,D extends DTO<T>>{
         return service.save(dto.fromDTO());
     }
 
-    @PutMapping( consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
-    public T update(@Validated(Exist.class) @RequestBody D dto, @RequestParam(name = "id" ) Integer id)  {
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public T update(@Validated(Exist.class) @RequestBody D dto, @RequestParam(name = "id") Integer id) {
         if (id != null && id > 0) {
             find(id);
         }
         return service.save(dto.fromDTO());
     }
 
-    @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String delete(@RequestParam(name = "id") Integer id) {
         service.delete(id);
         return "index";

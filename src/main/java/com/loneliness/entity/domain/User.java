@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.loneliness.entity.Role;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,6 +20,8 @@ import java.util.Set;
 @Table
 @Data
 @EqualsAndHashCode(of = { "id" })
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Domain, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +44,7 @@ public class User implements Domain, UserDetails {
     private String activationCode;
     @Length(max = 255,groups = {New.class,Exist.class} )
     private String locale;
-    @ManyToOne(cascade = CascadeType.PERSIST )
+    @ManyToOne(cascade = CascadeType.REFRESH )
     private Picture picture;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,

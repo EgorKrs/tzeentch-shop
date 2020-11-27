@@ -16,7 +16,7 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
         registry
                 .addResourceHandler("css/**")
                 .addResourceLocations("resources/css/**")
-        .addResourceLocations("classpath:/css/");
+                .addResourceLocations("classpath:/css/");
         registry
                 .addResourceHandler("fonts/**")
                 .addResourceLocations("/resources/fonts/")
@@ -33,5 +33,6 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
                 .addResourceHandler("libs/**")
                 .addResourceLocations("/resources/libs/")
                 .addResourceLocations( "classpath:/libs/");
+
     }
 }
