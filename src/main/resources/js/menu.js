@@ -26,13 +26,28 @@ function getSearchElem(elementName) {
     let path = 'http://localhost:9080/search/'+document.getElementsByClassName("search__type search__type_active")[0].dataset.type;
     xhr.open('POST', path, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    let searchCriteria = [
-        {
-            key: "name",
-            operation: "=",
-            value: elementName
-        }
-    ];
+    let searchCriteria;
+    if (document.getElementsByClassName("search__type search__type_active")[0].dataset.type === 'book'
+    ||  document.getElementsByClassName("search__type search__type_active")[0].dataset.type === 'author'
+        ||  document.getElementsByClassName("search__type search__type_active")[0].dataset.type === 'user') {
+        searchCriteria = [
+            {
+                key: "name",
+                operation: "=",
+                value: elementName
+            }
+        ];
+    }
+    else if(document.getElementsByClassName("search__type search__type_active")[0].dataset.type === 'news'
+        || document.getElementsByClassName("search__type search__type_active")[0].dataset.type === 'forum'){
+        searchCriteria = [
+            {
+                key: "title",
+                operation: "=",
+                value: elementName
+            }
+        ];
+    }
     xhr.send(JSON.stringify(searchCriteria));
     xhr.onreadystatechange = function() {
         if (xhr.readyState !== 4) return;

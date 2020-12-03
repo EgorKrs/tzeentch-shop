@@ -1,9 +1,11 @@
 package com.loneliness.entity.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -14,6 +16,7 @@ import java.util.Set;
 @Table
 @Data
 @EqualsAndHashCode(of = { "id" })
+@ToString(of = {"id","name","description","picture"})
 public class Author implements Domain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,5 +35,6 @@ public class Author implements Domain {
             joinColumns = @JoinColumn(name = "authors_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id")
     )
+    @JsonIgnore
     private Set<Book> writtenBooks;
 }

@@ -29,6 +29,8 @@ public class SearchQueryCriteriaConsumer implements Consumer<SearchCriteria> {
             predicate = builder.and(predicate, builder.equal(r.get(param.getKey()), param.getValue().toString()));
         } else if (param.getOperation().equalsIgnoreCase(":")) {
                 predicate = builder.and(predicate, builder.like(r.get(param.getKey()), "%" + param.getValue() + "%"));
+        }else if (param.getOperation().equalsIgnoreCase("c")) {
+            predicate = builder.and(predicate, builder.like(r.get(param.getKey()),  param.getValue().toString() ));
         }
     }
 

@@ -1,0 +1,1619 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="ru" data-mode="dark"></html>
+<head>
+    <meta charset="utf-8"/>
+    <title> Tzeentch-shop</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Tzeentch-shop">
+    <meta name="apple-mobile-web-app-title" content="Tzeentch-shop">
+    <meta name="msapplication-starturl" content="http://localhost:9080/">
+    <meta name="theme-color" content="#242424">
+    <meta name="rootURL" content="http://localhost:9080">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/manga.css@id=R3qepLQwwAAI.css">
+    <link rel="stylesheet" href="../css/main.css@id=Bkrch3Y6HfPM.css">
+    <link rel="stylesheet" href="../css/mobile.css@id=wCxJAq5l2YkH.css">
+    <link media="all" type="text/css" rel="stylesheet" href="../css/font-awesome.min.css@v=4.5.55.css">
+    <script type="text/javascript" src="../libs/fontawesome-free-5.15.1-web/js/all.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- SVG ICONS -->
+<svg class="app-svg" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-edit" viewBox="0 0 16 16">
+        <path d="M0 12.666V16h3.334l9.837-9.837L9.837 2.83zm15.74-10.33L13.664.26a.89.89 0 0 0-1.258 0L10.78 1.887l3.334 3.334 1.627-1.627a.89.89 0 0 0 0-1.258z"
+        />
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 36 36">
+        <line x1="0" y1="18" x2="36" y2="18"></line>
+        <line x1="18" y1="0" x2="18" y2="36"></line>
+    </symbol>
+    <symbol id="icon-minus" viewBox="0 0 10 10">
+        <line x1="0" y1="5" x2="10" y2="5" stroke-width="2"></line>
+    </symbol>
+    <symbol id="icon-reply" viewBox="0 0 459 459">
+        <path d="M459,216.75L280.5,38.25v102c-178.5,25.5-255,153-280.5,280.5C63.75,331.5,153,290.7,280.5,290.7v104.55L459,216.75z"
+        />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 16 16">
+        <path d="M8 0l2.472 5.267L16 6.112l-4 4.099.944 5.789L8 13.267 3.056 16 4 10.211l-4-4.1 5.528-.844z"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 305.002 305.002">
+        <g fill="#3cce7b">
+            <path d="M152.502.001C68.412.001 0 68.412 0 152.501s68.412 152.5 152.502 152.5c84.089 0 152.5-68.411 152.5-152.5S236.591.001 152.502.001zm0 280C82.197 280.001 25 222.806 25 152.501c0-70.304 57.197-127.5 127.502-127.5 70.304 0 127.5 57.196 127.5 127.5 0 70.305-57.196 127.5-127.5 127.5z"/>
+            <path d="M218.473 93.97l-90.546 90.547-41.398-41.398c-4.882-4.881-12.796-4.881-17.678 0-4.881 4.882-4.881 12.796 0 17.678l50.237 50.237c2.441 2.44 5.64 3.661 8.839 3.661 3.199 0 6.398-1.221 8.839-3.661l99.385-99.385c4.881-4.882 4.881-12.796 0-17.678-4.882-4.882-12.797-4.882-17.678-.001z"/>
+        </g>
+    </symbol>
+
+    <symbol id="icon-exclamation-circle" viewBox="0 0 16 16">
+        <path fill="#f44336"
+              d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zm0-1C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/>
+        <path fill="#f44336" d="M7 3h2v7H7V3zm0 8h2v2H7v-2z"/>
+    </symbol>
+
+    <symbol id="icon-information-circle" viewBox="0 0 18 18">
+        <path d="M7.9799 5.8739c.0329.0658.0658.1316.0987.181.033.0493.0823.0987.1152.148.0493.0494.0987.0987.1645.1481.0494.033.1152.0823.1975.0987.0658.033.1316.0494.2139.0658.0822.0165.148.0165.2138.0165.0659 0 .1481 0 .214-.0165.0658-.0164.1316-.0329.181-.0658h.0164c.0658-.0329.1316-.0658.1974-.1151.0494-.033.0987-.0823.1481-.1317l.0165-.0164c.0493-.0494.0822-.0987.1151-.1481.033-.0494.0658-.0987.0823-.1645 0-.0165 0-.0165.0165-.033.0329-.0658.0493-.148.0658-.2138.0164-.0659.0164-.1481.0164-.214 0-.0658 0-.148-.0164-.2138-.0165-.0658-.033-.1317-.0658-.214-.0494-.1151-.1152-.2138-.1975-.296l-.0329-.033c-.0494-.0494-.0987-.0823-.1645-.1316-.0658-.033-.1152-.0658-.181-.0987-.0658-.033-.1316-.0494-.1975-.0659-.0822-.0164-.148-.0164-.2139-.0164-.0658 0-.148 0-.2138.0164-.0659.0165-.1317.033-.1975.0659h-.0164c-.0659.0329-.1317.0658-.181.0987-.0658.0493-.1152.0822-.1646.1316-.0493.0494-.0987.0987-.1316.148-.0329.0494-.0658.1153-.0987.181-.033.0659-.0494.1317-.0658.1975-.0165.0823-.0165.1481-.0165.214 0 .0657 0 .148.0165.2138.0164.1316.0493.1974.0658.2633zm2.2871 6.0219h-.3785v-4.031c0-.2304-.181-.4279-.4278-.4279H7.7331c-.2304 0-.4278.181-.4278.4278v.8885c0 .2303.181.4278.4278.4278h.3455v2.7313h-.3455c-.2304 0-.4278.181-.4278.4277v.8885c0 .2304.181.4278.4278.4278h2.5338c.2304 0 .4278-.181.4278-.4278V12.34c0-.2468-.1974-.4442-.4278-.4442z"/>
+        <path d="M9 0C4.031 0 0 4.031 0 9s4.031 9 9 9 9-4.031 9-9-4.031-9-9-9zm0 16.8154c-4.3108 0-7.8154-3.5046-7.8154-7.8154S4.6892 1.1846 9 1.1846 16.8154 4.6892 16.8154 9 13.3108 16.8154 9 16.8154z"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 10 10">
+        <line x1="1" y1="1" x2="9" y2="9"></line>
+        <line x1="1" y1="9" x2="9" y2="1"></line>
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 18 11">
+        <path fill-rule="evenodd"
+              d="M8.109 10.41L.369 2.265a1.377 1.377 0 0 1 0-1.876 1.217 1.217 0 0 1 1.783 0L9 7.594 15.848.39a1.217 1.217 0 0 1 1.783 0 1.377 1.377 0 0 1 0 1.876L9.89 10.41c-.246.26-.57.39-.891.39-.322 0-.645-.132-.89-.39h-.001z"></path>
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 18 11">
+        <path fill-rule="evenodd"
+              d="M8.109.39L.369 8.535a1.377 1.377 0 0 0 0 1.876c.492.519 1.29.519 1.783 0L9 3.206l6.848 7.205c.492.519 1.29.519 1.783 0a1.377 1.377 0 0 0 0-1.876L9.89.39A1.222 1.222 0 0 0 9 0c-.322 0-.645.132-.89.39h-.001z"></path>
+    </symbol>
+    <symbol id="icon-extra" viewBox="0 0 16 4">
+        <path d="M14 4a2 2 0 1 1-.001-3.999A2 2 0 0 1 14 4zM8 4A2 2 0 1 1 7.999.001 2 2 0 0 1 8 4zM2 4A2 2 0 1 1 1.999.001 2 2 0 0 1 2 4z"
+              fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="icon-check-list" viewBox="0 0 512 512">
+        <path fill="currentColor"
+              d="M139.61 35.5a12 12 0 0 0-17 0L58.93 98.81l-22.7-22.12a12 12 0 0 0-17 0L3.53 92.41a12 12 0 0 0 0 17l47.59 47.4a12.78 12.78 0 0 0 17.61 0l15.59-15.62L156.52 69a12.09 12.09 0 0 0 .09-17zm0 159.19a12 12 0 0 0-17 0l-63.68 63.72-22.7-22.1a12 12 0 0 0-17 0L3.53 252a12 12 0 0 0 0 17L51 316.5a12.77 12.77 0 0 0 17.6 0l15.7-15.69 72.2-72.22a12 12 0 0 0 .09-16.9zM64 368c-26.49 0-48.59 21.5-48.59 48S37.53 464 64 464a48 48 0 0 0 0-96zm432 16H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"/>
+    </symbol>
+    <symbol id="icon-translate" viewBox="0 0 640 512">
+        <path fill="currentColor"
+              d="M152.1 236.2c-3.5-12.1-7.8-33.2-7.8-33.2h-.5s-4.3 21.1-7.8 33.2l-11.1 37.5H163zM616 96H336v320h280c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24zm-24 120c0 6.6-5.4 12-12 12h-11.4c-6.9 23.6-21.7 47.4-42.7 69.9 8.4 6.4 17.1 12.5 26.1 18 5.5 3.4 7.3 10.5 4.1 16.2l-7.9 13.9c-3.4 5.9-10.9 7.8-16.7 4.3-12.6-7.8-24.5-16.1-35.4-24.9-10.9 8.7-22.7 17.1-35.4 24.9-5.8 3.5-13.3 1.6-16.7-4.3l-7.9-13.9c-3.2-5.6-1.4-12.8 4.2-16.2 9.3-5.7 18-11.7 26.1-18-7.9-8.4-14.9-17-21-25.7-4-5.7-2.2-13.6 3.7-17.1l6.5-3.9 7.3-4.3c5.4-3.2 12.4-1.7 16 3.4 5 7 10.8 14 17.4 20.9 13.5-14.2 23.8-28.9 30-43.2H412c-6.6 0-12-5.4-12-12v-16c0-6.6 5.4-12 12-12h64v-16c0-6.6 5.4-12 12-12h16c6.6 0 12 5.4 12 12v16h64c6.6 0 12 5.4 12 12zM0 120v272c0 13.3 10.7 24 24 24h280V96H24c-13.3 0-24 10.7-24 24zm58.9 216.1L116.4 167c1.7-4.9 6.2-8.1 11.4-8.1h32.5c5.1 0 9.7 3.3 11.4 8.1l57.5 169.1c2.6 7.8-3.1 15.9-11.4 15.9h-22.9a12 12 0 0 1-11.5-8.6l-9.4-31.9h-60.2l-9.1 31.8c-1.5 5.1-6.2 8.7-11.5 8.7H70.3c-8.2 0-14-8.1-11.4-15.9z"/>
+    </symbol>
+</svg>    <!--/ SVG ICONS -->
+
+<!-- SEARCH -->
+<div class="search hidden">
+    <div class="search__container">
+        <div class="search__inner autocomplete">
+            <div class="search__input-wrap">
+                <div class="search__icon search__icon_left">
+                    <i class="fa fa-search"></i>
+                </div>
+                <input type="text" id="MainSearchInput" class="search__input form__input autocomplete__input">
+                <span id="addNewOne">
+                    <i class="fas fa-plus"></i>
+                </span>
+
+                <div class="search__icon search__icon_right search__icon_close" data-search-toggle>
+                    <svg>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </div>
+                <div class="search__icon search__icon_right search__icon_loader">
+                    <div class="loader-circle loader-circle_small"></div>
+                </div>
+            </div>
+            <div class="search__types">
+                <div class="search__type" id="BOOK" data-term="Книга" data-type="book"
+                     data-url="http://localhost:9080/search?type=manga">Книга
+                </div>
+                <div class="search__type" id="AUTHOR" data-term="Автор" data-type="author"
+                     data-url="http://localhost:9080/search?type=people">Автор
+                </div>
+                <div class="search__type" id="USER" data-term="Пользователя" data-type="user"
+                     data-url="http://localhost:9080/search?type=user">Пользователь
+                </div>
+                <div class="search__type" id="FORUM" data-term="Форум" data-type="forum"
+                     data-url="http://localhost:9080/search?type=forum">Тема форума
+                </div>
+                <div class="search__type" id="NEWS" data-term="Новости" data-type="news"
+                     data-url="http://localhost:9080/search?type=news">Новости
+                </div>
+            </div>
+            <div class="search__suggestions-wrap">
+                <div class="search__suggestions autocomplete__suggestions">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ SEARCH -->
+<!-- Website Menu -->
+<div class="header">
+    <div class="header__inner">
+        <div class="header__item header__left">
+            <a href="index.mustache" class="header__logo">
+                <img src="../images/Tzeentch-Shop-removebg.png" alt="Tzeench-Shop">
+            </a>
+        </div>
+        <div class="header__item header__menu">
+            <div class="header-menu">
+                <div class="header-menu__item dropdown">
+                    <span data-dropdown>
+                        <i class="fa fa-bars"></i> Каталог <i class="fa fa-caret-down"></i>
+                    </span>
+                    <div class="menu-template">
+                        <div class="menu header-dropdown">
+
+                            <div class="menu__divider"></div>
+                            <a href="http://mangalib.me/manga-list" class="menu__item">Весь</a>
+                            <a class="menu__item" href="http://mangalib.me/random">Случайный тайтл</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-menu__item" data-search-toggle>
+                    <span id="search-link" title="Быстрый поиск"><i class="fa fa-search"></i> Поиск</span>
+                </div>
+
+                <div class="header-menu__item">
+                    <a
+                            href="http://localhost:9080/forum"
+                            title="Форум"
+                    ><i class="fas fa-comments"></i> Форум</a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="header__item header-right-menu">
+
+            <div class="header-right-menu__item dropdown header-button">
+                <div
+                        id="changeThemeIcon"
+                        class="header-button__icon tooltip"
+                        data-place="bottom-end"
+                        aria-label="Сменить тему"
+                        data-toggle-theme>
+                    <i class="fab fa-themeisle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<input type="hidden" id = "firstData" value = "{{Books}}" >
+<div class="page" id="main-page">
+
+
+    <div class="page__inner">
+
+        <div class="container container_offset container_responsive">
+
+
+            <div class=" page__wrapper page__wrapper_left  paper manga-search">
+                <div class="manga-search__head">
+                    <div class="manga-search__header">
+                        <h2 class="manga-search__title">
+                            <span>Каталог  </span>
+                        </h2>
+
+                        <div class="dropdown">
+                            <button class="manga-search__sort-button" data-dropdown="" data-tippy-placement="bottom-end"
+                                    data-sort="desc" aria-expanded="false">
+                                <i class="fa fa-fw fa-sort-amount-desc"></i>
+                                <i class="fa fa-fw fa-sort-amount-asc"></i>
+                                <span>По рейтингу</span>
+                                <i class="fa fa-fw fa-angle-down"></i>
+                            </button>
+                            <div class="menu-template">
+
+                            </div>
+                        </div>
+                    </div>
+                    <input class="form__input manga-search__input" type="text" placeholder="Поиск по названию..."
+                           value="">
+                </div>
+
+                <div class="" id="manga-list">
+
+                    <div class="media-grid-wrap">
+                        <div class="media-cards-grid">
+                            <div class="media-card-wrap">
+                                <a class="media-card" href="https://mangalib.me/i-alone-level-up"
+                                   data-media-slug="i-alone-level-up" data-media-id="7580"
+                                   style="background-image: url(&quot;/uploads/cover/i-alone-level-up/cover/SiIlhsGKHZR5_250x350.jpg&quot;);"
+                                   data-src="/uploads/cover/i-alone-level-up/cover/SiIlhsGKHZR5_250x350.jpg"
+                                   data-was-processed="true">
+                                    <div class="media-card__caption">
+                                        <h5 class="media-card__subtitle">Манхва</h5>
+                                        <h3 class="media-card__title line-clamp">Поднятие уровня в одиночку</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="media-card-wrap">
+                                <a class="media-card" href="https://mangalib.me/suddenly-became-a-princess-one-day-"
+                                   data-media-slug="suddenly-became-a-princess-one-day-" data-media-id="7820"
+                                   style="background-image: url(&quot;/uploads/cover/suddenly-became-a-princess-one-day-/cover/QZMvd9evfveO_250x350.jpg&quot;);"
+                                   data-src="/uploads/cover/suddenly-became-a-princess-one-day-/cover/QZMvd9evfveO_250x350.jpg"
+                                   data-was-processed="true">
+                                    <div class="media-card__caption">
+                                        <h5 class="media-card__subtitle">Манхва</h5>
+                                        <h3 class="media-card__title line-clamp">Однажды я стала принцессой</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="media-card-wrap">
+                                <a class="media-card" href="https://mangalib.me/the-beginning-after-the-end"
+                                   data-media-slug="the-beginning-after-the-end" data-media-id="6478"
+                                   style="background-image: url(&quot;/uploads/cover/the-beginning-after-the-end/cover/iVwJDXruCi_250x350.jpg&quot;);"
+                                   data-src="/uploads/cover/the-beginning-after-the-end/cover/iVwJDXruCi_250x350.jpg"
+                                   data-was-processed="true">
+                                    <div class="media-card__caption">
+                                        <h5 class="media-card__subtitle">OEL-манга</h5>
+                                        <h3 class="media-card__title line-clamp">Начало после конца</h3>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="media-card-wrap">
+                                <a class="media-card" href="https://mangalib.me/19-tian" data-media-slug="19-tian"
+                                   data-media-id="1886"
+                                   style="background-image: url(&quot;/uploads/cover/19-tian/cover/DPSMErR34noI_250x350.jpg&quot;);"
+                                   data-src="/uploads/cover/19-tian/cover/DPSMErR34noI_250x350.jpg"
+                                   data-was-processed="true">
+                                    <div class="media-card__caption">
+                                        <h5 class="media-card__subtitle">Маньхуа</h5>
+                                        <h3 class="media-card__title line-clamp">19 Дней - Однажды</h3>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="paper search-filter" style="left: 1033px;">
+                <div class="search-filter-layout"><!---->
+                    <div class="search-filter__wrap">
+                        <div class="search-filter__filters">
+                            <div class="search-filter-submenu">
+                                <div class="search-filter-submenu__name" >
+                                    Жанры
+                                </div>
+                                <div class="search-filter-submenu__right"><span
+                                        class="search-filter-submenu__selected text-truncate">Любые</span> <i
+                                        class="fa fa-chevron-right"></i></div>
+                            </div>
+                            <div class="search-filter-submenu">
+                                <div class="search-filter-submenu__name">
+                                    Теги
+                                </div>
+                                <div class="search-filter-submenu__right"><span
+                                        class="search-filter-submenu__selected text-truncate">Любые</span> <i
+                                        class="fa fa-chevron-right"></i></div>
+                            </div> <!---->
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Количество глав
+                                </div>
+                                <div class="search-filter__content">
+                                    <div class="search-filter__input-group"><input type="text" placeholder="От"
+                                                                                   class="form__input form__input_sm search-filter__input">
+                                        <span class="text-muted">—</span> <input type="text" placeholder="До"
+                                                                                 class="form__input form__input_sm search-filter__input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Год выпуска
+                                </div>
+                                <div class="search-filter__content">
+                                    <div class="search-filter__input-group"><input type="text" placeholder="От"
+                                                                                   class="form__input form__input_sm search-filter__input">
+                                        <span class="text-muted">—</span> <input type="text" placeholder="До"
+                                                                                 class="form__input form__input_sm search-filter__input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Оценка
+                                </div>
+                                <div class="search-filter__content">
+                                    <div class="search-filter__input-group"><input type="text" placeholder="От"
+                                                                                   class="form__input form__input_sm search-filter__input">
+                                        <span class="text-muted">—</span> <input type="text" placeholder="До"
+                                                                                 class="form__input form__input_sm search-filter__input">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Возрастной рейтинг
+                                </div>
+                                <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_caution search-filter__checkbox-list_flex">
+                                    <label class="control search-filter__checkbox"><input value="1" type="checkbox"
+                                                                                          class="control__input"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text">16+</span></label> <label
+                                        class="control search-filter__checkbox"><input value="2" type="checkbox"
+                                                                                       class="control__input"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_top"></span>
+                                    <span class="control__text">18+</span></label> <label
+                                        class="control search-filter__checkbox"><input value="0" type="checkbox"
+                                                                                       class="control__input"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_top"></span>
+                                    <span class="control__text">Отсутствует</span></label></div>
+                            </div>
+                            <div class="search-filter__categories search-filter__group">
+                                <div class="search-filter__title">
+                                    Тип
+                                </div>
+                                <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_flex">
+                                    <label class="control search-filter__checkbox"><input type="checkbox"
+                                                                                          class="control__input"
+                                                                                          value="1"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text">Манга</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="4">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">OEL-манга</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="5">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Манхва</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="6">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Маньхуа</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="8">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Руманга</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="9">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Комикс западный</span></label></div>
+                            </div>
+                            <div class="search-filter__format search-filter__group">
+                                <div class="search-filter__title">
+                                    Формат выпуска
+                                </div>
+                                <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_flex">
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"
+                                                                                        onclick="changeState(this)"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              4-кома (Ёнкома)
+            </span></div>
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"
+                                                                                        onclick="changeState(this)"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              Сборник
+            </span></div>
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              Додзинси
+            </span></div>
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              В цвете
+            </span></div>
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              Сингл
+            </span></div>
+                                    <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                        class="control__input search-filter__with-exclude"
+                                                                                        value="0"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text text-truncate">
+              Веб
+            </span></div>
+                                </div>
+                            </div>
+                            <div class="search-filter__status search-filter__group">
+                                <div class="search-filter__title">
+                                    Статус перевода
+                                </div>
+                                <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_flex">
+                                    <label class="control search-filter__checkbox"><input type="checkbox"
+                                                                                          class="control__input"
+                                                                                          value="1"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text">Продолжается</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="2">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Завершен</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="3">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Заморожен</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="4">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Заброшен</span></label></div>
+                            </div>
+                            <div class="search-filter__status search-filter__group">
+                                <div class="search-filter__title">
+                                    Статус тайтла
+                                </div>
+                                <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_flex">
+                                    <label class="control search-filter__checkbox"><input type="checkbox"
+                                                                                          class="control__input"
+                                                                                          value="1"> <span
+                                            class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                        <span class="control__text">Онгоинг</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="2">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Завершён</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="3">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Анонс</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="4">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Приостановлен</span></label><label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input" value="5">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Выпуск прекращён</span></label></div>
+                            </div>
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Другое
+                                </div>
+                                <div class="search-filter__content"><!----> <label
+                                        class="control search-filter__checkbox"><input type="checkbox"
+                                                                                       class="control__input"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_top"></span>
+                                    <span class="control__text">Лицензирован</span></label></div>
+                            </div> <!----></div>
+                    </div>
+                    <div class="search-filter__buttons buttons-stretch">
+                        <button class="button">
+                            Сбросить
+                        </button>
+                        <button class="button button_green">
+                            Показать
+                        </button>
+                    </div>
+                </div>
+                <div class="search-filter-layout search-filter-layout_hidden">
+                    <div class="search-filter__head">
+                        <div class="search-filter__head-title"><i class="fa fa-arrow-left fa-fw small"></i> Теги
+                        </div>
+                        <span class="search-filter__reset text-hover text-muted">сбросить</span></div>
+                    <div class="search-filter-input"><input type="text" placeholder="Фильтр по тегам"
+                                                            class="search-filter-input__field form__input">
+                        <div class="search-filter-input__clear" style="display: none;">
+                            <svg>
+                                <use xlink:href="#icon-close"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="search-filter__wrap">
+                        <div class="search-filter-list-title">
+                            Популярные
+                        </div>
+                        <div class="search-filter__filters">
+                            <div class="search-filter__checkbox-list">
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              ГГ мужчина
+              <span class="text-muted small search-filter__counter">4387</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              ГГ женщина
+              <span class="text-muted small search-filter__counter">3195</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              Магия
+              <span class="text-muted small search-filter__counter">1630</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              Дружба
+              <span class="text-muted small search-filter__counter">1343</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              Волшебные существа
+              <span class="text-muted small search-filter__counter">1164</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              Навыки / способности
+              <span class="text-muted small search-filter__counter">1085</span></span></div>
+                            </div>
+                        </div>
+                        <div class="search-filter-list-title">
+                            По алфавиту
+                        </div>
+                        <div class="search-filter__filters">
+                            <div class="search-filter__checkbox-list">
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Азартные игры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Алхимия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Ангелы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Антигерой
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Антиутопия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Апокалипсис
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Армия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Артефакты
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Боги
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Бои на мечах
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Борьба за власть
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Брат и сестра
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Будущее
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Вестерн
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Видеоигры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Виртуальная реальность
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Владыка демонов
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Военные
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Война
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Волшебники / маги
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Волшебные существа
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Воспоминания из другого мира
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Выживание
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            ГГ женщина
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            ГГ имба
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            ГГ мужчина
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Геймеры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Гильдии
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Глупый ГГ
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Гоблины
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Горничные
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Гяру
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Демоны
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Драконы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Дружба
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Жестокий мир
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Животные компаньоны
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Завоевание мира
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Зверолюди
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Злые духи
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Зомби
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Игровые элементы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Империи
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Квесты
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Космос
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Кулинария
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Культивация
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Легендарное оружие
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Лоли
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Магическая академия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Магия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Мафия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Медицина
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Месть
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Монстр Девушки
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Монстры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Музыка
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Навыки / способности
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Насилие / жестокость
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Наёмники
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Нежить
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Ниндзя
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Обратный Гарем
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Огнестрельное оружие
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Офисные Работники
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Пародия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Подземелья
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Политика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Полиция
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Преступники / Криминал
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Призраки / Духи
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Путешествие во времени
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Разумные расы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Ранги силы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Реинкарнация
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Роботы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Рыцари
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Самураи
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Система
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Скрытие личности
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Спасение мира
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Спортивное тело
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Средневековье
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Стимпанк
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Супергерои
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Традиционные игры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Умный ГГ
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Учитель / ученик
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Философия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Хикикомори
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Холодное оружие
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Шантаж
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Эльфы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Якудза
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            Япония
+          </span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-filter__buttons buttons-stretch">
+                        <button class="button">
+                            Выбрать
+                        </button>
+                    </div>
+                </div>
+                <div class="search-filter-layout search-filter-layout_hidden">
+                    <div class="search-filter__head">
+                        <div class="search-filter__head-title"><i class="fa fa-arrow-left fa-fw small"></i> Жанры
+                        </div>
+                        <span class="search-filter__reset text-hover text-muted">сбросить</span></div>
+                    <div class="search-filter-input"><input type="text" placeholder="Фильтр по жанрам"
+                                                            class="search-filter-input__field form__input">
+                        <div class="search-filter-input__clear" style="display: none;">
+                            <svg>
+                                <use xlink:href="#icon-close"></use>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="search-filter__wrap">
+                        <div class="search-filter-list-title">
+                            Популярные
+                        </div>
+                        <div class="search-filter__filters">
+                            <div class="search-filter__checkbox-list">
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              романтика
+              <span class="text-muted small search-filter__counter">16058</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              комедия
+              <span class="text-muted small search-filter__counter">12031</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              драма
+              <span class="text-muted small search-filter__counter">11333</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              повседневность
+              <span class="text-muted small search-filter__counter">7591</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              школа
+              <span class="text-muted small search-filter__counter">6881</span></span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+              фэнтези
+              <span class="text-muted small search-filter__counter">6666</span></span></div>
+                            </div>
+                        </div>
+                        <div class="search-filter-list-title">
+                            По алфавиту
+                        </div>
+                        <div class="search-filter__filters">
+                            <div class="search-filter__checkbox-list">
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            арт
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            боевик
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            боевые искусства
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            вампиры
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            гарем
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            гендерная интрига
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            героическое фэнтези
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            детектив
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            дзёсэй
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            драма
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            игра
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            исекай
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            история
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            киберпанк
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            кодомо
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            комедия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            махо-сёдзё
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            меха
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            мистика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            научная фантастика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            омегаверс
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            повседневность
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            постапокалиптика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            приключения
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            психология
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            романтика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            самурайский боевик
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сверхъестественное
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            спорт
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сэйнэн
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сёдзё
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сёдзё-ай
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сёнэн
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            сёнэн-ай
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            трагедия
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            триллер
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            ужасы
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            фантастика
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            фэнтези
+          </span></div>
+                                <div class="control search-filter__checkbox"><input type="checkbox"
+                                                                                    class="control__input search-filter__with-exclude"
+                                                                                    value="0"> <span
+                                        class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text text-truncate">
+            школа
+          </span></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-filter__buttons buttons-stretch">
+                        <button class="button">
+                            Выбрать
+                        </button>
+                    </div>
+                </div> <!----></div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../js/Allbook.js"></script>
+
+<script type="text/javascript">
+    init();
+</script>
+
+
+</body>
+</html>

@@ -42,6 +42,8 @@ public class SearchController {
                 return JsonParser.mapToJson(searchService.search(searchCriteriaList, User.class));
             case "news":
                 return JsonParser.mapToJson(searchService.search(searchCriteriaList, News.class));
+            case "forum":
+                return JsonParser.mapToJson(searchService.search(searchCriteriaList, Room.class));
             default: throw new BadArgumentException();
         }
 

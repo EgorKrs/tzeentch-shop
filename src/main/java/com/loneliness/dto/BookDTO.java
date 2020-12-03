@@ -13,7 +13,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
+import javax.validation.constraints.PastOrPresent;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -39,6 +41,8 @@ public class BookDTO implements DTO<Book> {
     private List<Review> reviews;
     private BigDecimal price;
     private Integer availability;
+    @PastOrPresent(groups = {New.class, Exist.class})
+    private Timestamp printTime;
 
     public void setPrice(String price){
         this.price = new BigDecimal(price);
@@ -58,6 +62,7 @@ public class BookDTO implements DTO<Book> {
         book.setReviews(reviews);
         book.setAvailability(availability);
         book.setPrice(price);
+        book.setPrintTime(printTime);
         return book;
     }
 

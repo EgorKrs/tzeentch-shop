@@ -2,19 +2,20 @@ package com.loneliness.entity.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.loneliness.entity.BookStatus;
+import com.loneliness.entity.Role;
 import com.loneliness.entity.TranslationStatus;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Set;
 
@@ -35,13 +36,17 @@ public class Book implements Domain {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "writtenBooks")
     private Set<Author> author;
+    @NotEmpty(groups = {New.class,Exist.class})
+//    @ElementCollection(targetClass = BookStatus.class,fetch = FetchType.EAGER)
     @CollectionTable(name = "book_status", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
     @CollectionTable(name = "translation_status", joinColumns = @JoinColumn(name = "id"))
     @Enumerated(EnumType.STRING)
     private TranslationStatus translationStatus;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ElementCollection(targetClass = Genre.class,fetch = FetchType.EAGER)
+    @CollectionTable(name = "book_genre", joinColumns = @JoinColumn(name = "id"))
+    @Enumerated(EnumType.STRING)
     private Set<Genre> genres;
     @ManyToMany( cascade = CascadeType.REFRESH, mappedBy = "books")
     private Set<User> usersThatBoughtIt;
@@ -64,6 +69,9 @@ public class Book implements Domain {
     private Integer popularity;
 
     private BigDecimal price;
+
+    @PastOrPresent(groups = {New.class, Exist.class})
+    private Timestamp printTime;
 
     @Override
     public Integer getId() {

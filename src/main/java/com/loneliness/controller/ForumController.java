@@ -51,4 +51,5 @@ public class ForumController extends CommonController<Room, RoomDTO> {
             return "redirect:" + request.getScheme() +"://localhost:9080/login";
         }
     }
+
 }

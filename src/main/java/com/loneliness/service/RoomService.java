@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -36,6 +37,9 @@ public class RoomService extends CRUDService<Room> {
             room = optionalRoom.get();
         }
         return room;
+    }
+    public Optional<List<Room>> getTop4ByIdIsNotNullOrderByPrintTimeDesc() {
+        return ((RoomRepository)repository).getTop4ByIdIsNotNullOrderByPrintTimeDesc();
     }
 
 }
