@@ -63,8 +63,58 @@ function initPeople() {
     }
 }
 
+function sendStar(star) {
+    let xhr = new XMLHttpRequest();
+
+    let path = 'http://localhost:9080/edit/rating?id=' + document.getElementById("bookID").value;
+    xhr.open('POST', path, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    let body = {
+        id: "",
+        votedUser: {},
+        ratedBook: {
+            id: document.getElementById("bookID").value,
+            name: "",
+            picture: {},
+            author: [],
+            bookStatus: "NOT_SET",
+            translationStatus: "NOT_SET",
+            genres: [],
+            usersThatBoughtIt: [],
+            description: "",
+            relatedBooks: [],
+            availability: "",
+            rating: "",
+            popularity: "",
+            price: "",
+            url: "",
+            fileName: "",
+            printTime: ""
+        },
+        rating: star.dataset.score
+    };
+// 3. Отсылаем запрос
+    xhr.send(JSON.stringify(body));
+    xhr.onreadystatechange = function () { // (3)
+        if (xhr.readyState !== 4) return;
+        if (xhr.status !== 200) {
+            console.log(xhr.status + ': ' + xhr.statusText);
+        } else {
+            console.log("рейтинг учтен");
+        }
+    }
+}
+
+function addRatingPossible() {
+    console.log(document.getElementsByClassName("rating__star"));
+    Array.prototype.forEach.call(document.getElementsByClassName("rating__star"), star =>
+        star.onclick = function () {
+            sendStar(star);
+        });
+}
+
 window.onload = function () {
     initBook();
     initPeople();
-
+    addRatingPossible();
 };

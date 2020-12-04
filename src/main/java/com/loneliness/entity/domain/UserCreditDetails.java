@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 @EqualsAndHashCode(callSuper = true, of = {"creditCardNumber"})
 @NoArgsConstructor
 @AllArgsConstructor
+//@DiscriminatorValue(value = "UserCreditDetails")
 public class UserCreditDetails extends User {
 
     private String creditCardNumber;

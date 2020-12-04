@@ -3,6 +3,7 @@ package com.loneliness.entity.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.loneliness.entity.BookStatus;
 import com.loneliness.entity.TranslationStatus;
+import com.loneliness.service.RatingParamService;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import lombok.Data;
@@ -10,7 +11,10 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -20,12 +24,27 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Set;
 
+@Component
 @Entity
 @Table
 @Data
 @EqualsAndHashCode(of = {"id"})
 @ToString(exclude = {"usersThatBoughtIt", "relatedBooks"})
 public class Book implements Domain {
+
+    @Transient
+//    @Autowired
+    private static RatingParamService ratingParamService;
+
+    @Autowired
+    public void setRatingParamService(RatingParamService ratingParamService) {
+        Book.ratingParamService = ratingParamService;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println(Book.ratingParamService + "was init");
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,6 +87,9 @@ public class Book implements Domain {
 //    private List<Review> reviews;
 
     private Integer availability;
+    //    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private RatingParam rating;
+    @Transient
     private Double rating;
 
     private Integer popularity;
@@ -75,6 +97,7 @@ public class Book implements Domain {
     private BigDecimal price;
 
     private String url;
+    private String fileName;
 
     @PastOrPresent(groups = {New.class, Exist.class})
     private Timestamp printTime;
@@ -82,5 +105,13 @@ public class Book implements Domain {
     @Override
     public Integer getId() {
         return id;
+    }
+
+    public Double getRating() {
+        return ratingParamService.getAverageRating(this.id);
+    }
+
+    public void setRating(Double rating) {
+        this.price = getPrice();
     }
 }

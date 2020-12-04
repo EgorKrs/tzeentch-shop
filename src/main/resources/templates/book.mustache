@@ -216,10 +216,14 @@
 
                         <div class="manga__image">
                             <img src="{{Book.picture.url}}" alt="{{Book.picture.name}}" class="manga__cover">
-                            <div class="manga__buttons" href="http://localhost:9080/book/download">
-
-                                <a href="http://localhost:9080/book/download" class="button button_primary">Купить</a>
-
+                            <!--                            http://localhost:9080/book/download?id={{Book.id}}-->
+                            <div class="manga__buttons">
+                                {{#Bought}}
+                                    <a class="button button_primary" id="BookDownloadLink">Загрузить</a>
+                                {{/Bought}}
+                                {{^Bought}}
+                                    <a class="button button_primary" id="BookDownloadLink">Купить за {{Book.price}}</a>
+                                {{/Bought}}
                             </div>
                         </div>
                         <div class="manga__body">
@@ -365,6 +369,7 @@
 <script>
     initBook();
     initPeople();
+    addRatingPossible();
 </script>
 
 <script type="text/javascript" src="../js/moment.js"></script>

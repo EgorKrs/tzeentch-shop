@@ -6,7 +6,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.loneliness", "com.loneliness.entity.domain"})
 @EnableWebMvc
 public class Main extends SpringBootServletInitializer {
 

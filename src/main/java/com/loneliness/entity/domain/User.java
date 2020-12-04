@@ -23,15 +23,16 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = {"books"})
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User implements Domain, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Null(groups = New.class)
     @NotNull(groups = Exist.class)
     @Positive(groups = Exist.class)
-    private Integer id;
-    @Length(max = 255,groups = {New.class,Exist.class} )
-    @Column( unique = true)
+    protected Integer id;
+    @Length(max = 255, groups = {New.class, Exist.class})
+    @Column(unique = true)
     private String googleId;
     @Length(max = 255,groups = {New.class,Exist.class} )
     @NotBlank(groups = {New.class,Exist.class})
