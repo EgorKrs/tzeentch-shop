@@ -1,7 +1,6 @@
 package com.loneliness.entity.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import lombok.Data;
@@ -35,28 +34,27 @@ public class Review implements Domain {
     @NotNull(groups = {Exist.class,New.class})
     @PositiveOrZero(groups = {Exist.class,New.class})
     private Integer mark;
-    @NotNull(groups = {Exist.class,New.class})
+    @NotNull(groups = {Exist.class, New.class})
     @JoinColumn(nullable = false)
     @ManyToOne(fetch = FetchType.EAGER)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User author;
     //@ManyToOne( cascade = CascadeType.REFRESH)
     //@JoinColumn(name = "book_id" )
-    @ManyToMany
-//    @JoinTable(name = "Book_rewiew",
-//            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "ID"),
-//            inverseJoinColumns = @JoinColumn(name = "review_id", referencedColumnName = "ID"))
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "book_rewiew",
+            joinColumns = @JoinColumn(name = "review_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     @JsonIgnore
     private Set<Book> surveyedBook;
-//    @ManyToOne( cascade = CascadeType.REFRESH)
-@ManyToMany
-//    @JoinColumn(name = "news_id" )
+    //    @ManyToOne( cascade = CascadeType.REFRESH)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "news_review",
             joinColumns = @JoinColumn(name = "review_id"),
             inverseJoinColumns = @JoinColumn(name = "news_id"))
     @JsonIgnore
     private Set<News> newsReview;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(name = "Related_answers",
 //            joinColumns = @JoinColumn(name = "review_id", referencedColumnName = "ID"),
 //            inverseJoinColumns = @JoinColumn(name = "related_Review_id", referencedColumnName = "ID"))

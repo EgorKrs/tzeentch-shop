@@ -25,7 +25,7 @@ public class Author implements Domain {
     private Integer id;
     private String name;
     private String description;
-    @ManyToOne(cascade = CascadeType.PERSIST )
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private Picture picture;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,

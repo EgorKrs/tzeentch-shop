@@ -88,38 +88,48 @@ let createComment = function (comment,parentNode) {
 
 function getComment(order){
     let comments = document.getElementsByClassName("comment");
-    for(let i = 0 ; i < comments.length ;i++){
-        if (comments[i]!==undefined) {
+    for (let i = 0; i < comments.length; i++) {
+        if (comments[i] !== undefined) {
             comments[i].remove();
-            i=-1;
+            i = -1;
         }
     }
     let xhr = new XMLHttpRequest();
-    let path = 'http://localhost:9080/edit/review/get/newsReview?id='+
-        document.getElementById("Comment_related_to_id").value + '&order='+order;
+    let path = "";
+    if (document.getElementById("Comment_related_to_newsId") !== null) {
+        path = 'http://localhost:9080/edit/review/get/review?id=' +
+            document.getElementById("Comment_related_to_newsId").value + '&order=' + order + '&relatedType=news';
+    } else {
+        path = 'http://localhost:9080/edit/review/get/review?id=' +
+            document.getElementById("Comment_related_to_bookId").value + '&order=' + order + '&relatedType=book';
+    }
     xhr.open('GET', path, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send();
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState !== 4) return;
         if (xhr.status !== 200) {
             console.log(xhr.status + ': ' + xhr.statusText);
         } else {
             Array.prototype.forEach.call(JSON.parse((xhr.responseText)),
-                    comment => createComment(comment, document.getElementsByClassName("section__body")[0]) );
+                comment => createComment(comment, document.getElementById("commentsPlace")));
         }
 
     }
 
 }
-let sendComment = function(bookId,newsId,reviewId,authorId,answerText){
+let sendComment = function(bookId,newsId,reviewId,authorId,answerText) {
     let xhr = new XMLHttpRequest();
     let path = 'http://localhost:9080/edit/review';
     xhr.open('POST', path, true);
     xhr.setRequestHeader('Content-Type', 'application/json');
+    let text = "";
+    if (answerText === undefined || answerText == null) {
+        text = document.getElementById('NewCommentInput').value
+    } else text = answerText;
     let comment = {
         id: reviewId,
-        comment: document.getElementById('NewCommentInput').value ,
+        comment: text,
         mark: 0,
         author: {
             id: authorId,
@@ -131,7 +141,7 @@ let sendComment = function(bookId,newsId,reviewId,authorId,answerText){
             locale: "",
             picture: {},
             books: [{}],
-            roles: [{}],
+            roles: [],
             lastVisit: "",
             expired: "",
             locked: ""
@@ -187,7 +197,11 @@ let sendComment = function(bookId,newsId,reviewId,authorId,answerText){
 window.onload = function () {
     document.getElementById('NewCommentInput').addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
-            sendComment("",document.getElementById("Comment_related_to_id").value,"");
+            if (document.getElementById("Comment_related_to_newsId") !== null)
+                sendComment("", document.getElementById("Comment_related_to_newsId").value, "");
+            else {
+                sendComment(document.getElementById("Comment_related_to_bookId").value, "", "");
+            }
         }
     });
     getComment('desc');

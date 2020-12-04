@@ -1,11 +1,9 @@
 package com.loneliness.controller;
 
-import com.loneliness.dto.AuthorDTO;
 import com.loneliness.dto.UserDTO;
-import com.loneliness.entity.domain.Author;
 import com.loneliness.entity.domain.User;
-import com.loneliness.service.AuthorService;
 import com.loneliness.service.UserService;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 
 @RestController
@@ -24,15 +23,21 @@ public class UserRestController extends CommonRestController<User, UserDTO> {
         this.service = service;
         this.page = "user";
     }
+
     @GetMapping("/get")
-    public User getOneById(@RequestParam(name = "id" , required = false ) Integer id) {
-        if (id != null){
+    public User getOneById(@RequestParam(name = "id", required = false) Integer id) {
+        if (id != null) {
             return find(id);
-        }
-        else{
+        } else {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            return  (User) auth.getPrincipal();
+            return (User) auth.getPrincipal();
 
         }
+    }
+
+    @GetMapping(value = "/byeBook", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<User> getUsersThatByeBook(@RequestParam(name = "id") Integer id) {
+        return ((UserService) service).findUsersThatByeBook(id).orElse(new LinkedList<>());
+
     }
 }

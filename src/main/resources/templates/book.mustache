@@ -40,6 +40,7 @@
     <symbol id="icon-star" viewBox="0 0 16 16">
         <path d="M8 0l2.472 5.267L16 6.112l-4 4.099.944 5.789L8 13.267 3.056 16 4 10.211l-4-4.1 5.528-.844z"/>
     </symbol>
+
     <symbol id="icon-check-circle" viewBox="0 0 305.002 305.002">
         <g fill="#3cce7b">
             <path d="M152.502.001C68.412.001 0 68.412 0 152.501s68.412 152.5 152.502 152.5c84.089 0 152.5-68.411 152.5-152.5S236.591.001 152.502.001zm0 280C82.197 280.001 25 222.806 25 152.501c0-70.304 57.197-127.5 127.502-127.5 70.304 0 127.5 57.196 127.5 127.5 0 70.305-57.196 127.5-127.5 127.5z"/>
@@ -189,10 +190,186 @@
 <script type="application/octet-stream" src="../js/vendor.js@id=5eIsiR0kOE2x"></script>
 <script type="application/octet-stream" src="../js/main.js@id=VIL64XuxWN77"></script>
 
+<div class="page" id="main-page">
+    <div class="page__inner">
+
+        <div class="manga-bg"
+             style="background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8)), url(../images/bookshelf.jpg)">
+            <div class="manga-bg__head container container_responsive">
+                <h1 class="manga-bg__title"> {{Book.name}} </h1>
+            </div>
+        </div>
+
+        <div class="container container_responsive container_offset manga manga_has-bg">
 
 
+            <div class="page__wrapper page__wrapper_left">
+                <section class="section paper clearfix manga__section-info" itemscope=""
+                         itemtype="http://schema.org/CreativeWork">
+
+                    <meta itemprop="name" content="{{Book.name}}">
+                    <meta itemprop="url" content="http://localhost:9080/book?id={{Book.id}}">
+                    <meta itemprop="description" content="{{Book.description}}">
+                    <input type="hidden" value="{{Book.id}}" id="bookID">
+                    <div class="section__body clearfix">
+                        <!--  -->
+
+                        <div class="manga__image">
+                            <img src="{{Book.picture.url}}" alt="{{Book.picture.name}}" class="manga__cover">
+                            <div class="manga__buttons" href="http://localhost:9080/book/download">
+
+                                <a href="http://localhost:9080/book/download" class="button button_primary">Купить</a>
+
+                            </div>
+                        </div>
+                        <div class="manga__body">
+                            <div class="manga-rating" itemprop="aggregateRating" itemscope=""
+                                 itemtype="http://schema.org/AggregateRating">
+                                <meta content="5" itemprop="bestRating">
+                                <meta content="{{Book.rating}}" itemprop="ratingValue">
+                                <div class="manga-rating__top">
+                                    <div class="manga-rating__stars rating">
+                                        <span class="rating__star " data-score="5">
+                                            <svg>
+                                              <use xlink:href="#icon-star"></use>
+                                            </svg>
+                                          </span>
+                                        <span class="rating__star " data-score="4">
+                                            <svg>
+                                              <use xlink:href="#icon-star"></use>
+                                            </svg>
+                                          </span>
+                                        <span class="rating__star " data-score="3">
+                                            <svg>
+                                              <use xlink:href="#icon-star"></use>
+                                            </svg>
+                                          </span>
+                                        <span class="rating__star " data-score="2">
+                                            <svg>
+                                              <use xlink:href="#icon-star"></use>
+                                            </svg>
+                                          </span>
+                                        <span class="rating__star " data-score="1">
+                                            <svg>
+                                              <use xlink:href="#icon-star"></use>
+                                            </svg>
+                                          </span>
+                                    </div>
+                                </div>
+                                <div class="manga-rating__value">{{Book.rating}}</div>
+                            </div>
+                        </div>
+
+                        <div class="info-list manga-info">
+                            <div class="info-list__row">
+                                <strong>Статус</strong>
+                                <span>{{Book.bookStatus}}</span>
+                            </div>
+                            <div class="info-list__row">
+                                <strong>Автор</strong>
+                                <a href="http://localhost:9080/author?id="
+                                   class="link-default"></a>
+                            </div>
+
+                            <div class="info-list__row">
+                                <strong>Статус перевода</strong>
+                                <span>{{Book.translationStatus}}</span>
+                            </div>
+
+                            <div class="info-list__row">
+                                <strong>Дата релиза</strong>
+                                <span>{{Book.printTime}}</span>
+                            </div>
+
+                            <div class="info-list__row" id="genreInfo">
+                                <input type="hidden" id="bookGenre" value="{{Genres}}">
+                                <strong>Жанры</strong>
+
+                            </div>
+
+                        </div>
 
 
+                        <div class="info-desc manga__desc">
+                            <div class="info-desc__title">Описание</div>
+                            <div class="info-desc__content">{{Book.description}}</div>
+                        </div>
+
+                    </div>
+            </div>
+
+        </div>
+
+        <div class="aside aside_right">
+            <div class="aside__panel paper">
+                <h3 class="aside__title">
+                    <span class="aside__title-inner">В закладках у людей</span>
+                </h3>
+
+                <div class="aside__content aside__content_group aside-users">
+
+                </div>
+
+            </div>
+
+            <div class="aside__panel paper">
+                <input type="hidden" value="{{RelatedBooks}}" id="relatedBooks">
+                <h3 class="aside__title"><span class="aside__title-inner">Вам может понравиться</span></h3>
+            </div>
+        </div>
+
+        <div class="page__wrapper page__wrapper_left">
+            <section class="section paper">
+
+                <div class="news__comments">
+                    <input type="hidden" id='Comment_related_to_bookId' value={{Book.id}}>
+                    <section class="section paper">
+                        <div class="section__header section__header_tabs comments-header">
+                            <div class="section__header-title"><b>Комментарии</b>
+                                <span
+                                        class="text-muted comments-header__settings">
+
+              </span>
+                                <!---->
+                            </div>
+                            <ul class="tabs__list">
+                                <li class="tabs__item tabs__item_active" data-type="desc"><span>Новые</span></li>
+                                <li class="tabs__item" data-type="asc"><span>Старые</span></li>
+                                <li class="tabs__item" data-type="pop"><span>Популярные</span></li>
+                                <div class="tabs__line"
+                                     style="display: block; width: 46px; transform: translateX(0px);"></div>
+                            </ul>
+                        </div>
+
+                        <div class="comments">
+                            <label for="NewCommentInput">
+                                <input size="100%" id="NewCommentInput" class="comments__form comments__pseudo-form"
+                                       placeholder="Написать комментарий..." type="text">
+                            </label>
+                            <div class="section__body" id="commentsPlace">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+            </section>
+
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<script type="text/javascript" src="../js/book.js"></script>
+<script>
+    initBook();
+    initPeople();
+</script>
+
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/comment.js"></script>
 </body>
 </html>
 

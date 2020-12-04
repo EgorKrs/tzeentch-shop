@@ -3,14 +3,14 @@ package com.loneliness.dto;
 import com.loneliness.entity.BookStatus;
 import com.loneliness.entity.TranslationStatus;
 import com.loneliness.entity.domain.*;
-
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.PastOrPresent;
@@ -59,7 +59,7 @@ public class BookDTO implements DTO<Book> {
         book.setGenres(genres);
         book.setUsersThatBoughtIt(usersThatBoughtIt);
         book.setRelatedBooks( relatedBooks);
-        book.setReviews(reviews);
+//        book.setReviews(reviews);
         book.setAvailability(availability);
         book.setPrice(price);
         book.setPrintTime(printTime);

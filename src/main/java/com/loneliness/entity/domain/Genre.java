@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.loneliness.util.json_parser.GenreDeserializer;
 import com.loneliness.util.json_parser.GenreSerializer;
-import com.loneliness.util.json_parser.RoleDeserializer;
-import com.loneliness.util.json_parser.RoleSerializer;
-import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+//import com.loneliness.util.json_parser.RoleDeserializer;
+//import com.loneliness.util.json_parser.RoleSerializer;
 
 @JsonSerialize(using = GenreSerializer.class)
 @JsonDeserialize(using = GenreDeserializer.class)

@@ -1,17 +1,19 @@
 package com.loneliness.controller;
 
 import com.loneliness.dto.DTO;
-import com.loneliness.entity.domain.*;
+import com.loneliness.entity.domain.Author;
+import com.loneliness.entity.domain.Book;
+import com.loneliness.entity.domain.Domain;
+import com.loneliness.entity.domain.Picture;
 import com.loneliness.exception.BadArgumentException;
 import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.Service;
-
-import com.loneliness.util.json_parser.JsonParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,12 +26,13 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
 
 
     @GetMapping()
-    public String getOneById(@RequestParam(name = "id" ) Integer id ,Map<String,Object> model) {
-       fillDomain(model, id);
+    public String getOneById(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
+        fillDomain(model, id);
         return page;
     }
+
     @GetMapping("/change")
-    public String changePage(@RequestParam(name = "id" ) Integer id , Map<String,Object> model) {
+    public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) {
         fillDomain(model, id);
         return page + "_edit";
     }

@@ -22,6 +22,7 @@ import java.util.Set;
 @EqualsAndHashCode(of = { "id" })
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = {"books"})
 public class User implements Domain, UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,7 +45,7 @@ public class User implements Domain, UserDetails {
     private String activationCode;
     @Length(max = 255,groups = {New.class,Exist.class} )
     private String locale;
-    @ManyToOne(cascade = CascadeType.REFRESH )
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private Picture picture;
     @ManyToMany(cascade = {
             CascadeType.REFRESH,
@@ -59,6 +60,7 @@ public class User implements Domain, UserDetails {
     @ElementCollection(targetClass = Role.class,fetch = FetchType.EAGER)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
+    @JsonIgnore
     private Set<Role> roles;
     @PastOrPresent(groups = {New.class,Exist.class})
     private Timestamp lastVisit;
