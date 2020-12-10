@@ -12,7 +12,7 @@ function setRelatedBook(book) {
                          data-src="` + book.picture.url + `"
                          alt="` + book.picture.name + `" title="` + book.name + `" data-was-processed="true">
                     <div class="manga-list-item__body">
-                        <h3 class="manga-list-item__title"> book.name </h3>
+                        <h3 class="manga-list-item__title"> ` + book.name + `</h3>
                     </div>`;
     document.getElementsByClassName("aside__panel paper")[1].appendChild(a);
 }
@@ -25,8 +25,17 @@ function setGenre(genre) {
     document.getElementById("genreInfo").appendChild(a);
 }
 
+function setAuthors(author) {
+    let a = document.createElement('a');
+    a.setAttribute("href", "http://localhost:9080/author?id=" + author.id);
+    a.innerText = author.name;
+    a.className = 'link-default';
+    document.getElementsByClassName("info-list__row")[1].appendChild(a);
+}
+
 let initBook = function () {
     setRating(document.getElementsByClassName("manga-rating__value")[0].innerHTML);
+    Array.prototype.forEach.call(JSON.parse((document.getElementById("Authors").value)), author => setAuthors(author));
     Array.prototype.forEach.call(JSON.parse((document.getElementById("relatedBooks").value)), book => setRelatedBook(book));
     Array.prototype.forEach.call(JSON.parse((document.getElementById("bookGenre").value)), genre => setGenre(genre));
 };

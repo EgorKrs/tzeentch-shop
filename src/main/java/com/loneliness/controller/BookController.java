@@ -3,12 +3,13 @@ package com.loneliness.controller;
 
 import com.loneliness.dto.BookDTO;
 import com.loneliness.entity.BookStatus;
-import com.loneliness.entity.domain.Book;
-import com.loneliness.entity.domain.Genre;
-import com.loneliness.entity.domain.User;
-import com.loneliness.entity.domain.UserCreditDetails;
+import com.loneliness.entity.Role;
+import com.loneliness.entity.TranslationStatus;
+import com.loneliness.entity.domain.*;
+import com.loneliness.exception.BookNotAvailableException;
 import com.loneliness.exception.NotEnoughMoneyException;
 import com.loneliness.exception.NotFoundException;
+import com.loneliness.service.AuthorService;
 import com.loneliness.service.BookService;
 import com.loneliness.service.UserCreditService;
 import com.loneliness.service.UserService;
@@ -32,6 +33,9 @@ import javax.servlet.ServletContext;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Controller
@@ -41,12 +45,14 @@ public class BookController extends CommonController<Book, BookDTO> {
     private ServletContext servletContext;
     private UserCreditService userCreditService;
     private UserService userService;
+    private AuthorService authorService;
 
-    public BookController(BookService bookService, UserCreditService userCreditService, UserService userService) {
+    public BookController(BookService bookService, UserCreditService userCreditService, UserService userService, AuthorService authorService) {
         this.service = bookService;
         this.page = "book";
         this.userCreditService = userCreditService;
         this.userService = userService;
+        this.authorService = authorService;
     }
 
     @Override
@@ -62,8 +68,10 @@ public class BookController extends CommonController<Book, BookDTO> {
                 }
             }
             model.put("Bought", isFound);
+            model.put("CanEdit", user.getAuthorities().contains(Role.ADMIN));
         } catch (ClassCastException ex) {
             model.put("Bought", false);
+            model.put("CanEdit", false);
         }
         Optional<Book> book = service.findById(id);
         model.put("Book", book.orElse(new Book()));
@@ -73,7 +81,26 @@ public class BookController extends CommonController<Book, BookDTO> {
         if (book.isPresent() && book.get().getGenres() != null) {
             model.put("Genres", JsonParser.mapToJson(book.get().getGenres()));
         }
+        if (book.isPresent() && book.get().getAuthor() != null) {
+            model.put("Authors", JsonParser.mapToJson(book.get().getAuthor()));
+        }
+
         return page;
+    }
+
+    @Override
+    @GetMapping("/change")
+    public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
+        Object book = fillDomain(model, id);
+        model.put("Authors", JsonParser.mapToJson(((Book) book).getAuthor()));
+        model.put("Genres", JsonParser.mapToJson(((Book) book).getGenres()));
+        model.put("AllGenre", JsonParser.mapToJson(Genre.values()));
+        model.put("AllBookStatus", JsonParser.mapToJson(BookStatus.values()));
+        model.put("AllTranslationStatus", JsonParser.mapToJson(TranslationStatus.values()));
+        model.put("RelatedBook", JsonParser.mapToJson(((Book) book).getRelatedBooks()));
+        model.put("AllBook", JsonParser.mapToJson(service.findAll()));
+        model.put("AllAuthors", JsonParser.mapToJson(authorService.findAll()));
+        return page + "_edit";
     }
 
     @GetMapping("/catalog")
@@ -109,6 +136,9 @@ public class BookController extends CommonController<Book, BookDTO> {
         UserCreditDetails creditDetails = userCreditService.findById(user.getId()).orElseThrow(NotFoundException::new);
         user = userService.findById(creditDetails.getId()).orElseThrow(NotFoundException::new);
         Book book = service.findById(id).orElseThrow(NotFoundException::new);
+        if (book.getAvailability().equals(0)) {
+            throw new BookNotAvailableException();
+        }
         if (!user.getBooks().contains(book)) {
             if (creditDetails.getSumOfMoney().subtract(book.getPrice()).longValueExact() < 0) {
                 throw new NotEnoughMoneyException();
@@ -130,6 +160,46 @@ public class BookController extends CommonController<Book, BookDTO> {
                 .contentLength(file.length()) //
                 .body(resource);
 
+    }
+
+    @Override
+    @GetMapping("/create")
+    public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
+            throws IOException {
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        Picture picture = new Picture();
+        picture.setUrl("../images/no-image.png");
+        picture.setName("Enter name");
+        picture.setId(-1);
+        Book book = new Book();
+        book.setId(0);
+        book.setName("Enter name");
+        book.setPopularity(0);
+        book.setRating(0.0);
+        book.setDescription("Enter descr");
+        book.setPicture(picture);
+        book.setAuthor(new HashSet<>());
+        book.setRelatedBooks(new HashSet<>());
+        book.setPrintTime(Timestamp.valueOf(LocalDateTime.now()));
+        book.setBookStatus(BookStatus.NOT_SET);
+        book.setTranslationStatus(TranslationStatus.NOT_SET);
+        book.setPrice(BigDecimal.ZERO);
+        book.setUsersThatBoughtIt(new HashSet<>());
+        book.setGenres(new HashSet<>());
+        book.setFileName("Enter file name");
+        book.setUrl("Enter Url");
+        book.setAvailability(0);
+        model.put(name, book);
+
+        model.put("Authors", JsonParser.mapToJson(book.getAuthor()));
+        model.put("Genres", JsonParser.mapToJson(book.getGenres()));
+        model.put("AllGenre", JsonParser.mapToJson(Genre.values()));
+        model.put("AllBookStatus", JsonParser.mapToJson(BookStatus.values()));
+        model.put("AllTranslationStatus", JsonParser.mapToJson(TranslationStatus.values()));
+        model.put("RelatedBook", JsonParser.mapToJson(book.getRelatedBooks()));
+        model.put("AllBook", JsonParser.mapToJson(service.findAll()));
+        model.put("AllAuthors", JsonParser.mapToJson(authorService.findAll()));
+        return page + "_edit";
     }
 
 

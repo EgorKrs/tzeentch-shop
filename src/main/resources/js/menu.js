@@ -54,10 +54,16 @@ function getSearchElem(elementName) {
         if (xhr.status !== 200) {
             console.log(xhr.status + ': ' + xhr.statusText);
         } else {
+            let type = document.getElementsByClassName("search__type search__type_active")[0].dataset.type;
             changeSearchStatus();
-            let author = JSON.parse(xhr.responseText);
-            console.log(author);
-            path = 'http://localhost:9080/'+document.getElementsByClassName("search__type search__type_active")[0].dataset.type +"?id=" + author[0].id;
+            let parse = JSON.parse(xhr.responseText);
+            console.log(parse);
+            if (type === 'forum') {
+                let req = parse[0].title.replace(" ", "%20");
+                path = 'http://localhost:9080/forum/get?room=' + req;
+            } else {
+                path = 'http://localhost:9080/' + document.getElementsByClassName("search__type search__type_active")[0].dataset.type + "?id=" + parse[0].id;
+            }
             location.href = path;
         }
 
@@ -83,7 +89,11 @@ function getSearchHelpList(category){
         if (xhr.status !== 200) {
             console.log(xhr.status + ': ' + xhr.statusText);
         } else {
-            Array.prototype.forEach.call(JSON.parse((xhr.responseText)), searchType => dataSearchHelp.push(searchType.name) );
+            if (category === 'book' || category === 'author') {
+                Array.prototype.forEach.call(JSON.parse((xhr.responseText)), searchType => dataSearchHelp.push(searchType.name));
+            } else {
+                Array.prototype.forEach.call(JSON.parse((xhr.responseText)), searchType => dataSearchHelp.push(searchType.title));
+            }
             console.log(dataSearchHelp);
             autocomplete(document.getElementById("MainSearchInput"), dataSearchHelp);
         }

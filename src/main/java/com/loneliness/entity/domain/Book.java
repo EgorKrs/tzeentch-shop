@@ -6,9 +6,7 @@ import com.loneliness.entity.TranslationStatus;
 import com.loneliness.service.RatingParamService;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +28,8 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(of = {"id"})
 @ToString(exclude = {"usersThatBoughtIt", "relatedBooks"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class Book implements Domain {
 
     @Transient
@@ -112,6 +112,6 @@ public class Book implements Domain {
     }
 
     public void setRating(Double rating) {
-        this.price = getPrice();
+        this.rating = getRating();
     }
 }

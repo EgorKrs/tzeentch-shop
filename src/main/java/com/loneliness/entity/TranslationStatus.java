@@ -1,16 +1,14 @@
 package com.loneliness.entity;
 
-import com.loneliness.validate_data.Exist;
-import com.loneliness.validate_data.New;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.loneliness.util.json_parser.TranslationStatusDeserializer;
+import com.loneliness.util.json_parser.TranslationStatusSerializer;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-
+@JsonSerialize(using = TranslationStatusSerializer.class)
+@JsonDeserialize(using = TranslationStatusDeserializer.class)
 public enum TranslationStatus {
-    FINISHED, CONTINUES, REVIVE, FREEZE, ANNOUNCE, CANCELED,NOT_SET;
+
+    FINISHED, CONTINUES, REVIVE, FREEZE, ANNOUNCE, CANCELED, NOT_SET
 
 }

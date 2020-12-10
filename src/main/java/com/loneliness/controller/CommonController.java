@@ -32,35 +32,38 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
     }
 
     @GetMapping("/change")
-    public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) {
+    public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         fillDomain(model, id);
         return page + "_edit";
     }
+
     @GetMapping("/all")
-    public String getAllPage( Map<String,Object> model) {
+    public String getAllPage(Map<String, Object> model) {
         List<T> nodes = service.findAll();
-        model.put("allNodes",nodes);
-        return "All" + page ;
+        model.put("allNodes", nodes);
+        return "All" + page;
     }
+
     @GetMapping("/create")
-    public String createPage(@RequestParam(name = "name" ) String name , Map<String,Object> model) {
+    public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
+            throws IOException {
         name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        Picture picture = new Picture();
+        picture.setUrl("../images/no-image.png");
+        picture.setName("Enter name");
+        picture.setId(-1);
         switch (name) {
             case "Book":
-                model.put(name,new Book());
+                model.put(name, new Book());
                 break;
             case "Picture":
-                model.put(name,new Picture());
+                model.put(name, new Picture());
                 break;
             case "Author":
                 Author author = new Author();
+                author.setId(0);
                 author.setName("Enter ");
                 author.setDescription("Enter description");
-                author.setId(0);
-                Picture picture = new Picture();
-                picture.setUrl("../images/no-image.png");
-                picture.setName("Enter name");
-                picture.setId(-1);
                 author.setPicture(picture);
                 author.setWrittenBooks(new HashSet<>());
                 model.put(name,author);
@@ -70,10 +73,10 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
         return page + "_edit";
     }
 
-    protected void fillDomain(Map<String,Object> model, Integer id) {
+    protected Object fillDomain(Map<String, Object> model, Integer id) {
         Object data = find(id);
-        model.put(data.getClass().getSimpleName(),data);
-//        return model;
+        model.put(data.getClass().getSimpleName(), data);
+        return data;
     }
 
     protected T find(@PathVariable Integer id) {

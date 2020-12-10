@@ -3,20 +3,14 @@ package com.loneliness.dto;
 import com.loneliness.entity.BookStatus;
 import com.loneliness.entity.TranslationStatus;
 import com.loneliness.entity.domain.*;
-import com.loneliness.validate_data.Exist;
-import com.loneliness.validate_data.New;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import javax.validation.constraints.PastOrPresent;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,46 +18,57 @@ import java.util.Set;
 @NoArgsConstructor
 public class BookDTO implements DTO<Book> {
 
-    @Null(groups = {New.class})
-    @NotNull(groups = {Exist.class})
     private Integer id;
     private String name;
     private Picture picture;
     private Set<Author> author;
     @Enumerated(EnumType.STRING)
     private BookStatus bookStatus;
+    @Enumerated(EnumType.STRING)
     private TranslationStatus translationStatus;
-    private Set<Translater> translaters;
+    @Enumerated(EnumType.STRING)
     private Set<Genre> genres;
     private Set<User> usersThatBoughtIt;
-    private  Set<Book> relatedBooks;
-    private Set<Chapter> chapters;
-    private List<Review> reviews;
-    private BigDecimal price;
+    private String description;
+    private Set<Book> relatedBooks;
     private Integer availability;
-    @PastOrPresent(groups = {New.class, Exist.class})
+    private Double rating;
+    private Integer popularity;
+    private BigDecimal price;
+    private String url;
+    private String fileName;
     private Timestamp printTime;
 
-    public void setPrice(String price){
+    public void setPrice(String price) {
         this.price = new BigDecimal(price);
     }
 
-    public Book fromDTO(){
+    //    public Book fromDTO(){
+//
+//        return new Book(id,name,picture,author,bookStatus,translationStatus,genres,usersThatBoughtIt,
+//                description,relatedBooks,availability,rating,popularity,price,"url","fileName",printTime);
+//    }
+    public Book fromDTO() {
         Book book = new Book();
         book.setId(id);
         book.setName(name);
         book.setPicture(picture);
-        book.setAuthor( author);
-        book.setBookStatus(bookStatus );
-        book.setTranslationStatus( translationStatus);
+        book.setAuthor(author);
+        book.setBookStatus(bookStatus);
+        book.setTranslationStatus(translationStatus);
         book.setGenres(genres);
         book.setUsersThatBoughtIt(usersThatBoughtIt);
-        book.setRelatedBooks( relatedBooks);
-//        book.setReviews(reviews);
+        book.setRelatedBooks(relatedBooks);
         book.setAvailability(availability);
         book.setPrice(price);
         book.setPrintTime(printTime);
-        return book;
-    }
+        book.setDescription(description);
+        book.setRating(rating);
+        book.setPopularity(popularity);
+        book.setUrl(url);
+        book.setFileName(fileName);
 
+        return book;
+
+    }
 }
