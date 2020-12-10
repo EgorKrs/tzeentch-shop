@@ -115,8 +115,7 @@ public class BookController extends CommonController<Book, BookDTO> {
 
             }
             if(bookStatus!=null){
-                params.add(SearchCriteria.builder().operation("=").key("bookStatus").value(bookStatus.name()).build());
-                nodes.addAll(service.search(params, Book.class));
+                nodes = new LinkedList<>(((BookService) service).findAllByBookStatus(bookStatus));
             }
 
         } else {

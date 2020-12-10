@@ -42,8 +42,8 @@ let ajaxReq = function (path, method, requestBody, onreadystatechangeFunction) {
                 if (xhr.status !== 200) {
                     console.log(xhr.status + ': ' + xhr.statusText);
                 } else {
-                    Array.prototype.forEach.call(JSON.parse((xhr.responseText)), coolNews => forum.push(coolNews));
-                    for (let i = 0; i < forum.length; i++) {
+                    Array.prototype.forEach.call(JSON.parse((xhr.responseText)), coolNews => news.push(coolNews));
+                    for (let i = 0; i < news.length; i++) {
                         let element = document.createElement("div");
                         element.className = "h-list-item";
                         document.getElementById('latestNewsInd').appendChild(element);
@@ -51,60 +51,13 @@ let ajaxReq = function (path, method, requestBody, onreadystatechangeFunction) {
                         div.className = 'h-list-item__title text-truncate';
                         element.appendChild(div);
                         let a = document.createElement("a");
-                        a.setAttribute("href", "http://localhost:9080/news?id=" + forum[i].id);
-                        a.innerHTML = forum[i].title ;
-                        a.className = "link-default";
-                        div.appendChild(a);
-                        let info = document.createElement("div");
-                        info.className = "h-list-item__info";
-                        element.appendChild(info);
-
-
-
-                        let user = document.createElement('span');
-
-                        info.appendChild(user);
-                        user.className = 'h-list-item__user';
-                        let icon = document.createElement('i');
-                        icon.className = "far fa-user";
-                        let p =document.createElement('span');
-                        p.style.margin = "6px";
-                        p.innerText = forum[i].author.name;
-                        // user.innerText = news[i].author.name;
-                        // document.getElementById('userIcon').cloneNode(icon);
-                        user.appendChild(icon);
-                        user.appendChild(p);
-                        let date = document.createElement('span');
-                        date.className = 'h-list-item__date';
-                        date.innerHTML =  moment(forum[i].printTime).startOf('day').fromNow()  ;
-                        info.appendChild(date);
-                    }
-                }
-            };
-            break;
-        case "getAndSetForums" :
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState !== 4) return;
-                if (xhr.status !== 200) {
-                    console.log(xhr.status + ': ' + xhr.statusText);
-                } else {
-                    Array.prototype.forEach.call(JSON.parse((xhr.responseText)), coolForum => news.push(coolForum));
-                    for (let i = 0; i < news.length; i++) {
-                        let element = document.createElement("div");
-                        element.className = "h-list-item";
-                        document.getElementById('latestForumInd').appendChild(element);
-                        let div = document.createElement('div');
-                        div.className = 'h-list-item__title text-truncate';
-                        element.appendChild(div);
-                        let a = document.createElement("a");
                         a.setAttribute("href", "http://localhost:9080/news?id=" + news[i].id);
-                        a.innerHTML = news[i].title ;
+                        a.innerHTML = news[i].title;
                         a.className = "link-default";
                         div.appendChild(a);
                         let info = document.createElement("div");
                         info.className = "h-list-item__info";
                         element.appendChild(info);
-
 
 
                         let user = document.createElement('span');
@@ -122,7 +75,52 @@ let ajaxReq = function (path, method, requestBody, onreadystatechangeFunction) {
                         user.appendChild(p);
                         let date = document.createElement('span');
                         date.className = 'h-list-item__date';
-                        date.innerHTML =  moment(news[i].printTime).startOf('day').fromNow()  ;
+                        date.innerHTML = moment(news[i].printTime).startOf('day').fromNow();
+                        info.appendChild(date);
+                    }
+                }
+            };
+            break;
+        case "getAndSetForums" :
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState !== 4) return;
+                if (xhr.status !== 200) {
+                    console.log(xhr.status + ': ' + xhr.statusText);
+                } else {
+                    Array.prototype.forEach.call(JSON.parse((xhr.responseText)), coolForum => forum.push(coolForum));
+                    for (let i = 0; i < forum.length; i++) {
+                        let element = document.createElement("div");
+                        element.className = "h-list-item";
+                        document.getElementById('latestForumInd').appendChild(element);
+                        let div = document.createElement('div');
+                        div.className = 'h-list-item__title text-truncate';
+                        element.appendChild(div);
+                        let a = document.createElement("a");
+                        a.setAttribute("href", "http://localhost:9080/forum/get?room=" + forum[i].title.replace(" ", "%20"));
+                        a.innerHTML = forum[i].title;
+                        a.className = "link-default";
+                        div.appendChild(a);
+                        let info = document.createElement("div");
+                        info.className = "h-list-item__info";
+                        element.appendChild(info);
+
+
+                        let user = document.createElement('span');
+
+                        info.appendChild(user);
+                        user.className = 'h-list-item__user';
+                        let icon = document.createElement('i');
+                        icon.className = "far fa-user";
+                        let p =document.createElement('span');
+                        p.style.margin = "6px";
+                        p.innerText = forum[i].author.name;
+                        // user.innerText = news[i].author.name;
+                        // document.getElementById('userIcon').cloneNode(icon);
+                        user.appendChild(icon);
+                        user.appendChild(p);
+                        let date = document.createElement('span');
+                        date.className = 'h-list-item__date';
+                        date.innerHTML = moment(forum[i].printTime).startOf('day').fromNow();
                         info.appendChild(date);
                     }
                 }
@@ -266,20 +264,38 @@ function getNews() {
 }
 function getForum() {
     let path = "http://localhost:9080/edit/forum/getForums";
-    let method =  "GET";
+    let method = "GET";
     let requestBody = [
-        {
-
-        }
+        {}
     ];
     let func = "getAndSetForums";
-    ajaxReq(path,method,requestBody,func);
+    ajaxReq(path, method, requestBody, func);
 
 }
 
-window.onload = function() {
+function setGenre(genre) {
+    let a = document.createElement('a');
+    a.setAttribute("href", "http://localhost:9080/book/catalog?genre=" + genre);
+    a.className = "tag-item";
+    a.setAttribute("title", genre);
+    a.innerText = genre;
+    document.getElementById("AllGenre").appendChild(a);
+}
+
+function setAllBookStatus(bookStatus) {
+    let a = document.createElement('a');
+    a.setAttribute("href", "http://localhost:9080/book/catalog?bookStatus=" + bookStatus);
+    a.className = "tag-item";
+    a.setAttribute("title", bookStatus);
+    a.innerText = bookStatus;
+    document.getElementById("BookStatus").appendChild(a);
+}
+
+window.onload = function () {
     getPopularBook();
     getNews();
     getForum();
     getNewBook();
+    Array.prototype.forEach.call(JSON.parse((document.getElementById("bookGenre").value)), genre => setGenre(genre));
+    Array.prototype.forEach.call(JSON.parse((document.getElementById("AllBookStatus").value)), bookStatus => setAllBookStatus(bookStatus));
 };

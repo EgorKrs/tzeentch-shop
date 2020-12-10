@@ -1,5 +1,6 @@
 package com.loneliness.service;
 
+import com.loneliness.entity.BookStatus;
 import com.loneliness.entity.domain.Author;
 import com.loneliness.entity.domain.Book;
 import com.loneliness.entity.domain.Genre;
@@ -33,6 +34,12 @@ public class BookService extends CRUDService<Book> {
         Optional<List<Book>> optionalBooks = ((BookRepository) repository).findAllByGenresIsNotNull();
         optionalBooks.ifPresent(books -> books.removeIf(book -> book.getGenres().stream().noneMatch(genre -> genre.equals(genreToFind))));
         return optionalBooks;
+    }
+
+    public List<Book> findAllByBookStatus(BookStatus bookStatus) {
+        List<Book> all = repository.findAll();
+        all.removeIf(book -> !book.getBookStatus().equals(bookStatus));
+        return all;
     }
 
     public Book updateBook(Book book) {

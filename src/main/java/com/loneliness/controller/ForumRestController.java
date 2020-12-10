@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -32,5 +34,19 @@ public class ForumRestController extends CommonRestController<Room, RoomDTO> {
         if (id == 0) {
             return ((RoomService) service).update(dto.fromDTO());
         } else return service.save(dto.fromDTO());
+    }
+
+    @GetMapping(value = "/getPage", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Room> getPage(@RequestParam(name = "page", required = false) Integer page,
+                              @RequestParam(name = "size", required = false) Integer size) throws IOException {
+        if (page != null) {
+            if (size == null) {
+                size = 25;
+            }
+            return ((RoomService) service).getNodes(page, size).orElse(new LinkedList<>());
+        } else
+            return service.findAll();
+
+        //return service.save(dto.fromDTO());
     }
 }

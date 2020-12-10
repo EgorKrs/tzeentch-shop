@@ -3,6 +3,8 @@ package com.loneliness.service;
 import com.loneliness.entity.domain.Room;
 import com.loneliness.entity.domain.User;
 import com.loneliness.repository.RoomRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -52,6 +54,12 @@ public class RoomService extends CRUDService<Room> {
         }
         room.setAuthor(userService.findById(room.getAuthor().getId()).orElse(new User()));
         return save(room);
+    }
+
+    public Optional<List<Room>> getNodes(int page, int size) {
+        Sort sort = Sort.by(Sort.Direction.DESC, "title");
+        return ((RoomRepository) repository).findAllByIdIsNotNullOrderByTitle(
+                PageRequest.of(page, size, sort));
     }
 
 }
