@@ -1,0 +1,1452 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<html lang="ru" data-mode="dark"></html>
+<head>
+    <meta charset="utf-8"/>
+    <title> Tzeentch-shop</title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Tzeentch-shop">
+    <meta name="apple-mobile-web-app-title" content="Tzeentch-shop">
+    <meta name="msapplication-starturl" content="http://localhost:9080/">
+    <meta name="theme-color" content="#242424">
+    <meta name="rootURL" content="http://localhost:9080">
+    <link rel="stylesheet" href="../css/themePage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700" rel="stylesheet">
+    <link rel="stylesheet" href="../css/manga.css@id=R3qepLQwwAAI.css">
+    <link rel="stylesheet" href="../css/main.css@id=Bkrch3Y6HfPM.css">
+    <link rel="stylesheet" href="../css/mobile.css@id=wCxJAq5l2YkH.css">
+    <link media="all" type="text/css" rel="stylesheet" href="../css/font-awesome.min.css@v=4.5.55.css">
+    <script type="text/javascript" src="../libs/fontawesome-free-5.15.1-web/js/all.js" crossorigin="anonymous"></script>
+    <style type="text/css">.f-container {
+        padding-bottom: 20px
+    }
+
+    @media (min-width: 992px) {
+        .f-container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex
+        }
+    }
+
+    @media (max-width: 991px) {
+        .f-container {
+            padding-bottom: 70px
+        }
+    }
+
+    .f-pagination {
+        margin-top: 15px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    @media (max-width: 500px) {
+        .f-pagination .button {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 0px;
+            flex: 1 0 0
+        }
+
+        .f-pagination .button:last-child {
+            margin-left: 15px
+        }
+    }
+
+    .discussions {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        overflow: hidden
+    }
+
+    @media (max-width: 768px) {
+        .discussions {
+            padding: 12px
+        }
+    }
+
+    .discussions-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-bottom: 16px
+    }
+
+    .discussions-header .dropdown {
+        -ms-flex-negative: 0;
+        flex-shrink: 0
+    }
+
+    .discussions-header .dropdown .button {
+        white-space: nowrap
+    }
+
+    .discussions-search {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1
+    }</style>
+    <style type="text/css">._3nFYRuemGbua9vVDbEq9XZ_0 {
+        position: relative;
+        -webkit-animation: _2ioDpjBOzaBgstvXOUDuMR_0 1s ease infinite alternate;
+        animation: _2ioDpjBOzaBgstvXOUDuMR_0 1s ease infinite alternate
+    }
+
+    ._19N8fXvT8ykDqC8s7j9f0E_0 {
+        position: absolute;
+        background: #ddd
+    }
+
+    ._2NM6n6Q_z0GrzJViBTtLg5_0 {
+        position: static
+    }
+
+    .y0W4R69mH5jyKUHECe0_P_0 {
+        width: 100%;
+        height: 100%
+    }
+
+    .ZPvTEqLjd78WAerXeSfra_0 {
+        border-radius: 50%
+    }
+
+    ._1ZuPqldbEce7dKMU-qOA4a_0 {
+        border-radius: 3px
+    }
+
+    ._2ERnaaGQWaBN-sEQktrv7m_0 {
+        border-radius: 6px
+    }
+
+    @-webkit-keyframes _2ioDpjBOzaBgstvXOUDuMR_0 {
+        0% {
+            opacity: .8
+        }
+        to {
+            opacity: .4
+        }
+    }
+
+    @keyframes _2ioDpjBOzaBgstvXOUDuMR_0 {
+        0% {
+            opacity: .8
+        }
+        to {
+            opacity: .4
+        }
+    }</style>
+    <style type="text/css">.f-sidenav {
+        -ms-flex-negative: 0;
+        flex-shrink: 0
+    }
+
+    @media (min-width: 991px) {
+        .f-sidenav__create {
+            margin-bottom: 20px;
+            width: 100%;
+            display: block
+        }
+    }
+
+    .f-sidenav__buttons {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    @media (max-width: 991px) {
+        .f-sidenav__buttons {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            z-index: 700;
+            padding: 10px;
+            width: 100%;
+            background: #fff;
+            background: var(--dropdown-bg);
+            border-top: 1px solid #e5e5e5;
+            border-top: solid 1px var(--border-base)
+        }
+
+        .f-sidenav__buttons .button {
+            -webkit-box-flex: 1;
+            -ms-flex: 1 0 0px;
+            flex: 1 0 0
+        }
+
+        .f-sidenav__buttons .button + .button {
+            margin-left: 10px
+        }
+    }
+
+    @media (min-width: 992px) {
+        .f-sidenav {
+            width: 210px;
+            margin-right: 50px
+        }
+
+        .f-sidenav__current {
+            display: none
+        }
+    }</style>
+    <style type="text/css">.f-categories__group {
+        margin-bottom: 15px
+    }
+
+    @media (max-width: 991px) {
+        .f-categories {
+            position: relative;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            -webkit-transition: opacity .3s ease;
+            transition: opacity .3s ease
+        }
+
+        .f-categories__menu {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-height: 100vh;
+            overflow-y: auto;
+            background: #fff;
+            background: var(--dropdown-bg);
+            -webkit-transform: translateY(30%);
+            transform: translateY(30%);
+            -webkit-transition: -webkit-transform .4s ease;
+            transition: -webkit-transform .4s ease;
+            transition: transform .4s ease;
+            transition: transform .4s ease, -webkit-transform .4s ease
+        }
+
+        .f-categories__items {
+            padding-bottom: 12px
+        }
+    }
+
+    .f-categories_visible {
+        opacity: 1;
+        pointer-events: auto
+    }
+
+    .f-categories_visible .f-categories__menu {
+        -webkit-transform: none;
+        transform: none
+    }
+
+    .f-categories__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 900;
+        background: rgba(0, 0, 0, .7)
+    }
+
+    @media (min-width: 992px) {
+        .f-categories__overlay {
+            display: none
+        }
+    }
+
+    .f-categories__header {
+        padding-left: 12px;
+        height: 44px;
+        font-size: 16px
+    }
+
+    .f-categories__header-close {
+        padding: 15px;
+        padding-right: 12px
+    }
+
+    .f-categories__header-close svg {
+        width: 14px;
+        height: 14px;
+        display: block;
+        stroke: currentColor
+    }
+
+    @media (min-width: 992px) {
+        .f-categories__header {
+            display: none
+        }
+    }
+
+    .f-category {
+        padding: 7px 0 7px 38px;
+        margin-bottom: 1px;
+        position: relative;
+        cursor: pointer;
+        border-radius: 3px
+    }
+
+    .f-category:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        display: block;
+        opacity: 0;
+        border-radius: 3px;
+        pointer-events: none
+    }
+
+    .f-category:before, .f-category_active {
+        background: #fff;
+        background: var(--foreground)
+    }
+
+    .f-category_active {
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05)
+    }
+
+    .f-category:not(.f-category_active) .f-category__icon {
+        color: #868e96;
+        color: var(--text-muted)
+    }
+
+    .f-category:not(.f-category_active):hover {
+        -webkit-box-shadow: inset 0 1px 0 rgba(0, 0, 0, .04), inset 0 -1px 0 rgba(0, 0, 0, .04);
+        box-shadow: inset 0 1px 0 rgba(0, 0, 0, .04), inset 0 -1px 0 rgba(0, 0, 0, .04)
+    }
+
+    .f-category:not(.f-category_active):hover:before {
+        opacity: .6
+    }
+
+    .f-category__icon {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        font-size: 15px;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%)
+    }</style>
+    <style type="text/css">.discussion-sticky {
+        display: grid;
+        grid-gap: 12px;
+        margin-bottom: 12px;
+        grid-template-columns: repeat(2, 1fr)
+    }
+
+    @media (max-width: 600px) {
+        .discussion-sticky {
+            grid-template-columns: 1fr
+        }
+    }
+
+    .discussion-sticky-item {
+        padding: 8px;
+        border-radius: 3px;
+        background: #fff;
+        background: var(--foreground);
+        border: 1px solid #e9e9e9;
+        border: solid 1px var(--border-light)
+    }
+
+    .discussion-sticky-item__info {
+        white-space: nowrap
+    }</style>
+    <style type="text/css">.discussion-details, .discussion-details__group {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    @media (max-width: 600px) {
+        .discussion-details__group {
+            -webkit-box-flex: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            width: 100%
+        }
+    }
+
+    .discussion-details__item {
+        margin-right: 22px;
+        margin-bottom: 7px
+    }
+
+    @media (max-width: 600px) {
+        .discussion-details__item {
+            font-size: 12px;
+            margin-right: 16px
+        }
+    }
+
+    .discussion {
+        padding: 20px 12px;
+        background: #f2f2f3;
+        background: var(--background)
+    }
+
+    @media (min-width: 769px) {
+        .discussion {
+            padding-top: 40px;
+            padding-left: 0;
+            padding-right: 0
+        }
+    }
+
+    .discussion__container {
+        position: relative
+    }
+
+    .discussion__header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+    }
+
+    .discussion__etc {
+        margin-left: 5px
+    }
+
+    .discussion__etc svg {
+        display: block;
+        width: 16px;
+        height: 12px;
+        margin: 0 auto;
+        fill: currentColor
+    }
+
+    .discussion__back {
+        cursor: pointer;
+        font-size: 13px;
+        white-space: nowrap
+    }
+
+    .discussion__back:hover {
+        color: #ffa332;
+        color: var(--primary-lighten)
+    }
+
+    .discussion__back span {
+        display: none
+    }
+
+    @media (min-width: 910px) {
+        .discussion__back {
+            position: absolute;
+            top: -28px;
+            left: 15px;
+            margin-right: 0;
+            margin-bottom: 0;
+            line-height: 20px
+        }
+
+        .discussion__back span {
+            display: inline
+        }
+    }
+
+    .discussion__title {
+        font-size: 22px;
+        line-height: 26px;
+        font-weight: 700;
+        word-break: break-word
+    }
+
+    @media (max-width: 600px) {
+        .discussion__title {
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 20px
+        }
+    }
+
+    .discussion__locked {
+        font-size: 13px;
+        vertical-align: top;
+        font-weight: 400
+    }
+
+    .discussion__content {
+        margin-top: 16px;
+        line-height: 1.5;
+        word-break: break-word
+    }
+
+    @media (min-width: 992px) {
+        .discussion__content {
+            font-size: 16px
+        }
+    }
+
+    .discussion .discussion-relation {
+        margin-top: 15px
+    }
+
+    .discussion-sticky-control {
+        padding-bottom: 5px;
+        border-bottom: 1px solid #e5e5e5;
+        border-bottom: solid 1px var(--border-base)
+    }
+
+    .discussion-sticky-control__level {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 5px
+    }
+
+    .discussion-sticky-control__level span {
+        padding: 1px 10px;
+        min-width: 10px
+    }
+
+    .discussion-sticky-control__level span:first-child, .discussion-sticky-control__level span:last-child {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        border-radius: 3px;
+        cursor: pointer
+    }
+
+    .discussion-sticky-control__level span:first-child:hover, .discussion-sticky-control__level span:last-child:hover {
+        background: #f0f2f5;
+        background: var(--background-hover)
+    }
+
+    .discussion-sticky-control__btn {
+        margin-top: 5px;
+        cursor: pointer;
+        font-size: 13px
+    }
+
+    .discussion-sticky-control__btn:hover {
+        text-decoration: underline
+    }
+
+    .discussion-creator {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .discussion-creator__avatar {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        margin-right: 5px
+    }
+
+    .discussion-posts {
+        background: #fff;
+        background: var(--foreground)
+    }
+
+    @media (max-width: 768px) {
+        .discussion-posts {
+            padding: 0 12px
+        }
+    }
+
+    .discussion-posts__header {
+        padding: 8px 0
+    }
+
+    .discussion-posts__title strong {
+        font-size: 16px;
+        vertical-align: middle
+    }</style>
+    <style type="text/css">.post-reply-placeholder {
+        padding: 12px 0
+    }
+
+    .post-reply-placeholder__body {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 12px;
+        border-radius: 5px;
+        border: 1px dashed #e5e5e5;
+        border: dashed 1px var(--border-base);
+        -webkit-transition: .3s ease;
+        transition: .3s ease;
+        cursor: text
+    }
+
+    .post-reply-placeholder__avatar {
+        width: 40px;
+        height: 40px;
+        border: 1px solid #e5e5e5;
+        border: solid 1px var(--border-base)
+    }
+
+    .post-reply-placeholder__text {
+        color: #868e96;
+        color: var(--text-muted);
+        margin-left: 20px
+    }
+
+    .posts-pagination {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 10px 0;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end
+    }</style>
+    <style type="text/css">._3HddqUXt7ZeL7u-WciUDdz_0 {
+        background: #242424;
+        color: #ddd;
+        z-index: 1005
+    }
+
+    ._32Hy7PtxI_GV6yemYy9rYy_0 {
+        height: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px
+    }
+
+    ._26Oo9Obdj0zy79vz-8HWl6_0 {
+        font-weight: 700;
+        font-size: 16px;
+        margin-right: 15px
+    }
+
+    ._26Oo9Obdj0zy79vz-8HWl6_0 span {
+        display: none
+    }
+
+    @media (min-width: 768px) {
+        ._26Oo9Obdj0zy79vz-8HWl6_0 span {
+            display: inline
+        }
+    }
+
+    .oiV7-XYk4pQ78kvSbz6Pq_0 {
+        margin-right: 3px
+    }
+
+    ._1Je8lkVFyFWKwiiloafCwS_0 {
+        background: none;
+        border: 0;
+        padding: 6px 10px;
+        color: inherit;
+        opacity: .9;
+        -webkit-transition: opacity .2s ease;
+        transition: opacity .2s ease;
+        height: 32px;
+        min-width: 32px;
+        border-radius: 3px
+    }
+
+    ._1Je8lkVFyFWKwiiloafCwS_0:hover, .d47VExnElMNREeywUvnlK_0 {
+        background: hsla(0, 0%, 100%, .1)
+    }
+
+    @media (max-width: 600px) {
+        ._3SleSls2AXulAjjPc7WQqD_0 {
+            font-size: 0;
+            width: 32px;
+            padding: 6px
+        }
+
+        ._3SleSls2AXulAjjPc7WQqD_0 i {
+            font-size: 14px
+        }
+    }</style>
+    <style type="text/css">.fade-enter-active, .fade-leave-active {
+        -webkit-transition: opacity .3s ease;
+        transition: opacity .3s ease
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0
+    }</style>
+    <style type="text/css">.post-reply {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        width: 100vw;
+        pointer-events: none;
+        -webkit-transition: -webkit-transform .3s ease;
+        transition: -webkit-transform .3s ease;
+        transition: transform .3s ease;
+        transition: transform .3s ease, -webkit-transform .3s ease;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%)
+    }
+
+    @media (max-width: 768px) {
+        .post-reply {
+            -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+            top: 0;
+            background: #fff;
+            background: var(--foreground);
+            -webkit-transition-duration: .5s;
+            transition-duration: .5s
+        }
+
+        .post-reply__container {
+            padding: 0;
+            height: 100%
+        }
+    }
+
+    .post-reply_visible {
+        -webkit-transform: none;
+        transform: none
+    }
+
+    .post-reply_full {
+        top: 0;
+        background: #fff;
+        background: var(--dropdown-bg)
+    }
+
+    .post-reply_full .post-reply__container {
+        height: 100%
+    }
+
+    .post-reply_full .post-reply-content {
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none
+    }
+
+    .post-reply_full .post-reply-resizer {
+        display: none
+    }
+
+    .post-reply_full .post-reply-toolbar {
+        border: 0
+    }
+
+    .post-reply-user {
+        padding: 14px 20px 6px;
+        height: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center
+    }
+
+    .post-reply-user + .post-reply-editor {
+        height: calc(100% - 40px)
+    }
+
+    .post-reply-user + .post-reply-editor .ql-editor {
+        padding-top: 8px
+    }
+
+    .post-reply-user__target {
+        color: #868e96;
+        color: var(--text-muted);
+        cursor: pointer
+    }
+
+    .post-reply-user__target:hover {
+        color: #212529;
+        color: var(--text-primary)
+    }
+
+    .post-reply-user__cancel {
+        cursor: pointer;
+        padding: 5px;
+        margin-left: 3px;
+        opacity: .5
+    }
+
+    .post-reply-user__cancel:hover {
+        opacity: 1
+    }
+
+    .post-reply-user__cancel svg {
+        display: block;
+        width: 10px;
+        height: 10px;
+        stroke: currentColor
+    }
+
+    .post-reply-resizer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 18;
+        height: 10px;
+        cursor: row-resize;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none
+    }
+
+    .post-reply-controls {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 20;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .post-reply-controls__button {
+        border: 0;
+        background: none;
+        padding: 6px;
+        color: #868e96;
+        color: var(--text-muted)
+    }
+
+    .post-reply-controls__button:hover {
+        color: #ff8c00;
+        color: var(--primary)
+    }
+
+    @media (max-width: 768px) {
+        .post-reply-controls__button:first-child {
+            display: none
+        }
+    }
+
+    .post-reply-controls__button .fa {
+        width: 15px;
+        height: 15px;
+        text-align: center;
+        line-height: 15px
+    }
+
+    .post-reply-content {
+        position: relative;
+        pointer-events: auto;
+        background: #fff;
+        background: var(--dropdown-bg);
+        -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .35);
+        border-radius: 6px 6px 0 0
+    }
+
+    @media (max-width: 768px) {
+        .post-reply-content {
+            height: 100% !important;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            border-radius: 0
+        }
+    }
+
+    .post-reply-content__loader {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 30;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center
+    }
+
+    .post-reply-content__loader span {
+        position: relative;
+        z-index: 3;
+        font-size: 18px;
+        font-weight: 700
+    }
+
+    .post-reply-content__loader:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: #fff;
+        background: var(--dropdown-bg);
+        opacity: .8
+    }
+
+    .post-reply-editor {
+        height: 100%;
+        padding-bottom: 49px
+    }
+
+    .post-reply-editor .ql-container.ql-snow {
+        border: 0
+    }
+
+    .post-reply-editor .ql-editor {
+        padding: 16px 20px;
+        font-size: 14px;
+        line-height: 20px
+    }
+
+    @media (min-width: 769px) {
+        .post-reply-editor .ql-editor {
+            padding-right: 70px
+        }
+    }
+
+    .post-reply-editor .ql-editor.ql-blank:before {
+        color: #818181;
+        color: var(--text-secondary);
+        left: 20px
+    }
+
+    .post-reply-editor__content {
+        font-size: 14px;
+        font-family: inherit;
+        overflow-y: auto
+    }
+
+    .post-reply-editor__content:focus {
+        outline: none
+    }
+
+    .post-reply-toolbar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        border-top: 1px solid #e5e5e5;
+        border-top: solid 1px var(--border-base)
+    }
+
+    .post-reply-toolbar, .post-reply-toolbar .ql-formats {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .post-reply-toolbar .ql-toolbar.ql-snow {
+        padding: 8px 10px 8px 12px;
+        border: 0;
+        font-family: inherit
+    }
+
+    @media (max-width: 768px) {
+        .post-reply-toolbar .ql-toolbar.ql-snow {
+            overflow-x: auto;
+            padding-right: 16px
+        }
+    }
+
+    .post-reply-toolbar .ql-toolbar.ql-snow button {
+        float: none;
+        display: block;
+        color: #868e96;
+        color: var(--text-muted)
+    }
+
+    .post-reply-toolbar .ql-toolbar.ql-snow button:hover {
+        color: #ff8c00;
+        color: var(--primary)
+    }
+
+    .post-reply-toolbar .ql-snow .ql-stroke {
+        stroke: currentColor !important
+    }
+
+    .post-reply-toolbar .ql-snow .ql-fill {
+        fill: currentColor !important
+    }
+
+    .post-reply-toolbar__formats {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .post-reply-toolbar__formats:after {
+        display: none
+    }
+
+    .post-reply-toolbar__send {
+        margin-left: 10px;
+        padding: 10px 20px 10px 10px
+    }
+
+    @media (max-width: 768px) {
+        .post-reply-toolbar__send {
+            padding: 0;
+            margin: 0
+        }
+
+        .post-reply-toolbar__send .button {
+            padding: 0;
+            height: 40px;
+            width: 40px;
+            font-size: 18px;
+            border-radius: 0
+        }
+    }
+
+    .post-reply-toolbar__send i {
+        display: none
+    }
+
+    @media (max-width: 768px) {
+        .post-reply-toolbar__send i {
+            display: inline-block
+        }
+
+        .post-reply-toolbar__send span {
+            display: none
+        }
+    }</style>
+    <style type="text/css">.post-item:after {
+        content: "";
+        display: block;
+        height: 1px;
+        background: #e5e5e5;
+        background: var(--border-base)
+    }
+
+    @media (min-width: 769px) {
+        .post-item:after {
+            margin-left: 64px
+        }
+    }
+
+    .post-item.is-highlight .comment__body {
+        background: #f5f7fa;
+        background: var(--foreground-darken)
+    }
+
+    .post-item__checkbox {
+        position: absolute;
+        top: 2px;
+        right: 0
+    }
+
+    @media (max-width: 500px) {
+        .post-item .comment__head_lg {
+            padding-left: 42px
+        }
+    }
+
+    .post-item__head-wrap {
+        overflow: hidden;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1
+    }
+
+    .post-item__user {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+    }
+
+    .post-item__user .comment__user-role {
+        margin-right: 8px
+    }
+
+    .post-item__user .comment__user {
+        margin-right: 6px
+    }
+
+    .post-item__user .comment__user, .post-item__user .comment__user-reply {
+        max-width: 50%;
+        -ms-flex-negative: 1;
+        flex-shrink: 1
+    }
+
+    .post-item .avatar {
+        -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #e5e5e5;
+        border: solid 1px var(--border-base)
+    }
+
+    @media (min-width: 769px) {
+        .post-item .avatar {
+            position: absolute;
+            left: -52px;
+            top: -2px
+        }
+    }
+
+    @media (max-width: 500px) {
+        .post-item .avatar {
+            width: 32px;
+            height: 32px;
+            top: 1px
+        }
+    }
+
+    .post-item .comment__body {
+        padding: 12px;
+        margin: 0 -12px;
+        -webkit-transition: background .2s ease;
+        transition: background .2s ease
+    }
+
+    @media (min-width: 769px) {
+        .post-item .comment__body {
+            padding-left: 64px;
+            padding-right: 12px;
+            margin: 0
+        }
+    }
+
+    .post-item .comment__content {
+        margin: 8px 0
+    }
+
+    @media (max-width: 500px) {
+        .post-item .comment__date-time {
+            margin-top: 2px
+        }
+    }
+
+    @-webkit-keyframes postItemPulse {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+        50% {
+            -webkit-transform: scale(1.01);
+            transform: scale(1.01)
+        }
+        to {
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }
+
+    @keyframes postItemPulse {
+        0% {
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+        50% {
+            -webkit-transform: scale(1.01);
+            transform: scale(1.01)
+        }
+        to {
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+    }</style>
+    <meta data-vue-meta="1" property="og:url" content="https://mangalib.me/forum/discussion/97768">
+    <meta data-vue-meta="1" property="description" description="Я всю ночь писал курсач">
+    <meta data-vue-meta="1" property="title" content="Обсуждение Доброе утро">
+    <meta data-vue-meta="1" property="og:title" content="Доброе утро">
+    <meta data-vue-meta="1" property="og:description" content="Я всю ночь писал курсач">
+    <meta data-vue-meta="1" property="og:image" content="https://mangalib.me/uploads/users/494596/0VCIeANzlf.jpg">
+</head>
+</head>
+<body>
+<!-- SVG ICONS -->
+<svg class="app-svg" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-edit" viewBox="0 0 16 16">
+        <path d="M0 12.666V16h3.334l9.837-9.837L9.837 2.83zm15.74-10.33L13.664.26a.89.89 0 0 0-1.258 0L10.78 1.887l3.334 3.334 1.627-1.627a.89.89 0 0 0 0-1.258z"
+        />
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 36 36">
+        <line x1="0" y1="18" x2="36" y2="18"></line>
+        <line x1="18" y1="0" x2="18" y2="36"></line>
+    </symbol>
+    <symbol id="icon-minus" viewBox="0 0 10 10">
+        <line x1="0" y1="5" x2="10" y2="5" stroke-width="2"></line>
+    </symbol>
+    <symbol id="icon-reply" viewBox="0 0 459 459">
+        <path d="M459,216.75L280.5,38.25v102c-178.5,25.5-255,153-280.5,280.5C63.75,331.5,153,290.7,280.5,290.7v104.55L459,216.75z"
+        />
+    </symbol>
+    <symbol id="icon-star" viewBox="0 0 16 16">
+        <path d="M8 0l2.472 5.267L16 6.112l-4 4.099.944 5.789L8 13.267 3.056 16 4 10.211l-4-4.1 5.528-.844z"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 305.002 305.002">
+        <g fill="#3cce7b">
+            <path d="M152.502.001C68.412.001 0 68.412 0 152.501s68.412 152.5 152.502 152.5c84.089 0 152.5-68.411 152.5-152.5S236.591.001 152.502.001zm0 280C82.197 280.001 25 222.806 25 152.501c0-70.304 57.197-127.5 127.502-127.5 70.304 0 127.5 57.196 127.5 127.5 0 70.305-57.196 127.5-127.5 127.5z"/>
+            <path d="M218.473 93.97l-90.546 90.547-41.398-41.398c-4.882-4.881-12.796-4.881-17.678 0-4.881 4.882-4.881 12.796 0 17.678l50.237 50.237c2.441 2.44 5.64 3.661 8.839 3.661 3.199 0 6.398-1.221 8.839-3.661l99.385-99.385c4.881-4.882 4.881-12.796 0-17.678-4.882-4.882-12.797-4.882-17.678-.001z"/>
+        </g>
+    </symbol>
+
+    <symbol id="icon-exclamation-circle" viewBox="0 0 16 16">
+        <path fill="#f44336"
+              d="M8 1c3.9 0 7 3.1 7 7s-3.1 7-7 7-7-3.1-7-7 3.1-7 7-7zm0-1C3.6 0 0 3.6 0 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/>
+        <path fill="#f44336" d="M7 3h2v7H7V3zm0 8h2v2H7v-2z"/>
+    </symbol>
+
+    <symbol id="icon-information-circle" viewBox="0 0 18 18">
+        <path d="M7.9799 5.8739c.0329.0658.0658.1316.0987.181.033.0493.0823.0987.1152.148.0493.0494.0987.0987.1645.1481.0494.033.1152.0823.1975.0987.0658.033.1316.0494.2139.0658.0822.0165.148.0165.2138.0165.0659 0 .1481 0 .214-.0165.0658-.0164.1316-.0329.181-.0658h.0164c.0658-.0329.1316-.0658.1974-.1151.0494-.033.0987-.0823.1481-.1317l.0165-.0164c.0493-.0494.0822-.0987.1151-.1481.033-.0494.0658-.0987.0823-.1645 0-.0165 0-.0165.0165-.033.0329-.0658.0493-.148.0658-.2138.0164-.0659.0164-.1481.0164-.214 0-.0658 0-.148-.0164-.2138-.0165-.0658-.033-.1317-.0658-.214-.0494-.1151-.1152-.2138-.1975-.296l-.0329-.033c-.0494-.0494-.0987-.0823-.1645-.1316-.0658-.033-.1152-.0658-.181-.0987-.0658-.033-.1316-.0494-.1975-.0659-.0822-.0164-.148-.0164-.2139-.0164-.0658 0-.148 0-.2138.0164-.0659.0165-.1317.033-.1975.0659h-.0164c-.0659.0329-.1317.0658-.181.0987-.0658.0493-.1152.0822-.1646.1316-.0493.0494-.0987.0987-.1316.148-.0329.0494-.0658.1153-.0987.181-.033.0659-.0494.1317-.0658.1975-.0165.0823-.0165.1481-.0165.214 0 .0657 0 .148.0165.2138.0164.1316.0493.1974.0658.2633zm2.2871 6.0219h-.3785v-4.031c0-.2304-.181-.4279-.4278-.4279H7.7331c-.2304 0-.4278.181-.4278.4278v.8885c0 .2303.181.4278.4278.4278h.3455v2.7313h-.3455c-.2304 0-.4278.181-.4278.4277v.8885c0 .2304.181.4278.4278.4278h2.5338c.2304 0 .4278-.181.4278-.4278V12.34c0-.2468-.1974-.4442-.4278-.4442z"/>
+        <path d="M9 0C4.031 0 0 4.031 0 9s4.031 9 9 9 9-4.031 9-9-4.031-9-9-9zm0 16.8154c-4.3108 0-7.8154-3.5046-7.8154-7.8154S4.6892 1.1846 9 1.1846 16.8154 4.6892 16.8154 9 13.3108 16.8154 9 16.8154z"/>
+    </symbol>
+    <symbol id="icon-close" viewBox="0 0 10 10">
+        <line x1="1" y1="1" x2="9" y2="9"></line>
+        <line x1="1" y1="9" x2="9" y2="1"></line>
+    </symbol>
+    <symbol id="icon-arrow-down" viewBox="0 0 18 11">
+        <path fill-rule="evenodd"
+              d="M8.109 10.41L.369 2.265a1.377 1.377 0 0 1 0-1.876 1.217 1.217 0 0 1 1.783 0L9 7.594 15.848.39a1.217 1.217 0 0 1 1.783 0 1.377 1.377 0 0 1 0 1.876L9.89 10.41c-.246.26-.57.39-.891.39-.322 0-.645-.132-.89-.39h-.001z"></path>
+    </symbol>
+    <symbol id="icon-arrow-up" viewBox="0 0 18 11">
+        <path fill-rule="evenodd"
+              d="M8.109.39L.369 8.535a1.377 1.377 0 0 0 0 1.876c.492.519 1.29.519 1.783 0L9 3.206l6.848 7.205c.492.519 1.29.519 1.783 0a1.377 1.377 0 0 0 0-1.876L9.89.39A1.222 1.222 0 0 0 9 0c-.322 0-.645.132-.89.39h-.001z"></path>
+    </symbol>
+    <symbol id="icon-extra" viewBox="0 0 16 4">
+        <path d="M14 4a2 2 0 1 1-.001-3.999A2 2 0 0 1 14 4zM8 4A2 2 0 1 1 7.999.001 2 2 0 0 1 8 4zM2 4A2 2 0 1 1 1.999.001 2 2 0 0 1 2 4z"
+              fill-rule="evenodd"></path>
+    </symbol>
+    <symbol id="icon-check-list" viewBox="0 0 512 512">
+        <path fill="currentColor"
+              d="M139.61 35.5a12 12 0 0 0-17 0L58.93 98.81l-22.7-22.12a12 12 0 0 0-17 0L3.53 92.41a12 12 0 0 0 0 17l47.59 47.4a12.78 12.78 0 0 0 17.61 0l15.59-15.62L156.52 69a12.09 12.09 0 0 0 .09-17zm0 159.19a12 12 0 0 0-17 0l-63.68 63.72-22.7-22.1a12 12 0 0 0-17 0L3.53 252a12 12 0 0 0 0 17L51 316.5a12.77 12.77 0 0 0 17.6 0l15.7-15.69 72.2-72.22a12 12 0 0 0 .09-16.9zM64 368c-26.49 0-48.59 21.5-48.59 48S37.53 464 64 464a48 48 0 0 0 0-96zm432 16H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H208a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h288a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"/>
+    </symbol>
+    <symbol id="icon-translate" viewBox="0 0 640 512">
+        <path fill="currentColor"
+              d="M152.1 236.2c-3.5-12.1-7.8-33.2-7.8-33.2h-.5s-4.3 21.1-7.8 33.2l-11.1 37.5H163zM616 96H336v320h280c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24zm-24 120c0 6.6-5.4 12-12 12h-11.4c-6.9 23.6-21.7 47.4-42.7 69.9 8.4 6.4 17.1 12.5 26.1 18 5.5 3.4 7.3 10.5 4.1 16.2l-7.9 13.9c-3.4 5.9-10.9 7.8-16.7 4.3-12.6-7.8-24.5-16.1-35.4-24.9-10.9 8.7-22.7 17.1-35.4 24.9-5.8 3.5-13.3 1.6-16.7-4.3l-7.9-13.9c-3.2-5.6-1.4-12.8 4.2-16.2 9.3-5.7 18-11.7 26.1-18-7.9-8.4-14.9-17-21-25.7-4-5.7-2.2-13.6 3.7-17.1l6.5-3.9 7.3-4.3c5.4-3.2 12.4-1.7 16 3.4 5 7 10.8 14 17.4 20.9 13.5-14.2 23.8-28.9 30-43.2H412c-6.6 0-12-5.4-12-12v-16c0-6.6 5.4-12 12-12h64v-16c0-6.6 5.4-12 12-12h16c6.6 0 12 5.4 12 12v16h64c6.6 0 12 5.4 12 12zM0 120v272c0 13.3 10.7 24 24 24h280V96H24c-13.3 0-24 10.7-24 24zm58.9 216.1L116.4 167c1.7-4.9 6.2-8.1 11.4-8.1h32.5c5.1 0 9.7 3.3 11.4 8.1l57.5 169.1c2.6 7.8-3.1 15.9-11.4 15.9h-22.9a12 12 0 0 1-11.5-8.6l-9.4-31.9h-60.2l-9.1 31.8c-1.5 5.1-6.2 8.7-11.5 8.7H70.3c-8.2 0-14-8.1-11.4-15.9z"/>
+    </symbol>
+</svg>    <!--/ SVG ICONS -->
+
+<!-- SEARCH -->
+<div class="search hidden">
+    <div class="search__container">
+        <div class="search__inner autocomplete">
+            <div class="search__input-wrap">
+                <div class="search__icon search__icon_left">
+                    <i class="fa fa-search"></i>
+                </div>
+                <input type="text" id="MainSearchInput" class="search__input form__input autocomplete__input">
+                <span id="addNewOne">
+                    <i class="fas fa-plus"></i>
+                </span>
+
+                <div class="search__icon search__icon_right search__icon_close" data-search-toggle>
+                    <svg>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
+                </div>
+                <div class="search__icon search__icon_right search__icon_loader">
+                    <div class="loader-circle loader-circle_small"></div>
+                </div>
+            </div>
+            <div class="search__types">
+                <div class="search__type" id="BOOK" data-term="Книга" data-type="book"
+                     data-url="http://localhost:9080/search?type=manga">Книга
+                </div>
+                <div class="search__type" id="AUTHOR" data-term="Автор" data-type="author"
+                     data-url="http://localhost:9080/search?type=people">Автор
+                </div>
+                <div class="search__type" id="USER" data-term="Пользователя" data-type="user"
+                     data-url="http://localhost:9080/search?type=user">Пользователь
+                </div>
+            </div>
+            <div class="search__suggestions-wrap">
+                <div class="search__suggestions autocomplete__suggestions">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ SEARCH -->
+<!-- Website Menu -->
+<div class="header">
+    <div class="header__inner">
+        <div class="header__item header__left">
+            <a href="index.mustache" class="header__logo">
+                <img src="../images/Tzeentch-Shop-removebg.png" alt="Tzeench-Shop">
+            </a>
+        </div>
+        <div class="header__item header__menu">
+            <div class="header-menu">
+                <div class="header-menu__item dropdown">
+                    <span data-dropdown>
+                        <i class="fa fa-bars"></i> Каталог <i class="fa fa-caret-down"></i>
+                    </span>
+                    <div class="menu-template">
+                        <div class="menu header-dropdown">
+
+                            <div class="menu__divider"></div>
+                            <a href="http://mangalib.me/manga-list" class="menu__item">Весь</a>
+                            <a class="menu__item" href="http://mangalib.me/random">Случайный тайтл</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-menu__item" data-search-toggle>
+                    <span id="search-link" title="Быстрый поиск"><i class="fa fa-search"></i> Поиск</span>
+                </div>
+
+                <div class="header-menu__item">
+                    <a
+                            href="http://mangalib.me/forum"
+                            title="Форум"
+                    ><i class="fa fa-comments-o"></i> Форум</a>
+                </div>
+                <div class="header-menu__item">
+                    <a
+                            href="http://mangalib.me/faq"
+                            title="Ответы на часто задаваемые вопросы"
+                    ><i class="fa fa-question-circle"></i> FAQ</a>
+                </div>
+                <div class="header-menu__item dropdown header-button">
+                    <div class="header-button__icon" data-dropdown>
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
+                    <div class="menu-template">
+                        <div class="menu header-dropdown">
+                            <a
+                                    class="menu__item"
+                                    href="http://mangalib.me/news"
+                                    title="Новости"
+                            ><i class="fa fa-newspaper-o fa-fw"></i> Новости</a>
+                            <a
+                                    class="menu__item"
+                                    href="http://mangalib.me/contact-us/"
+                                    title="Связаться с нами"
+                            ><i class="fa fa-envelope-o fa-fw"></i> Контакты</a>
+                            <a
+                                    class="menu__item"
+                                    href="http://mangalib.me/random"
+                                    title="Случайная манга"
+                            ><i class="fa fa-random fa-fw"></i> Рандом</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__item header-right-menu">
+
+            <div class="header-right-menu__item dropdown header-button">
+                <div
+                        id="changeThemeIcon"
+                        class="header-button__icon tooltip"
+                        data-place="bottom-end"
+                        aria-label="Сменить тему"
+                        data-toggle-theme>
+                    <i class="fab fa-themeisle"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="application/octet-stream" src="../js/vendor.js@id=5eIsiR0kOE2x"></script>
+<script type="application/octet-stream" src="../js/main.js@id=VIL64XuxWN77"></script>
+
+<div class="page" id="main-page">
+    <div class="page__inner">
+
+
+        <div>
+            <div class="discussion">
+                <div class="discussion__container container">
+                    <div class="discussion__header">
+                        <div class="discussion-details flex">
+                            <div class="discussion-details__group flex">
+                                <div class="discussion__back discussion-details__item text-secondary"><i
+                                        class="fa fa-arrow-left"></i> <span>Назад</span></div>
+                                <div class="discussion-creator discussion-details__item">
+                                    <input type="hidden" id="userId" value="{{user.id}}">
+                                    <img
+                                            src="{{user.name}}"
+                                            class="discussion-creator__avatar avatar avatar_circle">
+                                    <!--                                        href="https://localhost:9080/user/{{user.id}}"-->
+                                    <a
+
+                                            class="discussion-creator__username link-default">{{user.name}}
+                                    </a>
+                                </div>
+                                <time id="RoomCreateTime" datetime="{{room.printTime}}"
+                                      class="discussion-details__item text-secondary">
+                                    {{room.printTime}}
+                                </time>
+                            </div> <!---->
+
+                        </div> <!---->
+                    </div>
+                    <input type="hidden" id="roomId" value="{{room.id}}">
+                    <!--                    <input type="hidden" id = "roomTitle" value="{{room.title}}">-->
+                    <div class="discussion__title">
+                        <label for="roomTitle"> <br>Заголовок темы
+                            <input type="text" id="roomTitle" value="{{room.title}}"></label>
+                    </div>
+                    <div class="discussion__content">
+                        <label for="roomMessage">
+                            <br>
+                            Тема темы
+                            <br>
+                            <textarea type="text" id="roomMessage"> {{room.message}} </textarea>
+                        </label>
+
+                    </div> <!----> <!---->
+                    <span id="saveSpan">
+                        <i class="far fa-save fa-3x"></i>
+                    </span>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--<script src="/webjars/jquery/jquery.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"
+        integrity="sha512-5yJ548VSnLflcRxWNqVWYeQZnby8D8fJTmYRLyvs445j1XmzR8cnWi85lcHx3CUEeAX+GrK3TqTfzOO6LKDpdw=="
+        crossorigin="anonymous"></script>
+<!--<script src="/webjars/sockjs-client/sockjs.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"
+        integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g=="
+        crossorigin="anonymous"></script>
+<!--<script src="/webjars/stomp-websocket/stomp.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<!--<script src="/webjars/js-cookie/js.cookie.js"></script>-->
+<script type="text/javascript" src="../js/moment.js"></script>
+<script type="text/javascript" src="../js/menu.js"></script>
+<script type="text/javascript" src="../js/themePage_edit.js"></script>
+
+</body>

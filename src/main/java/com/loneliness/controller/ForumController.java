@@ -1,14 +1,9 @@
 package com.loneliness.controller;
 
-import com.loneliness.dto.MessageDTO;
-import com.loneliness.dto.NewsDTO;
 import com.loneliness.dto.RoomDTO;
-import com.loneliness.entity.domain.Message;
-import com.loneliness.entity.domain.News;
 import com.loneliness.entity.domain.Room;
 import com.loneliness.entity.domain.User;
 import com.loneliness.service.MessageService;
-import com.loneliness.service.NewsService;
 import com.loneliness.service.RoomService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -46,9 +44,34 @@ public class ForumController extends CommonController<Room, RoomDTO> {
             model.put("user", user);
             model.put("room", room);
             return page;
+        } catch (java.lang.ClassCastException ex) {
+            return "redirect:" + request.getScheme() + "://localhost:9080/login";
         }
-        catch (java.lang.ClassCastException ex){
-            return "redirect:" + request.getScheme() +"://localhost:9080/login";
+    }
+
+    @Override
+    @GetMapping("/create")
+    public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
+            throws IOException {
+
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            Room room = new Room();
+            room.setId(0);
+            room.setTitle("Enter Title");
+            room.setMessage("Enter Message");
+            room.setPrintTime(Timestamp.valueOf(LocalDateTime.now()));
+            user.setActivationCode(null);
+            user.setActive(true);
+            user.setActivationCode(null);
+            user.setGoogleId(null);
+            model.put("user", user);
+            room.setAuthor(user);
+            model.put("room", room);
+            return page + "_edit";
+        } catch (java.lang.ClassCastException ex) {
+            return "redirect:" + "http://localhost:9080/login";
         }
     }
 

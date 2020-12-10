@@ -1,9 +1,7 @@
 package com.loneliness.service;
 
-import com.loneliness.entity.domain.Review;
 import com.loneliness.entity.domain.Room;
 import com.loneliness.entity.domain.User;
-import com.loneliness.repository.NewsRepository;
 import com.loneliness.repository.RoomRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,14 +15,18 @@ import java.util.Optional;
 @Service
 public class RoomService extends CRUDService<Room> {
 
-    public RoomService(RoomRepository repository, SearchService searchService){
+    private UserService userService;
+
+    public RoomService(RoomRepository repository, SearchService searchService, UserService userService) {
         this.repository = repository;
         this.searchService = searchService;
+        this.userService = userService;
     }
-    public Room findByTitle(String string){
-        Optional<Room> optionalRoom= ((RoomRepository)repository).findByTitle(string);
+
+    public Room findByTitle(String string) {
+        Optional<Room> optionalRoom = ((RoomRepository) repository).findByTitle(string);
         Room room;
-        if (optionalRoom.isEmpty()){
+        if (optionalRoom.isEmpty()) {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             User user = (User) auth.getPrincipal();
             user.setActivationCode(null);
@@ -33,13 +35,23 @@ public class RoomService extends CRUDService<Room> {
             user.setGoogleId(null);
             room = new Room();
             room.setAuthor(user);
-        }else{
+        } else {
             room = optionalRoom.get();
         }
         return room;
     }
+
     public Optional<List<Room>> getTop4ByIdIsNotNullOrderByPrintTimeDesc() {
-        return ((RoomRepository)repository).getTop4ByIdIsNotNullOrderByPrintTimeDesc();
+        return ((RoomRepository) repository).getTop4ByIdIsNotNullOrderByPrintTimeDesc();
+    }
+
+    public Room update(Room room) {
+        if (room.getId() <= 0) {
+            room.setId(null);
+            room.setMessages(null);
+        }
+        room.setAuthor(userService.findById(room.getAuthor().getId()).orElse(new User()));
+        return save(room);
     }
 
 }
