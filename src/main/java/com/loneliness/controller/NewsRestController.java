@@ -1,13 +1,10 @@
 package com.loneliness.controller;
 
-import com.loneliness.dto.BookDTO;
 import com.loneliness.dto.NewsDTO;
-import com.loneliness.entity.domain.Book;
 import com.loneliness.entity.domain.News;
 import com.loneliness.exception.NotFoundException;
-import com.loneliness.service.BookService;
 import com.loneliness.service.NewsService;
-import com.loneliness.validate_data.New;
+import com.loneliness.validate_data.Exist;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/edit/news")
@@ -38,12 +34,18 @@ public class NewsRestController extends CommonRestController<News, NewsDTO> {
                 size = 25;
             }
             return ((NewsService) service).getNodes(page, size).orElse(new LinkedList<>());
-        }
-        else
+        } else
             return service.findAll();
 
         //return service.save(dto.fromDTO());
     }
 
+    @Override
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public News update(@Validated(Exist.class) @RequestBody NewsDTO dto, @RequestParam(name = "id") Integer id) {
+        if (id == 0) {
+            return ((NewsService) service).update(dto.fromDTO());
+        } else return service.save(dto.fromDTO());
+    }
 
 }
