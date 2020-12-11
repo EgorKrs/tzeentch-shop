@@ -2,8 +2,7 @@ package com.loneliness.controller.util;
 
 import com.loneliness.entity.domain.Author;
 import com.loneliness.entity.domain.Book;
-import com.loneliness.entity.domain.News;
-import com.loneliness.entity.domain.Review;
+import com.loneliness.entity.domain.Genre;
 import com.loneliness.util.search.SearchCriteria;
 import com.loneliness.util.search.Searcher;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,12 +44,12 @@ public class UtilTest {
         books.forEach(System.out::println);
     }
     @Test
-    public void searchTest(){
+    public void searchTest() {
         SearchCriteria[] params = new SearchCriteria[1];
-        News news = new News();
-        news.setId(1);
-        params[0] = SearchCriteria.builder().operation("=").key("newsReview").value(news).build();
-        List <Review> books =searcher.search(params, Review.class);
+        Set<Genre> genres = new HashSet<>();
+        genres.add(Genre.FANTASY);
+        params[0] = SearchCriteria.builder().operation("=").key("genres").value(genres).build();
+        List<Book> books = searcher.search(params, Book.class);
         books.forEach(System.out::println);
     }
 

@@ -5,6 +5,7 @@ import com.loneliness.entity.domain.Author;
 import com.loneliness.entity.domain.Book;
 import com.loneliness.entity.domain.Genre;
 import com.loneliness.repository.BookRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -42,7 +44,34 @@ public class BookService extends CRUDService<Book> {
         return all;
     }
 
-    public Book updateBook(Book book) {
+    public List<Book> filterByBookStatusAndGenre(Map<BookStatus, Integer> bookStatuses, Map<Genre, Integer> genres) {
+        List<Book> all = repository.findAll();
+        if (genres != null) {
+            for (Genre genre : genres.keySet()) {
+                if (genres.get(genre).equals(1)) {
+                    all.removeIf(book -> !book.getGenres().contains(genre));
+                } else {
+                    all.removeIf(book -> book.getGenres().contains(genre));
+                }
+            }
+        }
+        if (bookStatuses != null) {
+            for (BookStatus bookStatus :
+                    bookStatuses.keySet()) {
+                if (bookStatuses.get(bookStatus).equals(1)) {
+                    all.removeIf(book -> !book.getGenres().contains(bookStatus));
+                } else {
+                    all.removeIf(book -> book.getGenres().contains(bookStatus));
+                }
+                all.removeIf(book -> !book.getBookStatus().equals(bookStatus));
+            }
+        }
+
+        return all;
+    }
+
+
+    public Book updateBook(@NotNull Book book) {
         Book oldBook = findById(book.getId()).orElse(new Book());
         if (oldBook.getId() != null) {
             book.setPopularity(oldBook.getPopularity());

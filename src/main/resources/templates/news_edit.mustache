@@ -161,8 +161,14 @@
                 <div class="search__type" id="AUTHOR" data-term="Автор" data-type="author"
                      data-url="http://localhost:9080/search?type=people">Автор
                 </div>
-                <div class="search__type" id="USER" data-term="Пользователя" data-type="user"
-                     data-url="http://localhost:9080/search?type=user">Пользователь
+                <!--                <div class="search__type" id="USER" data-term="Пользователя" data-type="user"-->
+                <!--                     data-url="http://localhost:9080/search?type=user">Пользователь-->
+                <!--                </div>-->
+                <div class="search__type" id="FORUM" data-term="Форум" data-type="forum"
+                     data-url="http://localhost:9080/search?type=forum">Тема форума
+                </div>
+                <div class="search__type" id="NEWS" data-term="Новости" data-type="news"
+                     data-url="http://localhost:9080/search?type=news">Новости
                 </div>
             </div>
             <div class="search__suggestions-wrap">
@@ -173,7 +179,6 @@
     </div>
 </div>
 <!--/ SEARCH -->
-
 <!-- Website Menu -->
 <div class="header">
     <div class="header__inner">
@@ -184,18 +189,11 @@
         </div>
         <div class="header__item header__menu">
             <div class="header-menu">
-                <div class="header-menu__item dropdown">
-                    <span data-dropdown>
-                        <i class="fa fa-bars"></i> Каталог <i class="fa fa-caret-down"></i>
-                    </span>
-                    <div class="menu-template">
-                        <div class="menu header-dropdown">
-
-                            <div class="menu__divider"></div>
-                            <a href="http://mangalib.me/manga-list" class="menu__item">Весь</a>
-                            <a class="menu__item" href="http://mangalib.me/random">Случайный тайтл</a>
-                        </div>
-                    </div>
+                <div class="header-menu__item">
+                    <a
+                            href="http://localhost:9080/book/catalog"
+                            title="Каталог"
+                    > <i class="fa fa-bars"></i> Каталог</a>
                 </div>
                 <div class="header-menu__item" data-search-toggle>
                     <span id="search-link" title="Быстрый поиск"><i class="fa fa-search"></i> Поиск</span>
@@ -203,40 +201,11 @@
 
                 <div class="header-menu__item">
                     <a
-                            href="http://mangalib.me/forum"
+                            href="http://localhost:9080/forum/all"
                             title="Форум"
-                    ><i class="fa fa-comments-o"></i> Форум</a>
+                    ><i class="fas fa-comments"></i> Форум</a>
                 </div>
-                <div class="header-menu__item">
-                    <a
-                            href="http://mangalib.me/faq"
-                            title="Ответы на часто задаваемые вопросы"
-                    ><i class="fa fa-question-circle"></i> FAQ</a>
-                </div>
-                <div class="header-menu__item dropdown header-button">
-                    <div class="header-button__icon" data-dropdown>
-                        <i class="fa fa-ellipsis-h"></i>
-                    </div>
-                    <div class="menu-template">
-                        <div class="menu header-dropdown">
-                            <a
-                                    class="menu__item"
-                                    href="http://mangalib.me/news"
-                                    title="Новости"
-                            ><i class="fa fa-newspaper-o fa-fw"></i> Новости</a>
-                            <a
-                                    class="menu__item"
-                                    href="http://mangalib.me/contact-us/"
-                                    title="Связаться с нами"
-                            ><i class="fa fa-envelope-o fa-fw"></i> Контакты</a>
-                            <a
-                                    class="menu__item"
-                                    href="http://mangalib.me/random"
-                                    title="Случайная манга"
-                            ><i class="fa fa-random fa-fw"></i> Рандом</a>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
 
@@ -256,6 +225,7 @@
     </div>
 
 </div>
+<!--/ Website Menu -->
 <script type="text/javascript" src="../js/menu.js"></script>
 <script type="application/octet-stream" src="../js/vendor.js@id=5eIsiR0kOE2x"></script>
 <script type="application/octet-stream" src="../js/main.js@id=VIL64XuxWN77"></script>

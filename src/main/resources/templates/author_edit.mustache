@@ -63,21 +63,36 @@
                 <div class="search__icon search__icon_left">
                     <i class="fa fa-search"></i>
                 </div>
-                <input type="text" id = "MainSearchInput" class="search__input form__input autocomplete__input">
+                <input type="text" id="MainSearchInput" class="search__input form__input autocomplete__input">
+                <span id="addNewOne">
+                    <i class="fas fa-plus"></i>
+                </span>
+
                 <div class="search__icon search__icon_right search__icon_close" data-search-toggle>
-                    <svg><use xlink:href="#icon-close"></use></svg>
-                    <span>
-                    <i class="fas fa-plus" id = "addNewOne"></i>
-                        </span>
+                    <svg>
+                        <use xlink:href="#icon-close"></use>
+                    </svg>
                 </div>
                 <div class="search__icon search__icon_right search__icon_loader">
                     <div class="loader-circle loader-circle_small"></div>
                 </div>
             </div>
             <div class="search__types">
-                <div class="search__type" id = "BOOK" data-term="Книга" data-type="book" data-url="http://localhost:9080/search?type=manga">Книга</div>
-                <div class="search__type" id = "AUTHOR" data-term="Автор" data-type="author" data-url="http://localhost:9080/search?type=people">Автор</div>
-                <div class="search__type" id = "USER" data-term="Пользователя" data-type="user" data-url="http://localhost:9080/search?type=user">Пользователь</div>
+                <div class="search__type" id="BOOK" data-term="Книга" data-type="book"
+                     data-url="http://localhost:9080/search?type=manga">Книга
+                </div>
+                <div class="search__type" id="AUTHOR" data-term="Автор" data-type="author"
+                     data-url="http://localhost:9080/search?type=people">Автор
+                </div>
+                <!--                <div class="search__type" id="USER" data-term="Пользователя" data-type="user"-->
+                <!--                     data-url="http://localhost:9080/search?type=user">Пользователь-->
+                <!--                </div>-->
+                <div class="search__type" id="FORUM" data-term="Форум" data-type="forum"
+                     data-url="http://localhost:9080/search?type=forum">Тема форума
+                </div>
+                <div class="search__type" id="NEWS" data-term="Новости" data-type="news"
+                     data-url="http://localhost:9080/search?type=news">Новости
+                </div>
             </div>
             <div class="search__suggestions-wrap">
                 <div class="search__suggestions autocomplete__suggestions">
@@ -97,62 +112,36 @@
         </div>
         <div class="header__item header__menu">
             <div class="header-menu">
-                <div class="header-menu__item dropdown">
-                    <span data-dropdown>
-                        <i class="fa fa-bars"></i> Каталог <i class="fa fa-caret-down"></i>
-                    </span>
-                    <div class="menu-template">
-
-                    </div>
+                <div class="header-menu__item">
+                    <a
+                            href="http://localhost:9080/book/catalog"
+                            title="Каталог"
+                    > <i class="fa fa-bars"></i> Каталог</a>
                 </div>
                 <div class="header-menu__item" data-search-toggle>
-                    <span id="search-link" title="Быстрый поиск" ><i class="fa fa-search"></i> Поиск</span>
+                    <span id="search-link" title="Быстрый поиск"><i class="fa fa-search"></i> Поиск</span>
                 </div>
 
                 <div class="header-menu__item">
                     <a
-                            href="http://localhost:9080/forum"
+                            href="http://localhost:9080/forum/all"
                             title="Форум"
-                    ><i class="fa fa-comments-o"></i> Форум</a>
+                    ><i class="fas fa-comments"></i> Форум</a>
                 </div>
-                <div class="header-menu__item">
-                    <a
-                            href="http://localhost:9080/faq"
-                            title="Ответы на часто задаваемые вопросы"
-                    ><i class="fa fa-question-circle"></i> FAQ</a>
-                </div>
-                <div class="header-menu__item dropdown header-button">
-                    <div class="header-button__icon" data-dropdown>
-                        <i class="fa fa-ellipsis-h"></i>
-                    </div>
-                    <div class="menu-template">
-                    </div>
-                </div>
+
             </div>
         </div>
 
         <div class="header__item header-right-menu">
 
-
-            <button
-                    class="button header__sign header__sign-in"
-                    tabindex="-1"
-                    id="show-login-button"
-            >Вход</button>
-            <a
-                    class="button header__sign header__sign-up"
-                    href="http://mangalib.me/register"
-            >Регистрация</a>
-
             <div class="header-right-menu__item dropdown header-button">
                 <div
-                        id = "changeThemeIcon"
+                        id="changeThemeIcon"
                         class="header-button__icon tooltip"
                         data-place="bottom-end"
                         aria-label="Сменить тему"
-                        data-toggle-theme
-                >
-                    <i class="fa fa-moon-o"></i>
+                        data-toggle-theme>
+                    <i class="fab fa-themeisle"></i>
                 </div>
             </div>
         </div>

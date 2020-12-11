@@ -106,7 +106,9 @@ public class BookController extends CommonController<Book, BookDTO> {
     @GetMapping("/catalog")
     public String getAllPage(Map<String, Object> model,
                              @RequestParam(name = "genre", required = false) Genre genre,
-                             @RequestParam(name = "bookStatus", required = false) BookStatus bookStatus) throws IOException {
+                             @RequestParam(name = "bookStatus", required = false) BookStatus bookStatus
+    ) throws IOException {
+
         List<Book> nodes = new LinkedList<>();
         if (genre != null || bookStatus != null) {
             final List<SearchCriteria> params = new ArrayList<>();
@@ -114,7 +116,7 @@ public class BookController extends CommonController<Book, BookDTO> {
                 nodes = new LinkedList<>(((BookService) service).findAllByGenresContains(genre).orElse(new LinkedList<>()));
 
             }
-            if(bookStatus!=null){
+            if (bookStatus != null) {
                 nodes = new LinkedList<>(((BookService) service).findAllByBookStatus(bookStatus));
             }
 
@@ -122,6 +124,8 @@ public class BookController extends CommonController<Book, BookDTO> {
             nodes = service.findAll();
 
         }
+        model.put("AllGenre", JsonParser.mapToJson(Genre.values()));
+        model.put("AllBookStatus", JsonParser.mapToJson(BookStatus.values()));
         model.put("Books", JsonParser.mapToJson(nodes));
         return "All" + page;
     }
