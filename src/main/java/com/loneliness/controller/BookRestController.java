@@ -8,6 +8,7 @@ import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.BookService;
 import com.loneliness.validate_data.Exist;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,7 @@ public class BookRestController extends CommonRestController<Book, BookDTO> {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Book update(@Validated(Exist.class) @RequestBody BookDTO dto, @RequestParam(name = "id") Integer id) {
         if (id != null && id > 0) {

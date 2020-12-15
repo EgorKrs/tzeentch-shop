@@ -13,7 +13,7 @@ public class TranslationStatusDeserializer extends JsonDeserializer<TranslationS
     public TranslationStatus deserialize(JsonParser parser, DeserializationContext deserializationContext) throws IOException {
         final String jsonValue = parser.getText();
         for (final TranslationStatus translationStatus : TranslationStatus.values()) {
-            if (translationStatus.name().equals(jsonValue)) {
+            if (translationStatus.getValue().equals(jsonValue)) {
                 return translationStatus;
             }
         }

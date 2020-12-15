@@ -31,21 +31,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book implements Domain {
-
-    @Transient
-//    @Autowired
-    private static RatingParamService ratingParamService;
-
-    @Autowired
-    public void setRatingParamService(RatingParamService ratingParamService) {
-        Book.ratingParamService = ratingParamService;
-    }
-
-    @PostConstruct
-    public void init() {
-        System.out.println(Book.ratingParamService + "was init");
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @NotBlank(groups = {Exist.class})
@@ -79,16 +64,7 @@ public class Book implements Domain {
             inverseJoinColumns = @JoinColumn(name = "related_Books_id", referencedColumnName = "ID"))
     private Set<Book> relatedBooks;
 
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-//    private Set<Chapter> chapters;
-
-//    @OneToMany(fetch = FetchType.EAGER,mappedBy = "surveyedBook")
-//    @ManyToMany()
-//    private List<Review> reviews;
-
     private Integer availability;
-    //    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private RatingParam rating;
     @Transient
     private Double rating;
 
@@ -113,5 +89,18 @@ public class Book implements Domain {
 
     public void setRating(Double rating) {
         this.rating = getRating();
+    }
+
+    @Transient
+    private static RatingParamService ratingParamService;
+
+    @Autowired
+    public void setRatingParamService(RatingParamService ratingParamService) {
+        Book.ratingParamService = ratingParamService;
+    }
+
+    @PostConstruct
+    public void init() {
+        System.out.println(Book.ratingParamService + "was init");
     }
 }

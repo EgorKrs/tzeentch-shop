@@ -1,14 +1,14 @@
 package com.loneliness.controller;
 
 import com.loneliness.dto.DTO;
-import com.loneliness.entity.domain.Author;
-import com.loneliness.entity.domain.Book;
-import com.loneliness.entity.domain.Domain;
-import com.loneliness.entity.domain.Picture;
+import com.loneliness.entity.domain.*;
 import com.loneliness.exception.BadArgumentException;
 import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.Service;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -28,9 +28,11 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
     @GetMapping()
     public String getOneById(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         fillDomain(model, id);
+
         return page;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/change")
     public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         fillDomain(model, id);
@@ -44,6 +46,7 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
         return "All" + page;
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
             throws IOException {
@@ -76,6 +79,15 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
     protected Object fillDomain(Map<String, Object> model, Integer id) {
         Object data = find(id);
         model.put(data.getClass().getSimpleName(), data);
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+            }
+        } catch (ClassCastException ex) {
+            model.put("login", false);
+        }
         return data;
     }
 

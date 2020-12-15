@@ -134,7 +134,7 @@
 <div class="header">
     <div class="header__inner">
         <div class="header__item header__left">
-            <a href="index.mustache" class="header__logo">
+            <a href="http://localhost:9080/" class="header__logo">
                 <img src="../images/Tzeentch-Shop-removebg.png" alt="Tzeench-Shop">
             </a>
         </div>
@@ -162,6 +162,18 @@
 
         <div class="header__item header-right-menu">
 
+            {{#login}}
+                <a href="/logout" title="Выйти">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            {{/login}}
+            {{^login}}
+                <a href="/login" title="Войти">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
+
+            {{/login}}
+
             <div class="header-right-menu__item dropdown header-button">
                 <div
                         id="changeThemeIcon"
@@ -178,8 +190,6 @@
 </div>
 <!--/ Website Menu -->
 <script type="text/javascript" src="../js/menu.js"></script>
-<script type="application/octet-stream" src="../js/vendor.js@id=5eIsiR0kOE2x"></script>
-<script type="application/octet-stream" src="../js/main.js@id=VIL64XuxWN77"></script>
 
 <div class="page" id="main-page">
     <div class="page__inner">
@@ -247,8 +257,6 @@
                     <div class="aside__content tags">
                         <input type="hidden" id="bookGenre" value="{{AllGenre}}">
                         <div class="tags-short" id="AllGenre">
-                            <a href="http://localhost:9080/book/catalog?genre=FANTASY" class="tag-item"
-                               title="фентези">фентези</a>
 
                         </div>
                     </div>
@@ -260,7 +268,7 @@
                         <span class="aside__title-inner">Категории</span>
                     </h3>
                     <div class="aside__content tags" id="BookStatus">
-                        <a href="https://mangalib.me/manga-list?types[]=1" class="tag-item">Манга</a>
+
 
                     </div>
 

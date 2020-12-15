@@ -10,6 +10,6 @@ import java.io.IOException;
 public class TranslationStatusSerializer extends JsonSerializer<TranslationStatus> {
     @Override
     public void serialize(TranslationStatus translationStatus, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeString(translationStatus.name());
+        jsonGenerator.writeString(translationStatus.getValue());
     }
 }

@@ -21,6 +21,7 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -84,12 +85,22 @@ public class BookController extends CommonController<Book, BookDTO> {
         if (book.isPresent() && book.get().getAuthor() != null) {
             model.put("Authors", JsonParser.mapToJson(book.get().getAuthor()));
         }
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+            }
+        } catch (ClassCastException ex) {
+            model.put("login", false);
+        }
 
         return page;
     }
 
     @Override
-    @GetMapping("/change")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping(path = "/change", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         Object book = fillDomain(model, id);
         model.put("Authors", JsonParser.mapToJson(((Book) book).getAuthor()));
@@ -100,21 +111,34 @@ public class BookController extends CommonController<Book, BookDTO> {
         model.put("RelatedBook", JsonParser.mapToJson(((Book) book).getRelatedBooks()));
         model.put("AllBook", JsonParser.mapToJson(service.findAll()));
         model.put("AllAuthors", JsonParser.mapToJson(authorService.findAll()));
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+            }
+        } catch (ClassCastException ex) {
+            model.put("login", false);
+        }
         return page + "_edit";
     }
 
-    @GetMapping("/catalog")
+    @GetMapping(path = "/catalog")
     public String getAllPage(Map<String, Object> model,
-                             @RequestParam(name = "genre", required = false) Genre genre,
+                             @RequestParam(name = "genre", required = false) String genreString,
                              @RequestParam(name = "bookStatus", required = false) BookStatus bookStatus
     ) throws IOException {
 
         List<Book> nodes = new LinkedList<>();
-        if (genre != null || bookStatus != null) {
-            final List<SearchCriteria> params = new ArrayList<>();
-            if (genre != null) {
-                nodes = new LinkedList<>(((BookService) service).findAllByGenresContains(genre).orElse(new LinkedList<>()));
 
+        if (genreString != null || bookStatus != null) {
+            final List<SearchCriteria> params = new ArrayList<>();
+            if (genreString != null) {
+                for (final Genre genre : Genre.values()) {
+                    if (genre.getGenre().equals(genreString)) {
+                        nodes = new LinkedList<>(((BookService) service).findAllByGenresContains(genre).orElse(new LinkedList<>()));
+                    }
+                }
             }
             if (bookStatus != null) {
                 nodes = new LinkedList<>(((BookService) service).findAllByBookStatus(bookStatus));
@@ -127,10 +151,20 @@ public class BookController extends CommonController<Book, BookDTO> {
         model.put("AllGenre", JsonParser.mapToJson(Genre.values()));
         model.put("AllBookStatus", JsonParser.mapToJson(BookStatus.values()));
         model.put("Books", JsonParser.mapToJson(nodes));
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+            }
+        } catch (ClassCastException ex) {
+            model.put("login", false);
+        }
         return "All" + page;
     }
 
     @RequestMapping(path = "/download", method = RequestMethod.GET)
+    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<InputStreamResource> downloadFile1(
             @RequestParam(value = "id") Integer id) throws IOException {
 
@@ -139,7 +173,7 @@ public class BookController extends CommonController<Book, BookDTO> {
         UserCreditDetails creditDetails = userCreditService.findById(user.getId()).orElseThrow(NotFoundException::new);
         user = userService.findById(creditDetails.getId()).orElseThrow(NotFoundException::new);
         Book book = service.findById(id).orElseThrow(NotFoundException::new);
-        if (book.getAvailability().equals(0)) {
+        if (book.getAvailability().equals(0) || book.getBookStatus().name().equals(BookStatus.NOT_AVAILABLE.name())) {
             throw new BookNotAvailableException();
         }
         if (!user.getBooks().contains(book)) {
@@ -166,6 +200,7 @@ public class BookController extends CommonController<Book, BookDTO> {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
             throws IOException {
@@ -184,7 +219,7 @@ public class BookController extends CommonController<Book, BookDTO> {
         book.setAuthor(new HashSet<>());
         book.setRelatedBooks(new HashSet<>());
         book.setPrintTime(Timestamp.valueOf(LocalDateTime.now()));
-        book.setBookStatus(BookStatus.NOT_SET);
+        book.setBookStatus(BookStatus.NOT_AVAILABLE);
         book.setTranslationStatus(TranslationStatus.NOT_SET);
         book.setPrice(BigDecimal.ZERO);
         book.setUsersThatBoughtIt(new HashSet<>());
@@ -202,6 +237,15 @@ public class BookController extends CommonController<Book, BookDTO> {
         model.put("RelatedBook", JsonParser.mapToJson(book.getRelatedBooks()));
         model.put("AllBook", JsonParser.mapToJson(service.findAll()));
         model.put("AllAuthors", JsonParser.mapToJson(authorService.findAll()));
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+            }
+        } catch (ClassCastException ex) {
+            model.put("login", false);
+        }
         return page + "_edit";
     }
 

@@ -133,7 +133,7 @@
 <div class="header">
     <div class="header__inner">
         <div class="header__item header__left">
-            <a href="index.mustache" class="header__logo">
+            <a href="index.http://localhost:9080/" class="header__logo">
                 <img src="../images/Tzeentch-Shop-removebg.png" alt="Tzeench-Shop">
             </a>
         </div>
@@ -160,7 +160,17 @@
         </div>
 
         <div class="header__item header-right-menu">
+            {{#login}}
+                <a href="/logout" title="Выйти">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            {{/login}}
+            {{^login}}
+                <a href="/login" title="Войти">
+                    <i class="fas fa-sign-in-alt"></i>
+                </a>
 
+            {{/login}}
             <div class="header-right-menu__item dropdown header-button">
                 <div
                         id="changeThemeIcon"
@@ -313,7 +323,7 @@
 
 <script type="text/javascript" src="../js/moment.js"></script>
 <script type="text/javascript" src="../js/Allbook.js"></script>
-
+<script type="text/javascript" src="../js/menu.js.js"></script>
 <script type="text/javascript">
     init();
     initFilter();

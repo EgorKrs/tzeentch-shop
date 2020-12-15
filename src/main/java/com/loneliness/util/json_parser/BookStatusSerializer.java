@@ -11,6 +11,6 @@ import java.io.IOException;
 public class BookStatusSerializer extends JsonSerializer<BookStatus> {
     @Override
     public void serialize(BookStatus bookStatus, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeString(bookStatus.name());
+        jsonGenerator.writeString(bookStatus.getValue());
     }
 }

@@ -196,6 +196,7 @@ function setBookStatus(bookStatus) {
 }
 
 function initFilter() {
+    console.log(document.getElementById("AllGenre").value);
     Array.prototype.forEach.call(JSON.parse(document.getElementById("AllGenre").value), genre => setGenres(genre));
     Array.prototype.forEach.call(JSON.parse(document.getElementById("AllBookStatus").value), bookStatus => setBookStatus(bookStatus));
 }

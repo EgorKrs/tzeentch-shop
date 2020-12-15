@@ -5,6 +5,7 @@ import com.loneliness.entity.domain.News;
 import com.loneliness.entity.domain.Picture;
 import com.loneliness.entity.domain.User;
 import com.loneliness.service.NewsService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ public class NewsController extends CommonController<News, NewsDTO> {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
             throws IOException {

@@ -13,10 +13,10 @@ public class BookStatusDeserializer extends JsonDeserializer<BookStatus> {
     public BookStatus deserialize(JsonParser parser, DeserializationContext deserializationContext) throws IOException {
         final String jsonValue = parser.getText();
         for (final BookStatus bookStatus : BookStatus.values()) {
-            if (bookStatus.name().equals(jsonValue)) {
+            if (bookStatus.getValue().equals(jsonValue)) {
                 return bookStatus;
             }
         }
-        return BookStatus.NOT_SET;
+        return BookStatus.NOT_AVAILABLE;
     }
 }

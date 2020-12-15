@@ -1,21 +1,22 @@
 package com.loneliness.entity.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Null;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table
 @Data
-@EqualsAndHashCode(of = { "id" })
+@EqualsAndHashCode(of = {"id"})
+@AllArgsConstructor
+@NoArgsConstructor
 public class Picture implements Domain {
 
     @Id

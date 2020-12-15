@@ -6,6 +6,7 @@ import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.NewsService;
 import com.loneliness.validate_data.Exist;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,6 +42,7 @@ public class NewsRestController extends CommonRestController<News, NewsDTO> {
     }
 
     @Override
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public News update(@Validated(Exist.class) @RequestBody NewsDTO dto, @RequestParam(name = "id") Integer id) {
         if (id == 0) {

@@ -5,6 +5,7 @@ import com.loneliness.entity.domain.Review;
 import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.ReviewService;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -42,7 +43,9 @@ public class ReviewRestController extends CommonRestController<Review, ReviewDTO
                     return ((ReviewService) service).findBySurveyedBookIsNotNullOrderByDataDesc(newsReviewId).orElseThrow(NotFoundException::new);
         }
     }
+
     @Override
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Review create( @RequestBody ReviewDTO  dto) throws IOException {
         return ((ReviewService) service).create(dto.fromDTO());
     }

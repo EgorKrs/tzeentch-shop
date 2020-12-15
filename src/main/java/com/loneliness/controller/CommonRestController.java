@@ -8,13 +8,12 @@ import com.loneliness.validate_data.Exist;
 import com.loneliness.validate_data.New;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +24,7 @@ public class CommonRestController<T extends Domain, D extends DTO<T>> {
     protected Service<T> service;
 
 
-        @GetMapping()
+    @GetMapping()
     public String getOneById(@RequestParam(name = "id" , required = false ) Integer id , Map<String,Object> model) {
         Object data = find(id);
         model.put(data.getClass().getSimpleName(),data);
@@ -34,12 +33,14 @@ public class CommonRestController<T extends Domain, D extends DTO<T>> {
 
 
     //    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces =  MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping()
     public T create(@Validated(New.class) @RequestBody D dto) throws IOException {
         return service.save(dto.fromDTO());
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public T update(@Validated(Exist.class) @RequestBody D dto, @RequestParam(name = "id") Integer id) {
         if (id != null && id > 0) {
             find(id);
@@ -48,6 +49,7 @@ public class CommonRestController<T extends Domain, D extends DTO<T>> {
     }
 
     @DeleteMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String delete(@RequestParam(name = "id") Integer id) {
         service.delete(id);
         return "index";
