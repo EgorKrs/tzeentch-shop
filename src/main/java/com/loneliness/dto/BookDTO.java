@@ -38,6 +38,7 @@ public class BookDTO implements DTO<Book> {
     private String url;
     private String fileName;
     private Timestamp printTime;
+    private BigDecimal discount;
 
     public void setPrice(String price) {
         this.price = new BigDecimal(price);
@@ -67,6 +68,7 @@ public class BookDTO implements DTO<Book> {
         book.setPopularity(popularity);
         book.setUrl(url);
         book.setFileName(fileName);
+        book.setDiscount(discount);
 
         return book;
 

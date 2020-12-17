@@ -75,6 +75,8 @@ public class Book implements Domain {
     private String url;
     private String fileName;
 
+    private BigDecimal discount;
+
     @PastOrPresent(groups = {New.class, Exist.class})
     private Timestamp printTime;
 

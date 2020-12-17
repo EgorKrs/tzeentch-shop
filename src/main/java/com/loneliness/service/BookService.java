@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -136,6 +137,7 @@ public class BookService extends CRUDService<Book> {
             book.setPrintTime(Timestamp.valueOf(LocalDateTime.now()));
             book.setRating(1.0);
         }
+        book.setPrice(book.getPrice().subtract(book.getPrice().multiply(book.getDiscount()).divide(new BigDecimal("100"))));
         HashSet<Author> authors = new HashSet<>();
         book.getAuthor().forEach(author -> authors.add(authorService.findById(author.getId()).orElse(new Author())));
         book.setAuthor(authors);

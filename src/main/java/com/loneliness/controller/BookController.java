@@ -90,6 +90,14 @@ public class BookController extends CommonController<Book, BookDTO> {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             User user = (User) auth.getPrincipal();
+            Integer numbOfBooks = user.getBooks().size();
+            if (numbOfBooks > 20 && book.isPresent()) {
+                book.get().setPrice(book.get().getPrice().subtract(book.get().getPrice().multiply(new BigDecimal("20")).divide(new BigDecimal("100"))));
+            } else if (numbOfBooks > 10 && book.isPresent()) {
+                book.get().setPrice(book.get().getPrice().subtract(book.get().getPrice().multiply(new BigDecimal("10")).divide(new BigDecimal("100"))));
+            } else if (numbOfBooks > 5 && book.isPresent()) {
+                book.get().setPrice(book.get().getPrice().subtract(book.get().getPrice().multiply(new BigDecimal("5")).divide(new BigDecimal("100"))));
+            }
             if (user.getId() != null) {
                 model.put("login", true);
             }
@@ -181,6 +189,14 @@ public class BookController extends CommonController<Book, BookDTO> {
             throw new BookNotAvailableException();
         }
         if (!user.getBooks().contains(book)) {
+            int numbOfBooks = user.getBooks().size();
+            if (numbOfBooks > 20) {
+                book.setPrice(book.getPrice().subtract(book.getPrice().multiply(new BigDecimal("20")).divide(new BigDecimal("100"))));
+            } else if (numbOfBooks > 10) {
+                book.setPrice(book.getPrice().subtract(book.getPrice().multiply(new BigDecimal("10")).divide(new BigDecimal("100"))));
+            } else if (numbOfBooks > 5) {
+                book.setPrice(book.getPrice().subtract(book.getPrice().multiply(new BigDecimal("5")).divide(new BigDecimal("100"))));
+            }
             if (creditDetails.getSumOfMoney().subtract(book.getPrice()).longValueExact() < 0) {
                 throw new NotEnoughMoneyException();
             }
