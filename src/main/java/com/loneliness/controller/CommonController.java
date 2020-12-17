@@ -1,6 +1,7 @@
 package com.loneliness.controller;
 
 import com.loneliness.dto.DTO;
+import com.loneliness.entity.Role;
 import com.loneliness.entity.domain.*;
 import com.loneliness.exception.BadArgumentException;
 import com.loneliness.exception.NotFoundException;
@@ -43,6 +44,17 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
     public String getAllPage(Map<String, Object> model) {
         List<T> nodes = service.findAll();
         model.put("allNodes", nodes);
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            User user = (User) auth.getPrincipal();
+            if (user.getId() != null) {
+                model.put("login", true);
+                model.put("isAdmin", user.getRoles().contains(Role.ADMIN));
+            }
+        } catch (ClassCastException ex) {
+            model.put("isAdmin", false);
+            model.put("login", false);
+        }
         return "All" + page;
     }
 
@@ -84,8 +96,10 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
             User user = (User) auth.getPrincipal();
             if (user.getId() != null) {
                 model.put("login", true);
+                model.put("isAdmin", user.getRoles().contains(Role.ADMIN));
             }
         } catch (ClassCastException ex) {
+            model.put("isAdmin", false);
             model.put("login", false);
         }
         return data;

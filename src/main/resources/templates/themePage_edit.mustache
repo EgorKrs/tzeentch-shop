@@ -1257,9 +1257,11 @@
                     <i class="fa fa-search"></i>
                 </div>
                 <input type="text" id="MainSearchInput" class="search__input form__input autocomplete__input">
-                <span id="addNewOne">
+                {{#isAdmin}}
+                    <span id="addNewOne">
                     <i class="fas fa-plus"></i>
                 </span>
+                {{/isAdmin}}
 
                 <div class="search__icon search__icon_right search__icon_close" data-search-toggle>
                     <svg>

@@ -54,6 +54,7 @@ public class NewsController extends CommonController<News, NewsDTO> {
             news.setTitle("Enter title");
             news.setAuthor(user);
             model.put("News", news);
+            model.put("isAdmin", true);
             return page + "_edit";
         } catch (java.lang.ClassCastException ex) {
             return "redirect:" + "http://localhost:9080/login";

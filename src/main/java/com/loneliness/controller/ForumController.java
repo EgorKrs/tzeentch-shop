@@ -43,6 +43,7 @@ public class ForumController extends CommonController<Room, RoomDTO> {
             model.put("messages", messageService.findAllByRoomTitleOrderByDateDateDesc(title).orElse(new LinkedList<>()));
             model.put("user", user);
             model.put("room", room);
+            model.put("isAdmin", true);
             return page;
         } catch (java.lang.ClassCastException ex) {
             return "redirect:" + request.getScheme() + "://localhost:9080/login";
@@ -69,6 +70,7 @@ public class ForumController extends CommonController<Room, RoomDTO> {
             model.put("user", user);
             room.setAuthor(user);
             model.put("room", room);
+            model.put("isAdmin", true);
             return page + "_edit";
         } catch (java.lang.ClassCastException ex) {
             return "redirect:" + "http://localhost:9080/login";

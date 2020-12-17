@@ -70,9 +70,12 @@ public class BookController extends CommonController<Book, BookDTO> {
             }
             model.put("Bought", isFound);
             model.put("CanEdit", user.getAuthorities().contains(Role.ADMIN));
+            model.put("isAdmin", user.getRoles().contains(Role.ADMIN));
+
         } catch (ClassCastException ex) {
             model.put("Bought", false);
             model.put("CanEdit", false);
+            model.put("isAdmin", false);
         }
         Optional<Book> book = service.findById(id);
         model.put("Book", book.orElse(new Book()));
@@ -116,9 +119,11 @@ public class BookController extends CommonController<Book, BookDTO> {
             User user = (User) auth.getPrincipal();
             if (user.getId() != null) {
                 model.put("login", true);
+                model.put("isAdmin", user.getRoles().contains(Role.ADMIN));
             }
         } catch (ClassCastException ex) {
             model.put("login", false);
+            model.put("isAdmin", false);
         }
         return page + "_edit";
     }
