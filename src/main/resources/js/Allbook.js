@@ -44,14 +44,34 @@ function setObject() {
             key: doc[i].dataset.val,
             value: doc[i].getElementsByTagName("input")[0].value
         };
-        if (doc[i].dataset.type === "genre") {
-            mapGenre.push(mapItem);
-        } else {
-            mapBookStatus.push(mapItem);
+        if (doc[i].dataset.val !== undefined) {
+            if (doc[i].dataset.type === "genre") {
+                mapGenre.push(mapItem);
+            } else {
+                mapBookStatus.push(mapItem);
+            }
         }
     }
     object.push(mapGenre);
     object.push(mapBookStatus);
+    if (document.getElementById("Surprise").getElementsByTagName("input")[0].value === "1") {
+        object.push(true);
+    } else {
+        object.push(false);
+    }
+    object.push(document.getElementById("AuthorFilter").value);
+    if (document.getElementById("isPopularInp").getElementsByTagName("input")[0].value === "1") {
+        object.push(true);
+    } else {
+        object.push(false);
+    }
+    object.push([document.getElementById("lowData").value, document.getElementById("highData").value]);
+    object.push([document.getElementById("lowRating").value, document.getElementById("highRating").value]);
+    if (document.getElementById("isRelatedToPast").getElementsByTagName("input")[0].value === "1") {
+        object.push(true);
+    } else {
+        object.push(false);
+    }
 }
 
 function clearGenre() {
@@ -77,6 +97,13 @@ function clearAll() {
     for (let i = 0; i < doc.length; i++) {
         doc[i].getElementsByTagName("input")[0].value = "0";
     }
+    document.getElementById("lowData").value = "";
+    document.getElementById("highData").value = "";
+    document.getElementById("lowRating").value = "";
+    document.getElementById("highRating").value = "";
+    // document.getElementById("isLookLikePast").value = "0";
+    document.getElementById("isPopularInp").value = "0";
+    document.getElementById("AuthorFilter").value = "0";
 
 }
 
@@ -85,7 +112,7 @@ function getBooks() {
     xhr.open('POST', "http://localhost:9080/edit/books/catalog", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     setObject();
-    console.log(JSON.stringify(object));
+    console.log(object);
     xhr.send(JSON.stringify(object));
     object = [];
     mapGenre = [];
@@ -121,9 +148,20 @@ function init() {
             }
         });
     }
-
-
+    document.getElementById("isPopularInp").addEventListener("click", function () {
+        changeInputRad(document.getElementById("isPopularInp"));
+    });
+    document.getElementById("isRelatedToPast").addEventListener("click", function () {
+        changeInputRad(document.getElementById("isRelatedToPast"));
+    });
+    // document.getElementById("isLookLikePast").addEventListener("click", function () {
+    //     changeInputRad(document.getElementById("isLookLikePast"));
+    // });
+    document.getElementById("Surprise").addEventListener("click", function () {
+        changeInputRad(document.getElementById("Surprise"));
+    });
 }
+
 
 document.getElementsByClassName("search-filter-submenu")[0].addEventListener("click", function (e) {
     document.getElementsByClassName("search-filter-layout")[0].className = 'search-filter-layout is-hidden';
@@ -155,6 +193,28 @@ function changeInputVal(div) {
             div.getElementsByTagName("input")[0].value = 0;
             break;
     }
+}
+
+let firstTime = true;
+
+function changeInputRad(div) {
+    switch (div.getElementsByTagName("input")[0].value) {
+        case "0":
+            if (firstTime) {
+                div.getElementsByTagName("input")[0].value = 1;
+                firstTime = false;
+            } else
+                firstTime = true;
+            break;
+        case "1":
+            if (firstTime) {
+                div.getElementsByTagName("input")[0].value = 0;
+                firstTime = false;
+            } else
+                firstTime = true;
+            break;
+    }
+
 }
 
 function setGenres(genre) {
@@ -196,7 +256,6 @@ function setBookStatus(bookStatus) {
 }
 
 function initFilter() {
-    console.log(document.getElementById("AllGenre").value);
     Array.prototype.forEach.call(JSON.parse(document.getElementById("AllGenre").value), genre => setGenres(genre));
     Array.prototype.forEach.call(JSON.parse(document.getElementById("AllBookStatus").value), bookStatus => setBookStatus(bookStatus));
 }

@@ -7,7 +7,6 @@ import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.BookService;
 import com.loneliness.service.RatingParamService;
 import com.loneliness.validate_data.New;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.annotation.Validated;
@@ -32,7 +31,7 @@ public class RatingRestController extends CommonRestController<RatingParam, Rati
 
     @Override
     @PostMapping()
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     public RatingParam create(@Validated(New.class) @RequestBody RatingParamDTO dto) throws IOException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         RatingParam ratingParam = dto.fromDTO();

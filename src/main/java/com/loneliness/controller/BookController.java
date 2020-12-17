@@ -21,7 +21,6 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -102,8 +101,8 @@ public class BookController extends CommonController<Book, BookDTO> {
     }
 
     @Override
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping(path = "/change", consumes = MediaType.APPLICATION_JSON_VALUE)
+//    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping(path = "/change") //, consumes = MediaType.APPLICATION_JSON_VALUE
     public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         Object book = fillDomain(model, id);
         model.put("Authors", JsonParser.mapToJson(((Book) book).getAuthor()));
@@ -169,7 +168,7 @@ public class BookController extends CommonController<Book, BookDTO> {
     }
 
     @RequestMapping(path = "/download", method = RequestMethod.GET)
-    @PreAuthorize("hasAuthority('USER')")
+//    @PreAuthorize("hasAuthority('USER')")
     public ResponseEntity<InputStreamResource> downloadFile1(
             @RequestParam(value = "id") Integer id) throws IOException {
 
@@ -205,7 +204,7 @@ public class BookController extends CommonController<Book, BookDTO> {
     }
 
     @Override
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
             throws IOException {

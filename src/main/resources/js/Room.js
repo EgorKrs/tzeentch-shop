@@ -201,7 +201,7 @@ function sendMessage(event) {
             locked: false,
         },
         message: document.getElementById("NewMessageInput").value,
-        date: Date.now(),
+        date: "",//Date.now(),
         room: {
             id: document.getElementById("roomId").value,
             author: {},

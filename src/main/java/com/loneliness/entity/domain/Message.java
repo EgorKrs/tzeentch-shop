@@ -1,6 +1,5 @@
 package com.loneliness.entity.domain;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 
 @Entity
@@ -43,13 +41,9 @@ public class Message implements Domain {
     @PastOrPresent(message = "date MUST_BE_NOT_IN_FUTURE")
     @JsonProperty
     private LocalDateTime date;
-    @ManyToOne(cascade = CascadeType.REFRESH)
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "room_id")
     private Room room;
-
-
-    public Message() {
-    }
 
 //    @JsonCreator
 //    public Message(@JsonProperty("username") final User user,

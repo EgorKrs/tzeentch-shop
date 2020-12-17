@@ -21,14 +21,14 @@ public class Room implements Domain{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @ManyToOne(cascade = CascadeType.REFRESH )
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private User author;
     @Column(unique=true)
     private String title;
     private String message;
     @PastOrPresent(groups = {New.class, Exist.class})
     private Timestamp printTime;
-    @OneToMany(cascade = CascadeType.REFRESH )
+    @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Message> messages;
 }

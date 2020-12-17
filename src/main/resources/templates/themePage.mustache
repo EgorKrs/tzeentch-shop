@@ -209,14 +209,15 @@
                                 <div class="discussion-creator discussion-details__item">
                                     <input type="hidden" id="userId">
                                     <img
-                                        src="{{user.name}}"
-                                        class="discussion-creator__avatar avatar avatar_circle"><!--                                        href="https://localhost:9080/user/{{user.id}}"-->
+                                            src="{{user.Picture.url}}"
+                                            class="discussion-creator__avatar avatar avatar_circle">
+                                    <!--                                        href="https://localhost:9080/user/{{user.id}}"-->
                                     <a
 
-                                        class="discussion-creator__username link-default">{{user.name}}
+                                            class="discussion-creator__username link-default">{{user.name}}
                                     </a>
                                 </div>
-                                <time id = "RoomCreateTime" datetime="{{room.printTime}}"
+                                <time id="RoomCreateTime" datetime="{{room.printTime}}"
                                       class="discussion-details__item text-secondary">
                                     {{room.printTime}}
                                 </time>

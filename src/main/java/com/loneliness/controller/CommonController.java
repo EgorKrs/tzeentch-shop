@@ -7,7 +7,6 @@ import com.loneliness.exception.BadArgumentException;
 import com.loneliness.exception.NotFoundException;
 import com.loneliness.service.Service;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.FieldError;
@@ -33,7 +32,7 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
         return page;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/change")
     public String changePage(@RequestParam(name = "id") Integer id, Map<String, Object> model) throws IOException {
         fillDomain(model, id);
@@ -58,7 +57,7 @@ public class CommonController<T extends Domain,D extends DTO<T>>{
         return "All" + page;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
+    //    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/create")
     public String createPage(@RequestParam(name = "name") String name, Map<String, Object> model)
             throws IOException {

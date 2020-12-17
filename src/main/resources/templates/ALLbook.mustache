@@ -234,20 +234,78 @@
                                 <div class="search-filter-submenu__right"><span
                                         class="search-filter-submenu__selected text-truncate">Любые</span> <i
                                         class="fa fa-chevron-right"></i></div>
-                            </div> <!---->
-
-                            <div class="search-filter__group">
-
                             </div>
                             <!---->
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Дата издания
+                                </div>
+                                <div class="search-filter__content">
+                                    <div class="search-filter__input-group">
+                                        <input type="text" placeholder="От"
+                                               class="form__input form__input_sm search-filter__input" id="lowData">
+                                        <span class="text-muted">—</span>
+                                        <input type="text" placeholder="До"
+                                               class="form__input form__input_sm search-filter__input" id="highData">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-filter__group">
+                                <div class="search-filter__title">
+                                    Рейтинг
+                                </div>
+                                <div class="search-filter__content">
+                                    <div class="search-filter__input-group">
+                                        <input type="text" placeholder="От"
+                                               class="form__input form__input_sm search-filter__input" id="lowRating">
+                                        <span class="text-muted">—</span>
+                                        <input type="text" placeholder="До"
+                                               class="form__input form__input_sm search-filter__input" id="highRating">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="search-filter__content search-filter__checkbox-list search-filter__checkbox-list_flex">
+
+                                <label class="control search-filter__checkbox" id='isPopularInp'>
+                                    <input type="checkbox" class="control__input" value="0">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Популярные</span>
+                                </label>
+                                <label class="control search-filter__checkbox" id='isRelatedToPast'>
+                                    <input type="checkbox" class="control__input" value="0">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Похожее на прошлые книги</span>
+                                </label>
+                                <!--                                <label class="control search-filter__checkbox"  id = 'isLookLikePast'>-->
+                                <!--                                    <input type="checkbox" class="control__input" value="0" >-->
+                                <!--                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>-->
+                                <!--                                    <span class="control__text">Сюрприз</span>-->
+                                <!--                                </label>-->
+                                <label class="control search-filter__checkbox" id='Surprise'>
+                                    <input type="checkbox" class="control__input" value="0">
+                                    <span class="control__indicator control__indicator_checkbox control__indicator_sm"></span>
+                                    <span class="control__text">Сюрприз</span>
+                                </label>
+                                <div class="search-filter__group">
+                                    <div class="search-filter-input">
+                                        <input type="text" placeholder="Фильтр по авторам"
+                                               class="search-filter-input__field form__input" id="AuthorFilter">
+                                        <div class="search-filter-input__clear" style="display: none;">
+                                            <svg>
+                                                <use xlink:href="#icon-close"></use>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!---->
+                            </div>
                         </div>
-                    </div>
-                    <div class="search-filter__buttons buttons-stretch">
-                        <button class="button" onclick="clearAll()">
-                            Сбросить
-                        </button>
-                        <button class="button button_green" id="showBookStatus">
-                            Показать
+                        <div class="search-filter__buttons buttons-stretch">
+                            <button class="button" onclick="clearAll()">
+                                Сбросить
+                            </button>
+                            <button class="button button_green" id="showBookStatus">
+                                Показать
                         </button>
                     </div>
                 </div>
@@ -314,22 +372,22 @@
                         </button>
                     </div>
                 </div> <!----></div>
+            </div>
+
+
         </div>
 
 
     </div>
 
 
-</div>
-
-
-<script type="text/javascript" src="../js/moment.js"></script>
-<script type="text/javascript" src="../js/Allbook.js"></script>
-<script type="text/javascript" src="../js/menu.js"></script>
-<script type="text/javascript">
-    init();
-    initFilter();
-</script>
+    <script type="text/javascript" src="../js/moment.js"></script>
+    <script type="text/javascript" src="../js/Allbook.js"></script>
+    <script type="text/javascript" src="../js/menu.js"></script>
+    <script type="text/javascript">
+        init();
+        initFilter();
+    </script>
 
 
 </body>
