@@ -329,6 +329,7 @@ function saveBook() {
         price: document.getElementById("bookPrice").value,
         url: document.getElementById("BookFileUrl").value,
         fileName: document.getElementById("BookFileName").value,
+        discount : document.getElementById("bookDiscount").value,
         printTime: ""
     };
     console.log(book);
