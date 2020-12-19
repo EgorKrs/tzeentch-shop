@@ -203,6 +203,8 @@ public class BookController extends CommonController<Book, BookDTO> {
             creditDetails.setSumOfMoney(creditDetails.getSumOfMoney().subtract(book.getPrice()));
             user.getBooks().add(book);
             userService.save(user);
+            book.setPopularity(book.getPopularity() + 1);
+            service.save(book);
         }
 
         File file = new File(book.getUrl());
